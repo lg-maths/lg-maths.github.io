@@ -34,3 +34,4 @@ jobs:
         with:
           folder: website/dist/website/browser
           branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}  # Explicitly use GITHUB_TOKEN
