@@ -20,13 +20,17 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./website
 
       - name: Build Angular app
         run: npm run build -- --configuration=production
-        working-directory: ./website  # Since your app is in the 'website' subfolder
+        working-directory: ./website
+
+      - name: Copy index.html to 404.html for SPA routing
+        run: cp website/dist/website/browser/index.html website/dist/website/browser/404.html
 
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: website/dist/website/browser  # Path to your build output
-          branch: gh-pages  # Deploys to gh-pages branch
+          folder: website/dist/website/browser
+          branch: gh-pages
