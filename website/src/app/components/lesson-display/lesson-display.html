@@ -1,1 +1,20 @@
-<p>lesson-display works!</p>
+@if (markdownContent) {
+  <div>
+    <h1>{{ markdownContent.title }}</h1>
+    @if (markdownContent.level) {
+      <div class="level-badge">
+        Level: {{ markdownContent.level }}
+      </div>
+    }
+    <markdown
+		ngPreserveWhitespaces
+		emoji
+		katex
+		[data]="markdownContent.content"
+	></markdown>
+  </div>
+} @else {
+  <div class="loading">
+    Loading lesson content...
+  </div>
+}
