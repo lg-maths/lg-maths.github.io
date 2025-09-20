@@ -1,0 +1,12 @@
+{
+	"title": "Sample!",
+	"level": "6e",
+	"included_in": [
+		{
+			"classname": "6e",
+			"chapter": 12,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
+}
