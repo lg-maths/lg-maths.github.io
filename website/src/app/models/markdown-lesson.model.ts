@@ -8,8 +8,9 @@ export enum AcademicLevel {
   TERMINALE = 'Te'
 }
 
-export interface MarkdownContent {
+export interface MarkdownLesson {
+  id: number;
   title: string;
-  content: string;
-  level?: AcademicLevel;
+  level: AcademicLevel;
+  content?: string;
 }
