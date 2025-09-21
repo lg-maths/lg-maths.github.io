@@ -2,12 +2,13 @@ import { Component, OnInit, inject, ViewEncapsulation, Input } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MarkdownComponent } from 'ngx-markdown';
+import { MatIconModule } from '@angular/material/icon';
 import { LessonsService } from '../../services/lessons';
 import { LessonToDisplay } from '../../models/lessons-outputs.model';
 
 @Component({
   selector: 'app-lesson-display',
-  imports: [CommonModule, MarkdownComponent],
+  imports: [CommonModule, MarkdownComponent, MatIconModule],
   templateUrl: './lesson-display.html',
   styleUrl: './lesson-display.css',
   encapsulation: ViewEncapsulation.None

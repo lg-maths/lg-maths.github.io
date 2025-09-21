@@ -9,14 +9,29 @@ import { routes } from './app.routes';
 const markedAlertOptions = {
   variants: [
     {
-      type: 'note',
-      icon: '<i class="mr-2">✏️</i>',
-      title: 'Note'
+      type: 'remark',
+      icon: '<span class="marked-alert-icon">🤓</span>',
+      title: 'Remarque'
     },
     {
       type: 'theorem',
-      icon: '',
+      icon: '<span class="marked-alert-icon">🔬</span>',
       title: 'Théorème'
+    },
+    {
+      type: 'demo',
+      icon: '<span class="marked-alert-icon">🔧</span>',
+      title: 'Démonstration'
+    },
+    {
+      type: 'example',
+      icon: '<span class="marked-alert-icon">🔍</span>',
+      title: 'Exemple'
+    },
+    {
+      type: 'exo',
+      icon: '<span class="marked-alert-icon">✏️</span>',
+      title: 'Exercice'
     }
   ]
 };
