@@ -23,6 +23,12 @@ jobs:
         with:
           node-version: '20'  # Match your local Node version (check with `node -v`)
 
+      - name: Project formatting
+        run: |
+          echo "Creating required directory structure..."
+          mkdir -p website/src/assets
+          echo "✓ Created website/src/assets directory"
+
       - name: Bake user lessons into JSON files
         run: python python/bake_lessons.py
         working-directory: ./

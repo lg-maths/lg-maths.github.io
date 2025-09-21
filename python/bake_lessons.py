@@ -78,8 +78,8 @@ def bake_list(lessons: list[Metadata], output_dir: Path):
 
 
 def bake_all(list_dir: Path, output_dir: Path):
-	output_dir.mkdir(exist_ok=True)
-	
+	output_dir.mkdir(parents=True, exist_ok=True)
+
 	all_metadata = [
 		bake_page(lesson_dir, output_dir, lesson_id)
 		for lesson_id, lesson_dir in enumerate(list_dir.iterdir())
