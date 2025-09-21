@@ -1,0 +1,14 @@
+@if (lessonToDisplay) {
+  <div>
+    <markdown
+		ngPreserveWhitespaces
+		emoji
+		katex
+		[data]="lessonToDisplay.content"
+	></markdown>
+  </div>
+} @else {
+  <div class="loading">
+    Loading lesson content...
+  </div>
+}

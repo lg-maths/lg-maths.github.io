@@ -1,0 +1,12 @@
+.main-content {
+  min-height: calc(100vh - 64px); /* Subtract navbar height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure smooth transitions */
+app-homepage,
+app-lesson-display {
+  flex: 1;
+  width: 100%;
+}

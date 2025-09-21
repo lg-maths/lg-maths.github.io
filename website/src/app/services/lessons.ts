@@ -1,0 +1,121 @@
+import { Injectable, inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { LessonToDisplay } from '../models/lessons-outputs.model';
+import { InputLesson, InputClassEl, InputListLessons, InputListLessonsEl } from '../models/lessons-inputs.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LessonsService {
+  private http = inject(HttpClient);
+  
+  // Cache storage
+  private lessonsListCache$?: Observable<InputListLessonsEl[]>;
+  private lessonCache = new Map<number, Observable<InputLesson>>();
+  private classesCache$?: Observable<string[]>;
+
+  private jsonBase = "assets/json-data"
+
+  getAllClasses(): Observable<string[]> {
+    if (this.classesCache$) {
+      return this.classesCache$;
+    }
+
+    this.classesCache$ = this.http.get<InputListLessons>(`${this.jsonBase}/generic.json`).pipe(
+      map((input: InputListLessons) => input.classes_sorted),
+      shareReplay(1)
+    );
+
+    return this.classesCache$;
+  }
+
+  getLesson(lesson_id: number, classname: string | null): Observable<LessonToDisplay> {
+    // Get cached raw lesson data
+    const rawLesson$ = this.getRawLesson(lesson_id);
+    
+    return rawLesson$.pipe(
+      map((inputLesson: InputLesson) => {
+        // Find the specific class information for the requested classname
+        var targetClass: InputClassEl | undefined = { 
+          classname: "",
+          chapter: 0,
+          disclaimer: null
+        };
+
+        if (classname != null) {
+          targetClass = inputLesson.classes.find(cls => cls.classname === classname);
+        
+          if (!targetClass) {
+            throw new Error(`Class "${classname}" not found for lesson ${lesson_id}`);
+          }
+        }
+
+        // Transform to LessonToDisplay
+        const lessonToDisplay: LessonToDisplay = {
+          id: inputLesson.id,
+          title: inputLesson.title,
+          classname: targetClass.classname,
+          content: inputLesson.content,
+          disclaimer: targetClass.disclaimer || undefined
+        };
+
+        return lessonToDisplay;
+      })
+    );
+  }
+
+  private getRawLesson(lesson_id: number): Observable<InputLesson> {
+    if (this.lessonCache.has(lesson_id)) {
+      return this.lessonCache.get(lesson_id)!;
+    }
+
+    const lesson$ = this.http.get<InputLesson>(`${this.jsonBase}/${lesson_id}.json`).pipe(
+      shareReplay(1)
+    );
+    this.lessonCache.set(lesson_id, lesson$);
+
+    return this.lessonCache.get(lesson_id)!;
+  }
+
+  getLessonsList(): Observable<InputListLessonsEl[]> {
+    if (this.lessonsListCache$) {
+      return this.lessonsListCache$;
+    }
+
+    this.lessonsListCache$ = this.http.get<InputListLessons>(`${this.jsonBase}/generic.json`).pipe(
+      map((input: InputListLessons) => input.lessons),
+      shareReplay(1)
+    );
+
+    return this.lessonsListCache$;
+  }
+
+  getLessonsForClass(classname: string): Observable<InputListLessonsEl[]> {
+    return this.getLessonsList().pipe(
+      map(
+        (lessons: InputListLessonsEl[]) => 
+          lessons
+          .filter(el => el.classname === classname)
+          .sort((a, b) => a.chapter - b.chapter)
+      )
+    )
+  }
+
+  /**
+   * Clear all cached data - useful for refreshing data or memory management
+   */
+  clearCache(): void {
+    this.lessonsListCache$ = undefined;
+    this.classesCache$ = undefined;
+    this.lessonCache.clear();
+  }
+
+  /**
+   * Clear cache for a specific lesson
+   */
+  clearLessonCache(lesson_id: number): void {
+    this.lessonCache.delete(lesson_id);
+  }
+}
