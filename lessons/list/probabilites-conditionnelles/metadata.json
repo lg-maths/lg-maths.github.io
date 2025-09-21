@@ -1,7 +1,12 @@
 {
 	"title": "Probabilités conditionnelles",
 	"level": "1e",
-	"inclusion": {
-		"class": "test"
-	}
+	"included_in": [
+		{
+			"classname": "1e",
+			"chapter":3,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
 }

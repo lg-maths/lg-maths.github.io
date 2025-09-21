@@ -1,7 +1,12 @@
 {
 	"title": "Fonction logarithme et exponentielle",
 	"level": "Te",
-	"inclusion": {
-		"class": "test"
-	}
+	"included_in": [
+		{
+			"classname": "Te",
+			"chapter": 1,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
 }

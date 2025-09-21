@@ -1,7 +1,12 @@
 {
 	"title": "Triangle et parallélogramme",
 	"level": "5e",
-	"inclusion": {
-		"class": "test"
-	}
+	"included_in": [
+		{
+			"classname": "5e",
+			"chapter": 3,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
 }

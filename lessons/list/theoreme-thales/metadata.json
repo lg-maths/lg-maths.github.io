@@ -1,7 +1,12 @@
 {
 	"title": "Théorème de Thalès",
 	"level": "3e",
-	"inclusion": {
-		"class": "test"
-	}
+	"included_in": [
+		{
+			"classname": "3e",
+			"chapter": 3,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
 }

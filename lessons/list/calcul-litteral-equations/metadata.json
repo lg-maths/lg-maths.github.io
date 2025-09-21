@@ -1,7 +1,12 @@
 {
 	"title": "Calcul littéral et équations",
 	"level": "4e",
-	"inclusion": {
-		"class": "test"
-	}
+	"included_in": [
+		{
+			"classname": "4e",
+			"chapter": 1,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
 }

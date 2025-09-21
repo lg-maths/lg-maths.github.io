@@ -1,7 +1,12 @@
 {
 	"title": "Géométrie dans l'espace",
 	"level": "2d",
-	"inclusion": {
-		"class": "test"
-	}
+	"included_in": [
+		{
+			"classname": "2d",
+			"chapter": 2,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
 }

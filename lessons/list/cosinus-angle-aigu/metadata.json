@@ -1,7 +1,12 @@
 {
 	"title": "Cosinus d'un angle aigu",
 	"level": "4e",
-	"inclusion": {
-		"class": "test"
-	}
+	"included_in": [
+		{
+			"classname": "4e",
+			"chapter": 2,
+			"disclaimer": null
+		}
+	],
+	"content": "..."
 }
