@@ -61,7 +61,7 @@ class Codable:
 		return cls(**json_object)
 	
 	def encode(self) -> str:
-		return CodableCustomEncoder().encode(self)
+		return CodableCustomEncoder(ensure_ascii=False).encode(self)
 	
 	@classmethod
 	def decode_from_json_string(cls, json_str: str) -> Self:
@@ -69,7 +69,7 @@ class Codable:
 	
 	@classmethod
 	def decode_from_path(cls, txt_file: Path) -> Self:
-		txt = txt_file.read_text()
+		txt = txt_file.read_text("utf-8")
 
 		if txt_file.suffix == ".json":
 			return cls.decode_from_json_string(txt)
@@ -77,7 +77,7 @@ class Codable:
 		raise ValueError(f"`{txt_file.suffix}` not supported")
 	
 	def serialize(self, dump_file_path: Path):
-		dump_file_path.write_text(self.encode())
+		dump_file_path.write_text(self.encode(), "utf-8")
 
 
 class CodableCustomEncoder(JSONEncoder):
