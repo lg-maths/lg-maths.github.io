@@ -1,0 +1,7 @@
+{
+	"title": "Suites numériques",
+	"level": "1e",
+	"inclusion": {
+		"class": "test"
+	}
+}
