@@ -9,7 +9,8 @@ import { NavbarComponent } from "./components/navbar/navbar";
   imports: [
     RouterOutlet,
     LessonDisplayComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomepageComponent
 ],
   templateUrl: './app.html',
   styleUrl: './app.css'

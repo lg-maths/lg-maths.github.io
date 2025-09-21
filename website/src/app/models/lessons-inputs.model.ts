@@ -20,4 +20,5 @@ export interface InputListLessonsEl {
 
 export interface InputListLessons {
   lessons: InputListLessonsEl[];
+  classes_sorted: string[];
 }

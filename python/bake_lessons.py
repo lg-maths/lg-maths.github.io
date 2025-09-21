@@ -23,7 +23,16 @@ class OutputListLessonElement(Codable):
 	chapter: int
 
 class OutputListLessons(Codable):
+	classes_sorted: list[str]
 	lessons: list[OutputListLessonElement]
+
+def _key_sort_classname(classname: str) -> int:
+	SORT_CLASSES = "654321T"
+
+	try:
+		return SORT_CLASSES.index(classname[0])
+	except ValueError:
+		return 0
 
 def bake_page(content_dir: Path, output_dir: Path, lesson_id: int) -> Metadata:
 	content_path = content_dir / "content.md"
@@ -45,6 +54,14 @@ def bake_page(content_dir: Path, output_dir: Path, lesson_id: int) -> Metadata:
 
 def bake_list(lessons: list[Metadata], output_dir: Path):
 	output = OutputListLessons(
+		classes_sorted=sorted(
+			set(
+				c.classname
+				for metadata in lessons
+				for c in metadata.classes
+			),
+			key=_key_sort_classname
+		),
 		lessons=[
 			OutputListLessonElement(
 				id=metadata.id,
@@ -57,7 +74,7 @@ def bake_list(lessons: list[Metadata], output_dir: Path):
 		]
 	)
 
-	output.serialize(output_dir / "all.json")
+	output.serialize(output_dir / "generic.json")
 
 
 def bake_all(list_dir: Path, output_dir: Path):

@@ -21,11 +21,8 @@ export class LessonsService {
       return this.classesCache$;
     }
 
-    this.classesCache$ = this.getLessonsList().pipe(
-      map((lessons: InputListLessonsEl[]) => {
-        const classnames = lessons.map(el => el.classname);
-        return [...new Set(classnames)];
-      }),
+    this.classesCache$ = this.http.get<InputListLessons>(`assets/.lessons-json/generic.json`).pipe(
+      map((input: InputListLessons) => input.classes_sorted),
       shareReplay(1)
     );
 
@@ -85,7 +82,7 @@ export class LessonsService {
       return this.lessonsListCache$;
     }
 
-    this.lessonsListCache$ = this.http.get<InputListLessons>(`assets/.lessons-json/all.json`).pipe(
+    this.lessonsListCache$ = this.http.get<InputListLessons>(`assets/.lessons-json/generic.json`).pipe(
       map((input: InputListLessons) => input.lessons),
       shareReplay(1)
     );
@@ -95,7 +92,12 @@ export class LessonsService {
 
   getLessonsForClass(classname: string): Observable<InputListLessonsEl[]> {
     return this.getLessonsList().pipe(
-      map((lessons: InputListLessonsEl[]) => lessons.filter(el => el.classname === classname))
+      map(
+        (lessons: InputListLessonsEl[]) => 
+          lessons
+          .filter(el => el.classname === classname)
+          .sort((a, b) => a.chapter - b.chapter)
+      )
     )
   }
 
