@@ -13,13 +13,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'  # Match your local Node version (check with `node -v`)
 
-      - name: Run Python hello world
-        run: python3 -c 'print("Hello world!")'
+      - name: Bake user lessons into JSON files
+        run: python python/bake_lessons.py
+        working-directory: ./
+
+      - name: Verify JSON files generated
+        run: |
+          echo "Checking for generated JSON files..."
+          if find website/src/assets/json-data -name "*.json" -type f | head -1 | grep -q .; then
+            echo "✓ JSON files successfully generated"
+            echo "Files found:"
+            ls -la website/src/assets/json-data/
+          else
+            echo "❌ ERROR: No JSON files found in website/src/assets/json-data!"
+            exit 1
+          fi
 
       - name: Install dependencies
         run: npm ci
