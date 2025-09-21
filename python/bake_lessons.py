@@ -5,29 +5,27 @@ from json import JSONEncoder, JSONDecoder, loads, dumps
 
 from codable import Codable
 
-
-class AcademicLevel(Enum):
-	SIXIEME = "6e"
-	CINQUIEME = "5e"
-	QUATRIEME = "4e"
-	TROISIEME = "3e"
-	SECONDE = "2d"
-	PREMIERE = "1e"
-	TERMINALE = "Te"
-
-class IncludedInOutput(Codable):
+class ClassesEl(Codable):
 	classname: str
 	chapter: int
 	disclaimer: str | None
 
-class BakingOutput(Codable):
+class Metadata(Codable):
 	title: str
-	level: AcademicLevel | None
-	included_in: list[IncludedInOutput]
+	classes: list[ClassesEl]
 	content: str | None
 	id: int | None
 
-def bake_page(content_dir: Path, output_dir: Path, lesson_id: int):
+class OutputListLessonElement(Codable):
+	id: int
+	title: str
+	classname: str
+	chapter: int
+
+class OutputListLessons(Codable):
+	lessons: list[OutputListLessonElement]
+
+def bake_page(content_dir: Path, output_dir: Path, lesson_id: int) -> Metadata:
 	content_path = content_dir / "content.md"
 	if not content_path.exists():
 		raise RuntimeError()
@@ -37,16 +35,39 @@ def bake_page(content_dir: Path, output_dir: Path, lesson_id: int):
 	if not data_path.exists():
 		raise RuntimeError()
 
-	output = BakingOutput.decode_from_path(data_path)
+	output = Metadata.decode_from_path(data_path)
 	output.content = content_txt
 	output.id = lesson_id
 
 	output.serialize(output_dir / f"{lesson_id}.json")
 
-def bake_all(list_dir: Path, output_dir: Path):
-	for lesson_id, lesson_dir in enumerate(list_dir.iterdir()):
-		bake_page(lesson_dir, output_dir, lesson_id)
+	return output
 
+def bake_list(lessons: list[Metadata], output_dir: Path):
+	output = OutputListLessons(
+		lessons=[
+			OutputListLessonElement(
+				id=metadata.id,
+				title=metadata.title,
+				classname=class_el.classname,
+				chapter=class_el.chapter
+			)
+			for metadata in lessons
+			for class_el in metadata.classes
+		]
+	)
+
+	output.serialize(output_dir / "all.json")
+
+
+def bake_all(list_dir: Path, output_dir: Path):
+	all_metadata = [
+		bake_page(lesson_dir, output_dir, lesson_id)
+		for lesson_id, lesson_dir in enumerate(list_dir.iterdir())
+	]
+
+	bake_list(all_metadata, output_dir)
+		
 if __name__ == "__main__":
 	repo_root = Path(__file__).parent.parent
 	bake_all(repo_root / "lessons/list", repo_root / "website/src/assets/.lessons-json")

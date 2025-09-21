@@ -2,8 +2,8 @@ import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MarkdownComponent } from 'ngx-markdown';
-import { MarkdownLesson, AcademicLevel } from '../../models/markdown-lesson.model';
 import { LessonsService } from '../../services/lessons';
+import { LessonToDisplay } from '../../models/lessons-outputs.model';
 
 @Component({
   selector: 'app-lesson-display',
@@ -13,8 +13,7 @@ import { LessonsService } from '../../services/lessons';
   encapsulation: ViewEncapsulation.None
 })
 export class LessonDisplayComponent implements OnInit {
-  private http = inject(HttpClient);
-  markdownContent: MarkdownLesson | null = null;
+  lessonToDisplay: LessonToDisplay | null = null;
 
   ngOnInit(): void {
     this.loadLessonContent();
@@ -25,9 +24,9 @@ export class LessonDisplayComponent implements OnInit {
   ) { }
 
   private loadLessonContent(): void {
-    this.lessonsService.getLesson(0).subscribe({
+    this.lessonsService.getLesson(0, null).subscribe({
       next: (lesson) => {
-        this.markdownContent = lesson
+        this.lessonToDisplay = lesson
       },
       error: (error) => {
         console.error('Error loading lesson content:', error);

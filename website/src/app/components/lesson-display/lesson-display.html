@@ -1,16 +1,11 @@
-@if (markdownContent) {
+@if (lessonToDisplay) {
   <div>
-    <h1>{{ markdownContent.title }}</h1>
-    @if (markdownContent.level) {
-      <div class="level-badge">
-        Level: {{ markdownContent.level }}
-      </div>
-    }
+    <h1>{{ lessonToDisplay.title }}</h1>
     <markdown
 		ngPreserveWhitespaces
 		emoji
 		katex
-		[data]="markdownContent.content"
+		[data]="lessonToDisplay.content"
 	></markdown>
   </div>
 } @else {
