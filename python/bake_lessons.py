@@ -27,7 +27,7 @@ class OutputListLessons(Codable):
 	lessons: list[OutputListLessonElement]
 
 def _key_sort_classname(classname: str) -> int:
-	SORT_CLASSES = "654321T"
+	SORT_CLASSES = "abcdefghijklmnopqrstuvwxyz654321T"
 
 	try:
 		return SORT_CLASSES.index(classname[0])
@@ -78,6 +78,8 @@ def bake_list(lessons: list[Metadata], output_dir: Path):
 
 
 def bake_all(list_dir: Path, output_dir: Path):
+	output_dir.mkdir(exist_ok=True)
+	
 	all_metadata = [
 		bake_page(lesson_dir, output_dir, lesson_id)
 		for lesson_id, lesson_dir in enumerate(list_dir.iterdir())
@@ -87,4 +89,4 @@ def bake_all(list_dir: Path, output_dir: Path):
 		
 if __name__ == "__main__":
 	repo_root = Path(__file__).parent.parent
-	bake_all(repo_root / "lessons/list", repo_root / "website/src/assets/.lessons-json")
+	bake_all(repo_root / "user-content/lessons", repo_root / "website/src/assets/json-data")

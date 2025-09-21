@@ -33,8 +33,9 @@
                 <button 
                   mat-flat-button 
                   color="primary"
-                  class="lesson-button">
-                  {{ lesson.chapter }} - {{ lesson.title }}
+                  class="lesson-button"
+                  (click)="onLessonClick(lesson)">
+                  {{ lesson.chapter }} — {{ lesson.title }}
                 </button>
               }
             </div>

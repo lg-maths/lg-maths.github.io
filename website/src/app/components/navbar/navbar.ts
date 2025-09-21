@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,12 +12,11 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class NavbarComponent {
   @Input() pageTitle: string = '';
+  @Output() homeClicked = new EventEmitter<void>();
   
   siteTitle: string = 'LG Maths';
 
-  constructor(private router: Router) {}
-
   navigateToHome(): void {
-    this.router.navigate(['/']);
+    this.homeClicked.emit();
   }
 }

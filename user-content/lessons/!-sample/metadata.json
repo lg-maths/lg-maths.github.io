@@ -1,9 +1,9 @@
 {
-	"title": "Sample!",
+	"title": "This is a test",
 	"classes": [
 		{
-			"classname": "6e",
-			"chapter": 12,
+			"classname": "rappels",
+			"chapter": 123,
 			"disclaimer": null
 		}
 	],

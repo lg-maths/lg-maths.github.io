@@ -16,12 +16,14 @@ export class LessonsService {
   private lessonCache = new Map<number, Observable<InputLesson>>();
   private classesCache$?: Observable<string[]>;
 
+  private jsonBase = "assets/json-data"
+
   getAllClasses(): Observable<string[]> {
     if (this.classesCache$) {
       return this.classesCache$;
     }
 
-    this.classesCache$ = this.http.get<InputListLessons>(`assets/.lessons-json/generic.json`).pipe(
+    this.classesCache$ = this.http.get<InputListLessons>(`${this.jsonBase}/generic.json`).pipe(
       map((input: InputListLessons) => input.classes_sorted),
       shareReplay(1)
     );
@@ -69,7 +71,7 @@ export class LessonsService {
       return this.lessonCache.get(lesson_id)!;
     }
 
-    const lesson$ = this.http.get<InputLesson>(`assets/.lessons-json/${lesson_id}.json`).pipe(
+    const lesson$ = this.http.get<InputLesson>(`${this.jsonBase}/${lesson_id}.json`).pipe(
       shareReplay(1)
     );
     this.lessonCache.set(lesson_id, lesson$);
@@ -82,7 +84,7 @@ export class LessonsService {
       return this.lessonsListCache$;
     }
 
-    this.lessonsListCache$ = this.http.get<InputListLessons>(`assets/.lessons-json/generic.json`).pipe(
+    this.lessonsListCache$ = this.http.get<InputListLessons>(`${this.jsonBase}/generic.json`).pipe(
       map((input: InputListLessons) => input.lessons),
       shareReplay(1)
     );

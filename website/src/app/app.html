@@ -1,4 +1,14 @@
-<app-navbar pageTitle="Hello world!"></app-navbar>
-<app-homepage></app-homepage>
+<app-navbar [pageTitle]="pageTitle" (homeClicked)="showHomepage()"></app-navbar>
+
+<main class="main-content">
+  @if (currentView() === 'homepage') {
+    <app-homepage (lessonSelected)="showLesson($event)"></app-homepage>
+  } @else if (currentView() === 'lesson' && selectedLesson()) {
+    <app-lesson-display 
+      [lessonId]="selectedLesson()!.lessonId"
+      [class]="selectedLesson()!.classname">
+    </app-lesson-display>
+  }
+</main>
 
 <router-outlet />
