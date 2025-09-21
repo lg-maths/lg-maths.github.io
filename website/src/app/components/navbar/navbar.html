@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="navbar">
+  <!-- Site Title -->
+  <span class="site-title">{{ siteTitle }}</span>
+  
+  <!-- Home Button -->
+  <button 
+    mat-icon-button 
+    (click)="navigateToHome()" 
+    title="Go to homepage"
+    aria-label="Go to homepage"
+    class="home-button">
+    <mat-icon>home</mat-icon>
+  </button>
+  
+  <!-- Page Title -->
+  @if (pageTitle) {
+    <span class="page-title">{{ pageTitle }}</span>
+  }
+  
+  <!-- Spacer to push items to the right if needed -->
+  <span class="spacer"></span>
+</mat-toolbar>

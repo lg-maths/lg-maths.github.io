@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, inject, ViewEncapsulation, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MarkdownComponent } from 'ngx-markdown';
@@ -13,18 +13,13 @@ import { LessonToDisplay } from '../../models/lessons-outputs.model';
   encapsulation: ViewEncapsulation.None
 })
 export class LessonDisplayComponent implements OnInit {
+  @Input({ required: true }) lessonId!: number;
+  @Input({ required: true }) class!: string;
+
   lessonToDisplay: LessonToDisplay | null = null;
 
   ngOnInit(): void {
-    this.loadLessonContent();
-  }
-
-  constructor(
-    private lessonsService: LessonsService
-  ) { }
-
-  private loadLessonContent(): void {
-    this.lessonsService.getLesson(0, null).subscribe({
+    this.lessonsService.getLesson(this.lessonId, this.class).subscribe({
       next: (lesson) => {
         this.lessonToDisplay = lesson
       },
@@ -33,4 +28,8 @@ export class LessonDisplayComponent implements OnInit {
       }
     });
   }
+
+  constructor(
+    private lessonsService: LessonsService
+  ) { }
 }
