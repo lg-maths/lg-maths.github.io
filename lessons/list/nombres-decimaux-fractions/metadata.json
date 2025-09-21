@@ -1,12 +1,12 @@
 {
 	"title": "Les nombres décimaux et les fractions",
-	"level": "6e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "6e",
 			"chapter": 3,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

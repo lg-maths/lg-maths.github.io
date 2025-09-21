@@ -1,12 +1,12 @@
 {
 	"title": "Dérivation et applications",
-	"level": "1e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "1e",
 			"chapter": 1,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

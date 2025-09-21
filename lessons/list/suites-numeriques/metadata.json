@@ -1,12 +1,12 @@
 {
 	"title": "Suites numériques",
-	"level": "1e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "1e",
 			"chapter": 3,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

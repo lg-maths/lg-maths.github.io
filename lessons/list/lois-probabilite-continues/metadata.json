@@ -1,12 +1,12 @@
 {
-    "title": "Lois de probabilité continues",
-    "level": "Te",
-    "included_in": [
+	"title": "Lois de probabilité continues",
+	"classes": [
 		{
 			"classname": "Te",
 			"chapter": 3,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

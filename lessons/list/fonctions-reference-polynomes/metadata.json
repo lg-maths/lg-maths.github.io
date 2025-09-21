@@ -1,12 +1,12 @@
 {
 	"title": "Fonctions de référence (polynômes du second degré)",
-	"level": "2d",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "2d",
 			"chapter": 1,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

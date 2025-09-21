@@ -1,12 +1,12 @@
 {
-    "title": "Intégration",
-    "level": "Te",
-    "included_in": [
+	"title": "Intégration",
+	"classes": [
 		{
 			"classname": "Te",
 			"chapter": 2,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

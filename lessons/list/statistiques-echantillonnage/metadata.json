@@ -1,12 +1,12 @@
 {
 	"title": "Statistiques et échantillonnage",
-	"level": "2d",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "2d",
 			"chapter": 3,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

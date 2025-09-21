@@ -1,12 +1,12 @@
 {
 	"title": "Les nombres relatifs et opérations",
-	"level": "5e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "5e",
 			"chapter": 1,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

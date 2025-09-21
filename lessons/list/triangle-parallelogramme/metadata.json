@@ -1,12 +1,12 @@
 {
 	"title": "Triangle et parallélogramme",
-	"level": "5e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "5e",
 			"chapter": 3,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

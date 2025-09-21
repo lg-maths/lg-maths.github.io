@@ -1,12 +1,12 @@
 {
 	"title": "Le théorème de Pythagore",
-	"level": "4e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "6e",
 			"chapter": 3,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

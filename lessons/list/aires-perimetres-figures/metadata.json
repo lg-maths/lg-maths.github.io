@@ -1,12 +1,12 @@
 {
 	"title": "Aires et périmètres des figures usuelles",
-	"level": "6e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "6e",
 			"chapter": 1,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }

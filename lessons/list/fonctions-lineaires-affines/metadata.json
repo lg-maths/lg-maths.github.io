@@ -1,12 +1,12 @@
 {
 	"title": "Fonctions linéaires et affines",
-	"level": "3e",
-	"included_in": [
+	"classes": [
 		{
 			"classname": "3e",
 			"chapter": 1,
 			"disclaimer": null
 		}
 	],
-	"content": "..."
+	"content": null,
+	"id": null
 }
