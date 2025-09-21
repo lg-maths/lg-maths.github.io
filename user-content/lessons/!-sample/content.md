@@ -1,4 +1,3 @@
-# Complete Mathematics Lesson Sample
 
 ## Introduction
 
@@ -63,23 +62,26 @@ $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
 ## Alerts and Call-out Boxes
 
-> [!NOTE]  
-> Highlights information that users should take into account, even when skimming.
-
-> [!TIP]
-> Optional information to help a user be more successful.
-
-> [!IMPORTANT]  
-> Crucial information necessary for users to succeed.
-
-> [!WARNING]  
-> Critical content demanding immediate user attention due to potential risks.
-
-> [!CAUTION]
-> Negative potential consequences of an action.
+> [!REMARK]  
+> Ceci est une remarque ! C'est probablement important, tout dépend...
 
 > [!THEOREM]
 > Ceci est un théorème...
+
+> [!DEMO]
+> Et la démonstration
+> 
+> ci-dessous
+> 
+> ...
+> 
+> long.
+
+> [!EXAMPLE]
+> Ceci est un exemple parmi tant d'autres.
+
+> [!EXO]
+> Et c'est à vous de bosser maintenant !
 
 ## Code Blocks
 

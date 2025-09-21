@@ -1,3 +1,7 @@
+#lesson-content {
+  margin: 10px;
+}
+
 .level-badge {
   display: inline-block;
   background-color: #007bff;
@@ -20,8 +24,8 @@
 .markdown-alert {
   margin: 1rem 0;
   padding: 0.75rem 1rem;
-  border-left: 4px solid;
-  border-radius: 0.375rem;
+  border-left: 12px solid;
+  border-radius: 0rem;
   background-color: var(--alert-bg);
   border-color: var(--alert-border);
 }
@@ -29,9 +33,15 @@
 .markdown-alert-title {
   display: flex;
   align-items: center;
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
   color: var(--alert-title-color);
+}
+
+.marked-alert-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
 }
 
 .markdown-alert-title svg {
@@ -44,111 +54,198 @@
 }
 
 
-.markdown-alert-note {
-  --alert-bg: #dbeafe;
-  --alert-border: #3b82f6;
-  --alert-title-color: #1e40af;
+/* Custom alert variants */
+.markdown-alert-remark {
+  --alert-bg: #f0f9ff;
+  --alert-border: #0ea5e9;
+  --alert-title-color: #0369a1;
 }
 
-
-.markdown-alert-tip {
-  --alert-bg: #dcfce7;
-  --alert-border: #22c55e;
-  --alert-title-color: #15803d;
-}
-
-
-.markdown-alert-important {
-  --alert-bg: #fef3c7;
-  --alert-border: #f59e0b;
-  --alert-title-color: #d97706;
-}
-
-
-.markdown-alert-warning {
+.markdown-alert-theorem {
   --alert-bg: #fef2f2;
   --alert-border: #ef4444;
   --alert-title-color: #dc2626;
 }
 
-
-.markdown-alert-caution {
-  --alert-bg: #fdf2f8;
-  --alert-border: #ec4899;
-  --alert-title-color: #db2777;
+.markdown-alert-demo {
+  --alert-bg: #eff6ff;
+  --alert-border: #2563eb;
+  --alert-title-color: #1d4ed8;
 }
 
-/* Custom alert variants */
-.markdown-alert-danger {
-  --alert-bg: #fef2f2;
-  --alert-border: #dc2626;
-  --alert-title-color: #dc2626;
-}
-
-.markdown-alert-success {
-  --alert-bg: #f0fdf4;
+.markdown-alert-example {
+  --alert-bg: #dcfce7;
   --alert-border: #22c55e;
-  --alert-title-color: #16a34a;
+  --alert-title-color: #15803d;
 }
 
-/* Custom title class names */
-.text-danger {
-  color: #dc2626 !important;
+.markdown-alert-exo {
+  --alert-bg: #fef3c7;
+  --alert-border: #f59e0b;
+  --alert-title-color: #d97706;
 }
 
-.text-success {
-  color: #16a34a !important;
+h1#main-title {
+  font-size: 4rem;
+  padding: 1.5rem;
+  background-color: #272727;
+  color: #f8f8f8;
+  line-height: 4rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .markdown-alert-note {
-    --alert-bg: #1e3a8a20;
-    --alert-border: #60a5fa;
-    --alert-title-color: #93c5fd;
-  }
+/* Markdown content styling */
+#lesson-content h1,
+#lesson-content h2,
+#lesson-content h3,
+#lesson-content h4,
+#lesson-content h5,
+#lesson-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #1f2937;
+}
 
-  .markdown-alert-tip {
-    --alert-bg: #14532d20;
-    --alert-border: #4ade80;
-    --alert-title-color: #86efac;
-  }
+#lesson-content h1 {
+  font-size: 2.25rem;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
 
-  .markdown-alert-important {
-    --alert-bg: #92400e20;
-    --alert-border: #fbbf24;
-    --alert-title-color: #fcd34d;
-  }
+#lesson-content h2 {
+  font-size: 1.875rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
 
-  .markdown-alert-warning {
-    --alert-bg: #991b1b20;
-    --alert-border: #f87171;
-    --alert-title-color: #fca5a5;
-  }
+#lesson-content h3 {
+  font-size: 1.5rem;
+}
 
-  .markdown-alert-caution {
-    --alert-bg: #be185d20;
-    --alert-border: #f472b6;
-    --alert-title-color: #f9a8d4;
-  }
+#lesson-content h4 {
+  font-size: 1.25rem;
+}
 
-  /* Custom variants dark mode */
-  .markdown-alert-danger {
-    --alert-bg: #991b1b20;
-    --alert-border: #f87171;
-    --alert-title-color: #fca5a5;
-  }
+#lesson-content h5 {
+  font-size: 1.125rem;
+}
 
-  .markdown-alert-success {
-    --alert-bg: #14532d20;
-    --alert-border: #4ade80;
-    --alert-title-color: #86efac;
-  }
+#lesson-content h6 {
+  font-size: 1rem;
+  color: #6b7280;
+}
 
-  .text-danger {
-    color: #fca5a5 !important;
-  }
+#lesson-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #374151;
+}
 
-  .text-success {
-    color: #86efac !important;
-  }
+#lesson-content ul,
+#lesson-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+#lesson-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+#lesson-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid #d1d5db;
+  background-color: #f9fafb;
+  color: #6b7280;
+  font-style: italic;
+}
+
+#lesson-content code {
+  background-color: #f3f4f6;
+  color: #dc2626;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: 'Courier New', monospace;
+}
+
+#lesson-content pre {
+  background-color: #1f2937;
+  color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+#lesson-content pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Table styling with solid black borders and transparent backgrounds */
+#lesson-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background-color: #ffffff;
+  border: 2px solid #000000;
+}
+
+#lesson-content thead {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#lesson-content th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1f2937;
+  border: 1px solid #000000;
+  border-bottom: 2px solid #000000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#lesson-content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #000000;
+  color: #374151;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#lesson-content tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#lesson-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-decoration-color: #93c5fd;
+  text-underline-offset: 2px;
+}
+
+#lesson-content a:hover {
+  color: #1d4ed8;
+  text-decoration-color: #2563eb;
+}
+
+#lesson-content strong {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+#lesson-content em {
+  font-style: italic;
+  color: #4b5563;
+}
+
+#lesson-content hr {
+  margin: 2rem 0;
+  border: none;
+  height: 1px;
+  background-color: #d1d5db;
 }
