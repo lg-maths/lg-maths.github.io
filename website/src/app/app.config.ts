@@ -15,12 +15,12 @@ const markedAlertOptions = {
     },
     {
       type: 'theorem',
-      icon: '<span class="marked-alert-icon">🔬</span>',
+      icon: '<span class="marked-alert-icon">🧮</span>',
       title: 'Théorème'
     },
     {
       type: 'demo',
-      icon: '<span class="marked-alert-icon">🔧</span>',
+      icon: '<span class="marked-alert-icon">🧑‍🔬</span>',
       title: 'Démonstration'
     },
     {
@@ -30,7 +30,7 @@ const markedAlertOptions = {
     },
     {
       type: 'exo',
-      icon: '<span class="marked-alert-icon">✏️</span>',
+      icon: '<span class="marked-alert-icon">📝</span>',
       title: 'Exercice'
     }
   ]
