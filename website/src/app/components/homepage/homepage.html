@@ -31,7 +31,7 @@
             <div class="lessons-list">
               @for (lesson of getLessonsForClass(classname) | async; track lesson.id) {
                 <button 
-                  mat-flat-button 
+                  matButton="tonal"
                   color="primary"
                   class="lesson-button"
                   (click)="onLessonClick(lesson)">

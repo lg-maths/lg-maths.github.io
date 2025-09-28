@@ -5,6 +5,6 @@ html, body {
 }
 body { 
 	margin: 0; 
-	font-family: "Roboto Slab", "Raleway", sans-serif;
+	/* font-family: sans-serif; */
 	font-size: 16px;
 }

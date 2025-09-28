@@ -9,10 +9,10 @@
 html {
   @include mat.theme((
     color: (
-      primary: mat.$rose-palette,
-      tertiary: mat.$red-palette,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
     ),
-    typography: Roboto,
+    typography: "Roboto",
     density: 0,
   ));
 }
