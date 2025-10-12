@@ -10,30 +10,38 @@ const markedAlertOptions = {
   variants: [
     {
       type: 'remark',
-      icon: '<span class="marked-alert-icon">🤓</span>',
+      icon: 'school',
       title: 'Remarque'
     },
     {
       type: 'theorem',
-      icon: '<span class="marked-alert-icon">🧮</span>',
+      icon: 'square_foot',
       title: 'Théorème'
     },
     {
       type: 'demo',
-      icon: '<span class="marked-alert-icon">🧑‍🔬</span>',
+      icon: 'architecture',
       title: 'Démonstration'
     },
     {
       type: 'example',
-      icon: '<span class="marked-alert-icon">🔍</span>',
+      icon: 'biotech',
       title: 'Exemple'
     },
     {
       type: 'exo',
-      icon: '<span class="marked-alert-icon">📝</span>',
+      icon: 'stylus_note',
       title: 'Exercice'
     }
-  ]
+  ].map(
+    el => (
+      {
+        type: el.type, 
+        title: el.title, 
+        icon: `<span class="material-symbols-outlined marked-alert-icon">${el.icon}</span>`
+      }
+    )
+  )
 };
 
 export const appConfig: ApplicationConfig = {

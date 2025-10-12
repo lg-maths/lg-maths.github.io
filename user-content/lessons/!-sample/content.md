@@ -1,36 +1,35 @@
-
-## Introduction
+# Introduction
 
 This is a comprehensive example of a mathematics lesson written in **Markdown** with *LaTeX* equations for **KaTeX** rendering. This document demonstrates various formatting features commonly used in educational content.
 
-## Basic Text Formatting
+# Basic Text Formatting
 
 You can use **bold text**, *italic text*, and ***bold italic text***. You can also use `inline code` for mathematical variables like `x`, `y`, or `n`.
 
-### Lists
+## Lists
 
-#### Unordered List:
+### Unordered List:
 - First item
 - Second item with **bold text**
 - Third item with *italic text*
   - Nested item
   - Another nested item
 
-#### Ordered List:
+### Ordered List:
 1. First step: Define the problem
 2. Second step: Apply the theorem
 3. Third step: Solve the equation
 4. Final step: Verify the solution
 
-## Mathematical Equations
+# Mathematical Equations
 
-### Inline Mathematics
+## Inline Mathematics
 
 The quadratic formula is $ax^2 + bx + c = 0$ where $a \neq 0$. The discriminant is $\Delta = b^2 - 4ac$.
 
 The derivative of $f(x) = x^n$ is $f'(x) = nx^{n-1}$ for any real number $n$.
 
-### Block Mathematics
+## Block Mathematics
 
 The solutions of the quadratic equation are:
 
@@ -42,7 +41,7 @@ $$\sin^2(x) + \cos^2(x) = 1$$
 
 $$\tan(x) = \frac{\sin(x)}{\cos(x)}$$
 
-### Complex Mathematical Expressions
+## Complex Mathematical Expressions
 
 The integral of a function $f(x)$ from $a$ to $b$ is:
 
@@ -60,7 +59,7 @@ Limit definition of derivative:
 
 $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
-## Alerts and Call-out Boxes
+# Alerts and Call-out Boxes
 
 > [!REMARK]  
 > Ceci est une remarque ! C'est probablement important, tout dépend...
@@ -83,7 +82,7 @@ $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 > [!EXO]
 > Et c'est à vous de bosser maintenant !
 
-## Code Blocks
+# Code Blocks
 
 ```python
 def fx(x: int) -> float:
@@ -91,7 +90,7 @@ def fx(x: int) -> float:
 ```
 
 
-## Tables
+# Tables
 
 | Function | Domain | Range | Key Properties |
 |----------|---------|-------|----------------|
@@ -100,7 +99,7 @@ def fx(x: int) -> float:
 | $f(x) = \frac{1}{x}$ | $\mathbb{R}^*$ | $\mathbb{R}^*$ | Hyperbola, odd function |
 | $f(x) = \sin(x)$ | $\mathbb{R}$ | $[-1, 1]$ | Periodic, period $2\pi$ |
 
-## Theorem and Proof Structure
+# Theorem and Proof Structure
 
 **Theorem (Pythagorean Theorem):** In a right triangle with legs of length $a$ and $b$, and hypotenuse of length $c$, we have:
 
@@ -108,7 +107,7 @@ $$a^2 + b^2 = c^2$$
 
 **Proof:** Consider a right triangle with legs $a$ and $b$...
 
-## Step-by-Step Problem Solving
+# Step-by-Step Problem Solving
 
 **Problem:** Solve the equation $2x^2 - 7x + 3 = 0$
 
@@ -129,17 +128,17 @@ $$x = \frac{-(-7) \pm \sqrt{25}}{2(2)} = \frac{7 \pm 5}{4}$$
 
 **Answer:** $x = 3$ or $x = \frac{1}{2}$
 
-## Links and References
+# Links and References
 
 For more information, you can refer to:
 - [Khan Academy - Quadratic Equations](https://www.khanacademy.org)
 - [Wolfram MathWorld](https://mathworld.wolfram.com)
 
-## Horizontal Rules
+# Horizontal Rules
 
 ---
 
-## Special Mathematical Symbols and Sets
+# Special Mathematical Symbols and Sets
 
 Common number sets:
 - Natural numbers: $\mathbb{N} = \{1, 2, 3, ...\}$
@@ -153,7 +152,7 @@ Greek letters commonly used:
 - $\theta, \lambda, \mu, \pi, \sigma, \phi$
 - $\Gamma, \Delta, \Theta, \Lambda, \Sigma, \Phi$
 
-## Conclusion
+# Conclusion
 
 This sample demonstrates the rich formatting capabilities available when combining Markdown with LaTeX mathematics for educational content. The KaTeX rendering engine will display all mathematical expressions beautifully in web browsers.
 
