@@ -1,4 +1,4 @@
-## Suite et algorithme
+### Suite et algorithme
 
 On définit la suite $(u_n)$ par $u_0 = 2$ et pour tout $n \in \mathbb{N}$, $u_{n+1} = \sqrt{2 + u_n}$.
 

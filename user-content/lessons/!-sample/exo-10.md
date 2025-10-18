@@ -1,4 +1,4 @@
-## Géométrie et produit scalaire
+### Géométrie et produit scalaire
 
 Dans l'espace muni d'un repère orthonormé $(O; \vec{i}, \vec{j}, \vec{k})$, on considère les points :
 - $A(1, 0, 2)$

@@ -1,4 +1,4 @@
-## Étude de fonction complète
+### Étude de fonction complète
 
 On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = x^3 - 3x^2 + 2$.
 

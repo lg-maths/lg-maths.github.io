@@ -1,13 +1,26 @@
 @if (lessonToDisplay) {
-  <h1 id="main-title">{{ lessonToDisplay.title }}</h1>
-  <div id="lesson-content">
+  <h1 class="big-title">{{ lessonToDisplay.title }}</h1>
+
+  <div class="lesson-content">
     <markdown
-		ngPreserveWhitespaces
-		emoji
-		katex
-		[data]="lessonToDisplay.content"
-	></markdown>
+      ngPreserveWhitespaces
+      emoji
+      katex
+      [data]="lessonToDisplay.content"
+    />
   </div>
+
+  @if (lessonToDisplay.exercices) {
+    <h1 class="big-title">Exercices</h1>
+  }
+
+  <div id="exo-container">
+    @for (exercice of lessonToDisplay.exercices; track exercice.id) {
+      <app-exo-display [exercice]="exercice" />
+    }
+  </div>
+  
+
 } @else {
   <div class="loading">
     Loading lesson content...

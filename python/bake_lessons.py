@@ -9,7 +9,7 @@ EXO_STEM = "exo-"
 SOL_STEM = "sol-"
 
 class Exercice(Codable):
-	id: str
+	id: int
 	statement: str
 	solution: str
 
@@ -44,7 +44,11 @@ def _key_sort_classname(classname: str) -> int:
 		return 0
 	
 def _build_exercice(exo_path: Path) -> Exercice:
-	exo_id = exo_path.stem.replace(EXO_STEM, "")
+	try:
+		exo_id = exo_path.stem.replace(EXO_STEM, "")
+		exo_id = int(exo_id)
+	except:
+		raise ValueError(f"Exercice id `{exo_id}` should be a number.")
 	sol_path = exo_path.parent / f"{SOL_STEM}{exo_id}.md"
 	if not sol_path.exists():
 		raise Exception(f"'{exo_path}' found but no '{sol_path}' in lesson.")

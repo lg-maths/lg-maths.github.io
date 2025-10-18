@@ -1,0 +1,22 @@
+<div class="exo-card">
+  <div class="exo-header">
+    <h3 class="exo-title">Exercice {{ exercice.id }}</h3>
+    <button 
+      mat-raised-button 
+      color="primary" 
+      (click)="toggleView()"
+      class="toggle-button">
+      <mat-icon>{{ showSolution() ? 'description' : 'lightbulb' }}</mat-icon>
+      {{ buttonLabel }}
+    </button>
+  </div>
+  
+  <div class="exo-content lesson-content">
+    <markdown
+      ngPreserveWhitespaces
+      emoji
+      katex
+      [data]="currentContent"
+    />
+  </div>
+</div>

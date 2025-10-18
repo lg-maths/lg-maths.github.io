@@ -63,7 +63,7 @@ export class LessonsService {
       title: inputLesson.title,
       classname: targetClass.classname,
       content: inputLesson.content,
-      exercices: inputLesson.exercices,
+      exercices: inputLesson.exercices.sort((a, b) => a.id - b.id),
       disclaimer: targetClass.disclaimer ?? undefined
     };
 

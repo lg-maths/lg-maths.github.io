@@ -1,5 +1,5 @@
 export interface InputExercice {
-  id: string;
+  id: number;
   statement: string;
   solution: string;
 }
