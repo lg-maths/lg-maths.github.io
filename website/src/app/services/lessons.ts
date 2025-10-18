@@ -36,34 +36,38 @@ export class LessonsService {
     const rawLesson$ = this.getRawLesson(lesson_id);
     
     return rawLesson$.pipe(
-      map((inputLesson: InputLesson) => {
-        // Find the specific class information for the requested classname
-        var targetClass: InputClassEl | undefined = { 
-          classname: "",
-          chapter: 0,
-          disclaimer: null
-        };
-
-        if (classname != null) {
-          targetClass = inputLesson.classes.find(cls => cls.classname === classname);
-        
-          if (!targetClass) {
-            throw new Error(`Class "${classname}" not found for lesson ${lesson_id}`);
-          }
-        }
-
-        // Transform to LessonToDisplay
-        const lessonToDisplay: LessonToDisplay = {
-          id: inputLesson.id,
-          title: inputLesson.title,
-          classname: targetClass.classname,
-          content: inputLesson.content,
-          disclaimer: targetClass.disclaimer || undefined
-        };
-
-        return lessonToDisplay;
-      })
+      map(
+        (inputLesson: InputLesson) => this.buildLesson(inputLesson, classname)
+      )
     );
+  }
+
+  private buildLesson(inputLesson: InputLesson, classname: string | null): LessonToDisplay {
+    var targetClass: InputClassEl | undefined = { 
+      classname: "",
+      chapter: 0,
+      disclaimer: null
+    };
+
+    if (classname != null) {
+      targetClass = inputLesson.classes.find(cls => cls.classname === classname);
+    
+      if (!targetClass) {
+        throw new Error(`Class "${classname}" not found for lesson`);
+      }
+    }
+
+    // Transform to LessonToDisplay
+    const lessonToDisplay: LessonToDisplay = {
+      id: inputLesson.id,
+      title: inputLesson.title,
+      classname: targetClass.classname,
+      content: inputLesson.content,
+      exercices: inputLesson.exercices,
+      disclaimer: targetClass.disclaimer ?? undefined
+    };
+
+    return lessonToDisplay;
   }
 
   private getRawLesson(lesson_id: number): Observable<InputLesson> {

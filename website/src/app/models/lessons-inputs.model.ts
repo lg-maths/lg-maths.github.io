@@ -1,3 +1,9 @@
+export interface InputExercice {
+  id: string;
+  statement: string;
+  solution: string;
+}
+
 export interface InputClassEl {
   classname: string;
   chapter: number;
@@ -9,6 +15,7 @@ export interface InputLesson {
   classes: InputClassEl[];
   content: string;
   id: number;
+  exercices: InputExercice[];
 }
 
 export interface InputListLessonsEl {
