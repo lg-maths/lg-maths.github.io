@@ -1,0 +1,3 @@
+#### Calcul de limites
+
+Calculer $\lim_{x \to +\infty} \frac{3x^2 - 5x + 1}{x^2 + 2}$
