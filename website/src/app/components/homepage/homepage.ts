@@ -26,6 +26,7 @@ export class HomepageComponent implements OnInit {
   
   constructor(private lessonsService: LessonsService) {
     this.classes$ = this.lessonsService.getAllClasses();
+    localStorage
   }
 
   ngOnInit(): void {}
