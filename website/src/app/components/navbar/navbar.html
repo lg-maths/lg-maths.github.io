@@ -19,4 +19,25 @@
   
   <!-- Spacer to push items to the right if needed -->
   <span class="spacer"></span>
+  
+  <!-- Navigation Links : `pageTitle` has value if user is on a lesson -->
+  @if (pageTitle) { 
+    <nav class="nav-links">
+      <button 
+        mat-button
+        [matButton]="matButtonActiveState(activeSection === 'cours')"
+        (click)="scrollToSection($event, 'cours')"
+        class="nav-link">
+        Cours
+      </button>
+      <button 
+        mat-button
+        [matButton]="matButtonActiveState(activeSection === 'exercices')"
+        (click)="scrollToSection($event, 'exercices')"
+        class="nav-link">
+        Exercices
+      </button>
+    </nav>
+  }
+  
 </mat-toolbar>

@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonAppearance, MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -10,13 +10,63 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit, OnDestroy {
   @Input() pageTitle: string = '';
   @Output() homeClicked = new EventEmitter<void>();
   
   siteTitle: string = 'LG Maths';
+  activeSection: string = 'cours';
+
+  ngOnInit(): void {
+    // Check initial scroll position
+    this.updateActiveSection();
+  }
+
+  ngOnDestroy(): void {
+    // Cleanup if needed
+  }
 
   navigateToHome(): void {
     this.homeClicked.emit();
+  }
+
+  scrollToSection(event: Event, sectionId: string): void {
+    event.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = 64; // Height of the navbar
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - navbarHeight - 16; // Extra 16px padding
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+
+      this.activeSection = sectionId;
+    }
+  }
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    this.updateActiveSection();
+  }
+
+  private updateActiveSection(): void {
+    const sections = ['cours', 'exercices'];
+    const navbarHeight = 64;
+    const scrollPosition = window.scrollY + navbarHeight + 100; // Add offset for better UX
+
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.getElementById(sections[i]);
+      if (section && section.offsetTop <= scrollPosition) {
+        this.activeSection = sections[i];
+        break;
+      }
+    }
+  }
+
+  protected matButtonActiveState(active: boolean): MatButtonAppearance {
+    return active ? 'elevated' : 'text';
   }
 }

@@ -1,7 +1,7 @@
 @if (lessonToDisplay) {
   <h1 class="big-title">{{ lessonToDisplay.title }}</h1>
 
-  <div class="lesson-content">
+  <div id="cours" class="lesson-content">
     <markdown
       ngPreserveWhitespaces
       emoji
@@ -11,7 +11,7 @@
   </div>
 
   @if (lessonToDisplay.exercices) {
-    <h1 class="big-title">Exercices</h1>
+    <h1 id="exercices" class="big-title">Exercices</h1>
   }
 
   <div id="exo-container">
