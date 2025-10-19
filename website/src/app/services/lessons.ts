@@ -13,12 +13,12 @@ export class LessonsService {
   
   // Cache storage
   private lessonsListCache$?: Observable<InputListLessons>;
-  private lessonCache = new Map<number, Observable<InputLesson>>();
+  private lessonCache = new Map<string, Observable<InputLesson>>();
   private classesCache$?: Observable<string[]>;
 
   private jsonBase = "assets/json-data"
 
-  getLesson(lesson_id: number, classname: string | null): Observable<LessonToDisplay> {
+  getLesson(lesson_id: string, classname: string | null): Observable<LessonToDisplay> {
     // Get cached raw lesson data
     const rawLesson$ = this.getRawLesson(lesson_id);
     
@@ -57,7 +57,7 @@ export class LessonsService {
     return lessonToDisplay;
   }
 
-  private getRawLesson(lesson_id: number): Observable<InputLesson> {
+  private getRawLesson(lesson_id: string): Observable<InputLesson> {
     if (this.lessonCache.has(lesson_id)) {
       return this.lessonCache.get(lesson_id)!;
     }
@@ -94,7 +94,7 @@ export class LessonsService {
   /**
    * Clear cache for a specific lesson
    */
-  clearLessonCache(lesson_id: number): void {
+  clearLessonCache(lesson_id: string): void {
     this.lessonCache.delete(lesson_id);
   }
 }

@@ -2,6 +2,7 @@ from enum import Enum
 from pathlib import Path
 from typing import Any, Self, TypedDict
 from json import JSONEncoder, JSONDecoder, loads, dumps
+from uuid import uuid4
 
 from codable import Codable
 
@@ -23,10 +24,10 @@ class Metadata(Codable):
 	classes: list[ClassesEl]
 	content: str | None
 	exercices: list[Exercice] | None
-	id: int | None
+	id: str | None
 
 class OutputListLessonElement(Codable):
-	id: int
+	id: str
 	title: str
 	classname: str
 	chapter: int
@@ -59,8 +60,13 @@ def _build_exercice(exo_path: Path) -> Exercice:
 		solution=sol_path.read_text(encoding="utf-8")
 	)
 
+def _validate_filename(file_name: str) -> bool:
+	"""Returns True if file_name is a string containing 
+	only alphanumerical characters. Only other char `-` is allowed."""
+	return file_name.replace('-', '').isalnum()
 
-def bake_page(content_dir: Path, output_dir: Path, lesson_id: int) -> Metadata:
+
+def bake_page(content_dir: Path) -> Metadata:
 	content_path = content_dir / "content.md"
 	if not content_path.exists():
 		raise RuntimeError()
@@ -72,14 +78,11 @@ def bake_page(content_dir: Path, output_dir: Path, lesson_id: int) -> Metadata:
 
 	output = Metadata.decode_from_path(data_path)
 	output.content = content_txt
-	output.id = lesson_id
 	output.exercices = [
 		_build_exercice(p)
 		for p in content_dir.iterdir()
 		if EXO_STEM in p.stem
 	]
-
-	output.serialize(output_dir / f"{lesson_id}.json")
 
 	return output
 
@@ -111,10 +114,23 @@ def bake_list(lessons: list[Metadata], output_dir: Path):
 def bake_all(list_dir: Path, output_dir: Path):
 	output_dir.mkdir(parents=True, exist_ok=True)
 
-	all_metadata = [
-		bake_page(lesson_dir, output_dir, lesson_id)
-		for lesson_id, lesson_dir in enumerate(list_dir.iterdir())
+	all_metadata: list[Metadata] = [
+		bake_page(lesson_dir)
+		for lesson_dir in list_dir.iterdir()
 	]
+
+	for metadata in all_metadata:
+		if metadata.id is None:
+			metadata.id = uuid4().hex
+			print(f"WARNING: Metadata ID for lesson {metadata.title} not set. Using UUID instead.")
+		if not _validate_filename(metadata.id):
+			raise Exception(f"'{metadata.id}' is not a valid ID.")
+
+	if (len(all_metadata) != len(set(metadata.id for metadata in all_metadata))):
+		raise Exception("At least two lessons have same ID.")
+	
+	for metadata in all_metadata:
+		metadata.serialize(output_dir / f"{metadata.id}.json")
 
 	bake_list(all_metadata, output_dir)
 		

@@ -19,7 +19,7 @@ import { ExoDisplay } from '../exo-display/exo-display';
   encapsulation: ViewEncapsulation.None
 })
 export class LessonDisplayComponent implements OnInit {
-  @Input({ required: true }) lessonId!: number;
+  @Input({ required: true }) lessonId!: string;
   @Input({ required: true }) class!: string;
 
   lessonToDisplay: LessonToDisplay | null = null;

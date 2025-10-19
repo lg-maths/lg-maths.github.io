@@ -5,7 +5,7 @@ import { HomepageComponent } from './components/homepage/homepage';
 import { NavbarComponent } from "./components/navbar/navbar";
 
 export interface LessonSelection {
-  lessonId: number;
+  lessonId: string;
   classname: string;
   lessonTitle: string;
 }

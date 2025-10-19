@@ -14,12 +14,12 @@ export interface InputLesson {
   title: string;
   classes: InputClassEl[];
   content: string;
-  id: number;
+  id: string;
   exercices: InputExercice[];
 }
 
 export interface InputListLessonsEl {
-  id: number;
+  id: string;
   title: string;
   classname: string;
   chapter: number;

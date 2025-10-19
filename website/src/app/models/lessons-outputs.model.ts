@@ -1,7 +1,7 @@
 import { InputExercice } from "./lessons-inputs.model";
 
 export interface LessonToDisplay {
-	id: number;
+	id: string;
 	title: string;
 	classname: string;
 	content: string;
