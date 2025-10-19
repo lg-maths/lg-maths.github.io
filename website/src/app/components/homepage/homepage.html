@@ -1,50 +1,47 @@
-<div class="homepage-container">
-  
-  <!-- Welcome Block -->
-  <mat-card class="welcome-card">
-    <mat-card-header>
-      <mat-card-title>Bienvenue sur LG Maths</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
+<div id="homepage-body">
+  <div id="homepage-container">
+    <!-- Welcome Block -->
+    <div class="welcome-section">
+      <h1 class="main-title">Bienvenue sur LG Maths</h1>
+      <p class="subtitle">
         Découvrez nos cours de mathématiques organisés par niveau scolaire.
         Chaque cours contient des explications détaillées, des exemples pratiques
         et des exercices pour vous accompagner dans votre apprentissage.
       </p>
-    </mat-card-content>
-  </mat-card>
+    </div>
 
-  <!-- Classes Expansion Panels Block -->
-  <mat-card class="classes-card">
-    <mat-card-header>
-      <mat-card-title>Cours par niveau</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      
-      <mat-accordion class="classes-accordion">
-        @for (classname of classes$ | async; track classname) {
-          <mat-expansion-panel class="class-panel">
-            <mat-expansion-panel-header>
-              <mat-panel-title>{{ classname }}</mat-panel-title>
-            </mat-expansion-panel-header>
-            
-            <div class="lessons-list">
-              @for (lesson of getLessonsForClass(classname) | async; track lesson.id) {
-                <button 
-                  matButton="tonal"
-                  color="primary"
-                  class="lesson-button"
-                  (click)="onLessonClick(lesson)">
-                  {{ lesson.chapter }} — {{ lesson.title }}
-                </button>
-              }
-            </div>
-            
-          </mat-expansion-panel>
-        }
-      </mat-accordion>
-      
-    </mat-card-content>
-  </mat-card>
-
+    <!-- Classes Expansion Panels Block -->
+    <!-- <mat-card class="classes-card">
+      <mat-card-header>
+        <mat-card-title>Cours par niveau</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        
+        <mat-accordion class="classes-accordion">
+          @for (classname of classes$ | async; track classname) {
+            <mat-expansion-panel class="class-panel">
+              <mat-expansion-panel-header>
+                <mat-panel-title>{{ classname }}</mat-panel-title>
+              </mat-expansion-panel-header>
+              
+              <div class="lessons-list">
+                @for (lesson of getLessonsForClass(classname) | async; track lesson.id) {
+                  <button 
+                    matButton="tonal"
+                    color="primary"
+                    class="lesson-button"
+                    (click)="onLessonClick(lesson)">
+                    {{ lesson.chapter }} — {{ lesson.title }}
+                  </button>
+                }
+              </div>
+              
+            </mat-expansion-panel>
+          }
+        </mat-accordion>
+        
+      </mat-card-content>
+    </mat-card> -->
+  </div>
 </div>
+

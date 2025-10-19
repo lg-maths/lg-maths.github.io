@@ -1,8 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { LessonsService } from '../../services/lessons';
 import { InputListLessonsEl } from '../../models/lessons-inputs.model';
@@ -11,10 +8,7 @@ import { LessonSelection } from '../../app';
 @Component({
   selector: 'app-homepage',
   imports: [
-    CommonModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatButtonModule
+    CommonModule
   ],
   templateUrl: './homepage.html',
   styleUrl: './homepage.scss'
