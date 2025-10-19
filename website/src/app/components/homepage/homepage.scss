@@ -134,6 +134,140 @@
   }
 }
 
+.lessons-section {
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lessons-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.lesson-card {
+  background: white;
+  border-radius: 16px;
+  border: 2px solid #e0e0e0;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+.lesson-header {
+  margin-bottom: 1rem;
+}
+
+.lesson-chapter {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.lesson-content {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.lesson-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.lesson-footer {
+  margin-top: auto;
+  text-align: right;
+}
+
+.lesson-action {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .lessons-section {
+    margin-top: 2rem;
+  }
+
+  .lessons-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .lessons-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .lesson-card {
+    padding: 1.25rem;
+    min-height: 160px;
+  }
+
+  .lesson-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lessons-section {
+    margin-top: 1.5rem;
+  }
+
+  .lessons-title {
+    font-size: 1.3rem;
+  }
+
+  .lesson-card {
+    padding: 1rem;
+    min-height: 140px;
+  }
+
+  .lesson-title {
+    font-size: 1.1rem;
+  }
+
+  .lesson-chapter {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
 #class-selecter {
-  transform: rotateX(45deg) rotateZ(-20deg);
+  transform: rotateX(30deg) rotateZ(-10deg);
+  margin-bottom: 150px;
 }

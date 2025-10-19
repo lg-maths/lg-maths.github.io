@@ -13,10 +13,31 @@
     @if (classes.length > 0) { <!-- do not remove the if or it breaks lol -->
       <div id="class-selecter">
         <app-hscroll-selecter
-          
           [values]="classes"
+          [(selection)]="selectedClass"
         />
       </div>
+
+      @if (selectedClass) {
+        <div class="lessons-section">
+          <h2 class="lessons-title">Cours de {{ selectedClass }}</h2>
+          <div class="lessons-grid">
+            @for (lesson of lessonsForClass(selectedClass); track lesson.id) {
+              <div class="lesson-card" (click)="onLessonClick(lesson)">
+                <div class="lesson-header">
+                  <span class="lesson-chapter">Chapitre {{ lesson.chapter }}</span>
+                </div>
+                <div class="lesson-content">
+                  <h3 class="lesson-title">{{ lesson.title }}</h3>
+                </div>
+                <div class="lesson-footer">
+                  <span class="lesson-action">Commencer le cours →</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
     }
   </div>
 </div>

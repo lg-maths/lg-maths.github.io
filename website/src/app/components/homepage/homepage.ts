@@ -17,6 +17,7 @@ import { HscrollSelecter } from '../hscroll-selecter/hscroll-selecter';
 })
 export class HomepageComponent implements OnInit {
   @Output() lessonSelected = new EventEmitter<LessonSelection>();
+  protected selectedClass?: string;
   
   listLessons?: InputListLessons;
   
@@ -34,8 +35,12 @@ export class HomepageComponent implements OnInit {
     return this.listLessons.classes_sorted;
   }
 
-  lessonsForClass(classname: string): InputListLessonsEl[] {
+  lessonsForClass(classname?: string): InputListLessonsEl[] {
     if (this.listLessons === undefined) {
+      return [];
+    }
+
+    if (classname === undefined) {
       return [];
     }
 
