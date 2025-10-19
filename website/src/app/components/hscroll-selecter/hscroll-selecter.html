@@ -2,6 +2,7 @@
      (mousedown)="onScrollStart($event)"
      (mousemove)="onScrollMove($event)"
      (mouseup)="onScrollEnd()"
+     (mouseleave)="onScrollEnd()"
      (touchstart)="onScrollStart($event)"
      (touchmove)="onScrollMove($event)"
      (touchend)="onScrollEnd()">
@@ -10,6 +11,8 @@
 			@for (el of values; track el) {
 				<div
 					class="scroll-el"
+					[class.selected]="isSelected(el)"
+					(click)="selectElement(el)"
 				>
 					{{ el }}
 				</div>

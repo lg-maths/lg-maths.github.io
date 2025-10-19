@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, model, OnInit, AfterViewInit, OnChanges, SimpleChanges, ViewChild, ElementRef, signal, QueryList, ViewChildren } from '@angular/core';
+import { Component, Input, Output, EventEmitter, model, OnInit, AfterViewInit, OnChanges, SimpleChanges, ViewChild, ElementRef, signal, QueryList, ViewChildren, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface CarouselItem {
@@ -18,7 +18,7 @@ interface CopyWrapper {
   templateUrl: './hscroll-selecter.html',
   styleUrl: './hscroll-selecter.scss'
 })
-export class HscrollSelecter implements OnInit {
+export class HscrollSelecter implements OnInit, OnDestroy {
   @Input() values: string[] = [];
   
   // Two-way bindable property using Angular's model signal
@@ -37,13 +37,26 @@ export class HscrollSelecter implements OnInit {
 
   private groupWidth?: number;
 
+  // Animation properties
+  private animationId?: number;
+  private readonly pixelsPerSecond = 10;
+  private readonly stepsPerSecond = 60;
+  private readonly incrementPerStep = this.pixelsPerSecond / this.stepsPerSecond; // 10px / 60 = ~0.1667px per step
+
   ngOnInit() {
     const gap = 10;
     const width = 120;
     const elsCount = this.values.length;
     this.groupWidth = gap * (elsCount) + width * elsCount;
     console.log(this.groupWidth);
-    this.startTranslateX = -1*this.groupWidth;
+    this.startTranslateX = -1 * this.groupWidth;
+    
+    // Start the automatic scrolling animation
+    this.startAutoScroll();
+  }
+
+  ngOnDestroy() {
+    this.stopAutoScroll();
   }
 
   get globalTranslateX(): number {
@@ -58,6 +71,16 @@ export class HscrollSelecter implements OnInit {
 
   get totalGroupTranslationX(): number {
     return this.globalTranslateX - this.jumpTranslateGroupX;
+  }
+
+  // Selection methods
+  protected selectElement(value: string): void {
+    this.selection.set(value);
+    this.onSelectionChange.emit(value);
+  }
+
+  protected isSelected(value: string): boolean {
+    return this.selection() === value;
   }
 
   // Helper method to get clientX from either mouse or touch event
@@ -75,6 +98,7 @@ export class HscrollSelecter implements OnInit {
     this.isDragging = true;
     this.startX = this.getClientX(event);
     this.currentDragOffset = 0;
+    this.stopAutoScroll();
   }
 
   protected onScrollMove(event: MouseEvent | TouchEvent): void {
@@ -95,6 +119,31 @@ export class HscrollSelecter implements OnInit {
     this.isDragging = false;
     this.stateTranslateX += this.currentDragOffset;
     this.currentDragOffset = 0;
+    this.startAutoScroll(.3);
+  }
+
+  // Auto-scroll animation methods
+  private startAutoScroll(delaySeconds: number = 0): void {
+    const startAnimation = () => {
+      const animate = () => {
+        this.stateTranslateX += this.incrementPerStep;
+        this.animationId = requestAnimationFrame(animate);
+      };
+      this.animationId = requestAnimationFrame(animate);
+    };
+
+    if (delaySeconds > 0) {
+      setTimeout(startAnimation, delaySeconds * 1000);
+    } else {
+      startAnimation();
+    }
+  }
+
+  private stopAutoScroll(): void {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
+      this.animationId = undefined;
+    }
   }
 
 }

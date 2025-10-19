@@ -11,44 +11,13 @@
     </div>
 
     @if (classes.length > 0) { <!-- do not remove the if or it breaks lol -->
-      <app-hscroll-selecter
-        [values]="classes"
-      />
+      <div id="class-selecter">
+        <app-hscroll-selecter
+          
+          [values]="classes"
+        />
+      </div>
     }
-    
-
-    <!-- Classes Expansion Panels Block -->
-    <!-- <mat-card class="classes-card">
-      <mat-card-header>
-        <mat-card-title>Cours par niveau</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        
-        <mat-accordion class="classes-accordion">
-          @for (classname of classes$ | async; track classname) {
-            <mat-expansion-panel class="class-panel">
-              <mat-expansion-panel-header>
-                <mat-panel-title>{{ classname }}</mat-panel-title>
-              </mat-expansion-panel-header>
-              
-              <div class="lessons-list">
-                @for (lesson of getLessonsForClass(classname) | async; track lesson.id) {
-                  <button 
-                    matButton="tonal"
-                    color="primary"
-                    class="lesson-button"
-                    (click)="onLessonClick(lesson)">
-                    {{ lesson.chapter }} — {{ lesson.title }}
-                  </button>
-                }
-              </div>
-              
-            </mat-expansion-panel>
-          }
-        </mat-accordion>
-        
-      </mat-card-content>
-    </mat-card> -->
   </div>
 </div>
 
