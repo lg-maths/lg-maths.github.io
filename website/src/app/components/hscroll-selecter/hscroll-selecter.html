@@ -1,0 +1,13 @@
+<div class="hscroll-container" #scrollContainer (scroll)="onScroll($event)">
+  <div class="hscroll-content">
+    @for (item of duplicatedValues; track item.instanceId) {
+      <button 
+        class="hscroll-item"
+        [class.selected]="isSelectedInstance(item)"
+        (click)="selectValue(item)"
+        type="button">
+        {{ item.value }}
+      </button>
+    }
+  </div>
+</div>
