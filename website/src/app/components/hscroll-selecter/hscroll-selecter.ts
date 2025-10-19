@@ -26,7 +26,7 @@ export class HscrollSelecter implements OnInit {
   
   @Output() onSelectionChange = new EventEmitter<string>();
 
-  protected copies = [...Array(3).keys()];
+  protected copies = [...Array(4).keys()];
 
   // Drag properties
   private startTranslateX = 0;
@@ -52,7 +52,7 @@ export class HscrollSelecter implements OnInit {
   get jumpTranslateGroupX(): number {
     if (this.groupWidth === undefined) return 0;
 
-    return Math.floor(this.globalTranslateX / this.groupWidth) * this.groupWidth;
+    return Math.floor((this.stateTranslateX + this.currentDragOffset) / this.groupWidth) * this.groupWidth;
   }
 
   get totalGroupTranslationX(): number {
