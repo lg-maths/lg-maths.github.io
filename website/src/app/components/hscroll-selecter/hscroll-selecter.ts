@@ -40,7 +40,8 @@ export class HscrollSelecter implements OnInit {
   ngOnInit() {
     const gap = 10;
     const width = 120;
-    this.groupWidth = (gap + width) * this.values.length;
+    const elsCount = this.values.length;
+    this.groupWidth = gap * (elsCount) + width * elsCount;
     console.log(this.groupWidth);
     this.startTranslateX = -1*this.groupWidth;
   }
@@ -86,8 +87,6 @@ export class HscrollSelecter implements OnInit {
     
     const currentX = this.getClientX(event);
     this.currentDragOffset = currentX - this.startX;
-
-    console.log(this.globalTranslateX, this.totalGroupTranslationX);
   }
 
   protected onScrollEnd(): void {

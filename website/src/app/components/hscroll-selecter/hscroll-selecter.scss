@@ -38,7 +38,7 @@
 	height: 100%;
 	background: white;
 	border-radius: 12px;
-	border: 2px solid #ddd;
+	// border: 2px solid #ddd;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -47,6 +47,7 @@
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	transition: all 0.2s ease;
 	cursor: pointer;
+	user-select: none; /* Prevent text selection */
 
 	&:hover {
 		border-color: #007bff;
