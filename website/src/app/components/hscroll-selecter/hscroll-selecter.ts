@@ -7,13 +7,18 @@ interface CarouselItem {
   position: number; // Position index in the circular buffer
 }
 
+interface CopyWrapper {
+  copyIndex: number;
+  items: CarouselItem[];
+}
+
 @Component({
   selector: 'app-hscroll-selecter',
   imports: [CommonModule],
   templateUrl: './hscroll-selecter.html',
   styleUrl: './hscroll-selecter.scss'
 })
-export class HscrollSelecter implements OnInit, AfterViewInit, OnChanges {
+export class HscrollSelecter {
   @Input() values: string[] = [];
   
   // Two-way bindable property using Angular's model signal
@@ -21,155 +26,55 @@ export class HscrollSelecter implements OnInit, AfterViewInit, OnChanges {
   
   @Output() onSelectionChange = new EventEmitter<string>();
 
-  @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef<HTMLDivElement>;
-  @ViewChildren('itemElement') itemElements!: QueryList<ElementRef<HTMLButtonElement>>;
+  protected copies = [...Array(5).keys()];
 
-  // Carousel items
-  carouselItems: CarouselItem[] = [];
-  
-  // Track which specific instance is selected
-  selectedId = signal<string | null>(null);
-
-  // Drag-to-scroll properties
+  // Drag properties
+  private stateTranslateX = 0;
   private isDragging = false;
   private startX = 0;
-  currentTranslate = 0; // Made public for template binding
-  private previousTranslate = 0;
-  private hasDragged = false;
-  
-  // Item dimensions
-  private itemWidth = 0;
-  private readonly minVisibleItems = 5; // Minimum items to keep visible
+  private currentDragOffset = 0;
 
-  ngOnInit(): void {
-    this.createCarouselItems();
+  get globalTranslateX(): number {
+    return this.stateTranslateX + this.currentDragOffset;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['values'] && !changes['values'].firstChange) {
-      this.createCarouselItems();
+  // Helper method to get clientX from either mouse or touch event
+  private getClientX(event: MouseEvent | TouchEvent): number {
+    // Check if it's a touch event by looking for the touches property
+    if ('touches' in event && event.touches && event.touches.length > 0) {
+      return event.touches[0].clientX;
     }
+    // Otherwise it's a mouse event
+    return (event as MouseEvent).clientX;
   }
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.calculateItemWidth();
-      this.centerInitialView();
-    }, 0);
-  }
-
-  private calculateItemWidth(): void {
-    if (this.itemElements && this.itemElements.length > 0) {
-      const firstItem = this.itemElements.first.nativeElement;
-      const rect = firstItem.getBoundingClientRect();
-      const styles = getComputedStyle(firstItem);
-      const marginRight = parseFloat(styles.marginRight);
-      this.itemWidth = rect.width + marginRight;
-      console.log('Item width calculated:', this.itemWidth);
-    }
-  }
-
-  private centerInitialView(): void {
-    // Start centered
-    this.currentTranslate = 0;
-    this.previousTranslate = 0;
-  }
-
-  private createCarouselItems(): void {
-    if (!this.values || this.values.length === 0) {
-      this.carouselItems = [];
-      return;
-    }
-
-    // Create enough copies to fill the viewport with extra buffer
-    const totalItems = Math.max(this.values.length * 3, this.minVisibleItems * 2);
-    this.carouselItems = [];
-    
-    for (let i = 0; i < totalItems; i++) {
-      const valueIndex = i % this.values.length;
-      this.carouselItems.push({
-        value: this.values[valueIndex],
-        id: `item-${i}`,
-        position: i
-      });
-    }
-  }
-
-  selectValue(item: CarouselItem, event: MouseEvent): void {
-    // Don't select if user was dragging
-    if (this.hasDragged) {
-      this.hasDragged = false;
-      event.preventDefault();
-      return;
-    }
-    
-    this.selectedId.set(item.id);
-    this.selection.set(item.value);
-    this.onSelectionChange.emit(item.value);
-  }
-
-  isSelected(item: CarouselItem): boolean {
-    return this.selectedId() === item.id;
-  }
-
-  // Drag-to-scroll methods
-  onMouseDown(event: MouseEvent): void {
+  // Unified drag methods for both mouse and touch
+  protected onScrollStart(event: MouseEvent | TouchEvent): void {
     this.isDragging = true;
-    this.hasDragged = false;
-    this.startX = event.clientX;
-    this.scrollContainer.nativeElement.style.cursor = 'grabbing';
+    this.startX = this.getClientX(event);
+    this.currentDragOffset = 0;
   }
 
-  onMouseLeave(): void {
-    if (this.isDragging) {
-      this.isDragging = false;
-      this.previousTranslate = this.currentTranslate;
-      this.scrollContainer.nativeElement.style.cursor = 'grab';
-    }
-  }
-
-  onMouseUp(): void {
-    if (this.isDragging) {
-      this.isDragging = false;
-      this.previousTranslate = this.currentTranslate;
-      this.scrollContainer.nativeElement.style.cursor = 'grab';
-      
-      // Check if items need repositioning after drag ends
-      this.repositionItems();
-    }
-  }
-
-  onMouseMove(event: MouseEvent): void {
+  protected onScrollMove(event: MouseEvent | TouchEvent): void {
     if (!this.isDragging) return;
-    event.preventDefault();
     
-    const currentX = event.clientX;
-    const diff = currentX - this.startX;
-    
-    // If moved more than 5px, consider it a drag
-    if (Math.abs(diff) > 5) {
-      this.hasDragged = true;
+    // Prevent default only for touch events
+    if ('touches' in event) {
+      event.preventDefault(); // Prevent scrolling only for touch
     }
     
-    this.currentTranslate = this.previousTranslate + diff;
-    this.repositionItems();
+    const currentX = this.getClientX(event);
+    this.currentDragOffset = currentX - this.startX;
+
+    console.log(this.globalTranslateX);
   }
 
-  private repositionItems(): void {
-    if (!this.itemWidth || this.carouselItems.length === 0 || this.values.length === 0) return;
-
-    const container = this.scrollContainer.nativeElement;
-    const containerWidth = container.offsetWidth;
-    const totalWidth = this.carouselItems.length * this.itemWidth;
-    const valueWidth = this.values.length * this.itemWidth;
+  protected onScrollEnd(): void {
+    if (!this.isDragging) return;
     
-    // When we've scrolled more than one set of values, adjust
-    if (this.currentTranslate > valueWidth / 2) {
-      this.currentTranslate -= valueWidth;
-      this.previousTranslate -= valueWidth;
-    } else if (this.currentTranslate < -valueWidth / 2) {
-      this.currentTranslate += valueWidth;
-      this.previousTranslate += valueWidth;
-    }
+    this.isDragging = false;
+    this.stateTranslateX += this.currentDragOffset;
+    this.currentDragOffset = 0;
   }
+
 }

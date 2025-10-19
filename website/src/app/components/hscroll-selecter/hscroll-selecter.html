@@ -1,20 +1,14 @@
-<div 
-  class="hscroll-container" 
-  #scrollContainer 
-  (mousedown)="onMouseDown($event)"
-  (mouseleave)="onMouseLeave()"
-  (mouseup)="onMouseUp()"
-  (mousemove)="onMouseMove($event)">
-  <div class="hscroll-content" [style.transform]="'translateX(' + currentTranslate + 'px)'">
-    @for (item of carouselItems; track item.id) {
-      <button 
-        #itemElement
-        class="hscroll-item"
-        [class.selected]="isSelected(item)"
-        (click)="selectValue(item, $event)"
-        type="button">
-        {{ item.value }}
-      </button>
-    }
-  </div>
+<div id="scroll-container" 
+     (mousedown)="onScrollStart($event)"
+     (mousemove)="onScrollMove($event)"
+     (mouseup)="onScrollEnd()"
+     (touchstart)="onScrollStart($event)"
+     (touchmove)="onScrollMove($event)"
+     (touchend)="onScrollEnd()">
+	@for (i of copies; track i) {
+		@for (el of values; track el) {
+			<p>{{ el }}</p>
+		}
+	}
+	
 </div>
