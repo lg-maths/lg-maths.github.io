@@ -1,40 +1,30 @@
 .hscroll-container {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  height: 80px; // Fixed height for the container
+  overflow: hidden; // No scrollbar
+  position: relative;
+  cursor: grab;
+  user-select: none;
   
-  // Scrollbar visible for debugging
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: var(--surface-variant);
-    border-radius: 4px;
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 4px;
-    
-    &:hover {
-      background: var(--text-disabled);
-    }
+  &:active {
+    cursor: grabbing;
   }
 }
 
 .hscroll-content {
-  display: flex;
-  gap: 0.75rem;
-  padding: 0.5rem 0;
-  min-width: min-content;
+  position: relative;
+  height: 100%;
+  display: block; // Changed from flex
+  white-space: nowrap;
+  transition: transform 0.01s linear;
+  will-change: transform;
 }
 
 .hscroll-item {
+  display: inline-block; // Make items inline
   flex-shrink: 0;
   padding: 0.75rem 1.5rem;
+  margin-right: 0.75rem; // Gap between items
   border: 2px solid var(--border);
   border-radius: 2rem;
   background-color: var(--surface);
@@ -42,8 +32,11 @@
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   white-space: nowrap;
+  min-width: 120px; // Fixed minimum width for consistency
+  text-align: center;
+  vertical-align: middle;
   
   // Remove default button styles
   outline: none;
@@ -52,12 +45,7 @@
   &:hover {
     border-color: var(--primary-light);
     background-color: var(--surface-variant);
-    transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
-  }
-  
-  &:active {
-    transform: translateY(0);
   }
   
   &.selected {

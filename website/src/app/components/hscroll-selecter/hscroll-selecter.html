@@ -1,10 +1,17 @@
-<div class="hscroll-container" #scrollContainer (scroll)="onScroll($event)">
-  <div class="hscroll-content">
-    @for (item of duplicatedValues; track item.instanceId) {
+<div 
+  class="hscroll-container" 
+  #scrollContainer 
+  (mousedown)="onMouseDown($event)"
+  (mouseleave)="onMouseLeave()"
+  (mouseup)="onMouseUp()"
+  (mousemove)="onMouseMove($event)">
+  <div class="hscroll-content" [style.transform]="'translateX(' + currentTranslate + 'px)'">
+    @for (item of carouselItems; track item.id) {
       <button 
+        #itemElement
         class="hscroll-item"
-        [class.selected]="isSelectedInstance(item)"
-        (click)="selectValue(item)"
+        [class.selected]="isSelected(item)"
+        (click)="selectValue(item, $event)"
         type="button">
         {{ item.value }}
       </button>

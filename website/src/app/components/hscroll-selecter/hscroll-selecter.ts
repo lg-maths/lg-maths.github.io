@@ -1,9 +1,10 @@
-import { Component, Input, Output, EventEmitter, model, OnInit, AfterViewInit, OnChanges, SimpleChanges, ViewChild, ElementRef, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, model, OnInit, AfterViewInit, OnChanges, SimpleChanges, ViewChild, ElementRef, signal, QueryList, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-interface DuplicatedItem {
+interface CarouselItem {
   value: string;
-  instanceId: string; // Unique identifier for this specific instance
+  id: string; // Unique ID for DOM tracking
+  position: number; // Position index in the circular buffer
 }
 
 @Component({
@@ -21,95 +22,154 @@ export class HscrollSelecter implements OnInit, AfterViewInit, OnChanges {
   @Output() onSelectionChange = new EventEmitter<string>();
 
   @ViewChild('scrollContainer', { static: false }) scrollContainer!: ElementRef<HTMLDivElement>;
+  @ViewChildren('itemElement') itemElements!: QueryList<ElementRef<HTMLButtonElement>>;
 
-  // Tripled values for infinite scroll effect
-  duplicatedValues: DuplicatedItem[] = [];
+  // Carousel items
+  carouselItems: CarouselItem[] = [];
   
-  // Track which specific instance is selected (not just the value)
-  selectedInstanceId = signal<string | null>(null);
+  // Track which specific instance is selected
+  selectedId = signal<string | null>(null);
 
-  private isScrolling = false;
-  private scrollTimeout: any;
+  // Drag-to-scroll properties
+  private isDragging = false;
+  private startX = 0;
+  currentTranslate = 0; // Made public for template binding
+  private previousTranslate = 0;
+  private hasDragged = false;
+  
+  // Item dimensions
+  private itemWidth = 0;
+  private readonly minVisibleItems = 5; // Minimum items to keep visible
 
   ngOnInit(): void {
-    this.createDuplicatedValues();
+    this.createCarouselItems();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['values'] && !changes['values'].firstChange) {
-      this.createDuplicatedValues();
-      // Re-position scroll after values change
-      setTimeout(() => this.positionScrollToCenter(), 100);
+      this.createCarouselItems();
     }
   }
 
   ngAfterViewInit(): void {
-    // Position scroll in the middle (on the second copy)
-    this.positionScrollToCenter();
+    setTimeout(() => {
+      this.calculateItemWidth();
+      this.centerInitialView();
+    }, 0);
   }
 
-  private positionScrollToCenter(): void {
-    if (this.scrollContainer && this.duplicatedValues.length > 0) {
-      const container = this.scrollContainer.nativeElement;
-      setTimeout(() => {
-        const scrollWidth = container.scrollWidth;
-        container.scrollLeft = scrollWidth / 3;
-      }, 0);
+  private calculateItemWidth(): void {
+    if (this.itemElements && this.itemElements.length > 0) {
+      const firstItem = this.itemElements.first.nativeElement;
+      const rect = firstItem.getBoundingClientRect();
+      const styles = getComputedStyle(firstItem);
+      const marginRight = parseFloat(styles.marginRight);
+      this.itemWidth = rect.width + marginRight;
+      console.log('Item width calculated:', this.itemWidth);
     }
   }
 
-  private createDuplicatedValues(): void {
+  private centerInitialView(): void {
+    // Start centered
+    this.currentTranslate = 0;
+    this.previousTranslate = 0;
+  }
+
+  private createCarouselItems(): void {
     if (!this.values || this.values.length === 0) {
-      this.duplicatedValues = [];
+      this.carouselItems = [];
       return;
     }
 
-    // Create 3 copies of the values array with unique instance IDs
-    this.duplicatedValues = [
-      ...this.values.map((value, idx) => ({ value, instanceId: `prev-${idx}` })),
-      ...this.values.map((value, idx) => ({ value, instanceId: `mid-${idx}` })),
-      ...this.values.map((value, idx) => ({ value, instanceId: `next-${idx}` }))
-    ];
+    // Create enough copies to fill the viewport with extra buffer
+    const totalItems = Math.max(this.values.length * 3, this.minVisibleItems * 2);
+    this.carouselItems = [];
+    
+    for (let i = 0; i < totalItems; i++) {
+      const valueIndex = i % this.values.length;
+      this.carouselItems.push({
+        value: this.values[valueIndex],
+        id: `item-${i}`,
+        position: i
+      });
+    }
   }
 
-  selectValue(item: DuplicatedItem): void {
-    this.selectedInstanceId.set(item.instanceId);
+  selectValue(item: CarouselItem, event: MouseEvent): void {
+    // Don't select if user was dragging
+    if (this.hasDragged) {
+      this.hasDragged = false;
+      event.preventDefault();
+      return;
+    }
+    
+    this.selectedId.set(item.id);
     this.selection.set(item.value);
     this.onSelectionChange.emit(item.value);
   }
 
-  isSelectedInstance(item: DuplicatedItem): boolean {
-    return this.selectedInstanceId() === item.instanceId;
+  isSelected(item: CarouselItem): boolean {
+    return this.selectedId() === item.id;
   }
 
-  onScroll(event: Event): void {
-    if (this.isScrolling) return;
+  // Drag-to-scroll methods
+  onMouseDown(event: MouseEvent): void {
+    this.isDragging = true;
+    this.hasDragged = false;
+    this.startX = event.clientX;
+    this.scrollContainer.nativeElement.style.cursor = 'grabbing';
+  }
 
-    const container = event.target as HTMLDivElement;
-    const scrollLeft = container.scrollLeft;
-    const scrollWidth = container.scrollWidth;
-    const clientWidth = container.clientWidth;
-    const sectionWidth = scrollWidth / 3;
-
-    // Clear existing timeout
-    if (this.scrollTimeout) {
-      clearTimeout(this.scrollTimeout);
+  onMouseLeave(): void {
+    if (this.isDragging) {
+      this.isDragging = false;
+      this.previousTranslate = this.currentTranslate;
+      this.scrollContainer.nativeElement.style.cursor = 'grab';
     }
+  }
 
-    // Wait for scrolling to stop before repositioning
-    this.scrollTimeout = setTimeout(() => {
-      // If scrolled to the left section, jump to middle
-      if (scrollLeft < sectionWidth * 0.1) {
-        this.isScrolling = true;
-        container.scrollLeft = scrollLeft + sectionWidth;
-        setTimeout(() => this.isScrolling = false, 50);
-      }
-      // If scrolled to the right section, jump to middle
-      else if (scrollLeft > sectionWidth * 1.9) {
-        this.isScrolling = true;
-        container.scrollLeft = scrollLeft - sectionWidth;
-        setTimeout(() => this.isScrolling = false, 50);
-      }
-    }, 100);
+  onMouseUp(): void {
+    if (this.isDragging) {
+      this.isDragging = false;
+      this.previousTranslate = this.currentTranslate;
+      this.scrollContainer.nativeElement.style.cursor = 'grab';
+      
+      // Check if items need repositioning after drag ends
+      this.repositionItems();
+    }
+  }
+
+  onMouseMove(event: MouseEvent): void {
+    if (!this.isDragging) return;
+    event.preventDefault();
+    
+    const currentX = event.clientX;
+    const diff = currentX - this.startX;
+    
+    // If moved more than 5px, consider it a drag
+    if (Math.abs(diff) > 5) {
+      this.hasDragged = true;
+    }
+    
+    this.currentTranslate = this.previousTranslate + diff;
+    this.repositionItems();
+  }
+
+  private repositionItems(): void {
+    if (!this.itemWidth || this.carouselItems.length === 0 || this.values.length === 0) return;
+
+    const container = this.scrollContainer.nativeElement;
+    const containerWidth = container.offsetWidth;
+    const totalWidth = this.carouselItems.length * this.itemWidth;
+    const valueWidth = this.values.length * this.itemWidth;
+    
+    // When we've scrolled more than one set of values, adjust
+    if (this.currentTranslate > valueWidth / 2) {
+      this.currentTranslate -= valueWidth;
+      this.previousTranslate -= valueWidth;
+    } else if (this.currentTranslate < -valueWidth / 2) {
+      this.currentTranslate += valueWidth;
+      this.previousTranslate += valueWidth;
+    }
   }
 }
