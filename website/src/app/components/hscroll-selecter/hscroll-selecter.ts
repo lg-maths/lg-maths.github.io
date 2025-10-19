@@ -39,7 +39,7 @@ export class HscrollSelecter implements OnInit, OnDestroy {
 
   // Animation properties
   private animationId?: number;
-  private readonly pixelsPerSecond = 10;
+  private readonly pixelsPerSecond = 5;
   private readonly stepsPerSecond = 60;
   private readonly incrementPerStep = this.pixelsPerSecond / this.stepsPerSecond; // 10px / 60 = ~0.1667px per step
 
