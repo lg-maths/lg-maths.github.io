@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-navbar',
   imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  styleUrl: './navbar.scss'
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   @Input() pageTitle: string = '';

@@ -24,14 +24,14 @@
   opacity: 0.8;
   position: relative;
   padding-left: 1rem;
-}
 
-.page-title::before {
-  content: '›';
-  position: absolute;
-  left: 0;
-  opacity: 0.6;
-  font-weight: 300;
+  &::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    opacity: 0.6;
+    font-weight: 300;
+  }
 }
 
 .spacer {
@@ -52,16 +52,17 @@
   border-radius: 8px !important;
   position: relative;
   width: 100px;
-}
 
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-}
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+  }
 
-.nav-link.active {
-  /* background-color: var(--mat-sys-secondary-container) !important; */
-  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); */
-  /* border: 1px solid var(--mat-sys-outline); */
+  // Active state styling can be added here if needed
+  // &.active {
+  //   background-color: var(--mat-sys-secondary-container) !important;
+  //   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  //   border: 1px solid var(--mat-sys-outline);
+  // }
 }
 
 /* Responsive design */

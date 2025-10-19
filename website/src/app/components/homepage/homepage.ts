@@ -17,7 +17,7 @@ import { LessonSelection } from '../../app';
     MatButtonModule
   ],
   templateUrl: './homepage.html',
-  styleUrl: './homepage.css'
+  styleUrl: './homepage.scss'
 })
 export class HomepageComponent implements OnInit {
   @Output() lessonSelected = new EventEmitter<LessonSelection>();

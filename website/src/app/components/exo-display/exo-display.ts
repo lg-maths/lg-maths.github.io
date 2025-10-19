@@ -9,7 +9,7 @@ import { InputExercice } from '../../models/lessons-inputs.model';
   selector: 'app-exo-display',
   imports: [CommonModule, MatButtonModule, MatIconModule, MarkdownComponent],
   templateUrl: './exo-display.html',
-  styleUrl: './exo-display.css',
+  styleUrl: './exo-display.scss',
   encapsulation: ViewEncapsulation.None
 })
 export class ExoDisplay {

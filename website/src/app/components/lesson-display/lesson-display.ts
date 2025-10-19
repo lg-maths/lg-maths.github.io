@@ -15,7 +15,7 @@ import { ExoDisplay } from '../exo-display/exo-display';
   selector: 'app-lesson-display',
   imports: [CommonModule, MarkdownComponent, MatIconModule, MatTabsModule, MatExpansionModule, MatCardModule, MatButtonModule, ExoDisplay],
   templateUrl: './lesson-display.html',
-  styleUrl: './lesson-display.css',
+  styleUrl: './lesson-display.scss',
   encapsulation: ViewEncapsulation.None
 })
 export class LessonDisplayComponent implements OnInit {
