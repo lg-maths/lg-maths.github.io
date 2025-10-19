@@ -10,9 +10,12 @@
       </p>
     </div>
 
-    <app-hscroll-selecter
-      [values]="classes"
-    />
+    @if (classes.length > 0) { <!-- do not remove the if or it breaks lol -->
+      <app-hscroll-selecter
+        [values]="classes"
+      />
+    }
+    
 
     <!-- Classes Expansion Panels Block -->
     <!-- <mat-card class="classes-card">

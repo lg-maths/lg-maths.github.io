@@ -6,9 +6,15 @@
      (touchmove)="onScrollMove($event)"
      (touchend)="onScrollEnd()">
 	@for (i of copies; track i) {
-		@for (el of values; track el) {
-			<p>{{ el }}</p>
-		}
+		<div class="scroll-group" [style.transform]="'translateX(' + totalGroupTranslationX + 'px)'">
+			@for (el of values; track el) {
+				<div
+					class="scroll-el"
+				>
+					{{ el }}
+				</div>
+			}
+		</div>
 	}
 	
 </div>

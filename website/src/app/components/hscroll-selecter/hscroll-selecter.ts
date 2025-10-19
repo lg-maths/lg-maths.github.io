@@ -18,7 +18,7 @@ interface CopyWrapper {
   templateUrl: './hscroll-selecter.html',
   styleUrl: './hscroll-selecter.scss'
 })
-export class HscrollSelecter {
+export class HscrollSelecter implements OnInit {
   @Input() values: string[] = [];
   
   // Two-way bindable property using Angular's model signal
@@ -26,16 +26,37 @@ export class HscrollSelecter {
   
   @Output() onSelectionChange = new EventEmitter<string>();
 
-  protected copies = [...Array(5).keys()];
+  protected copies = [...Array(3).keys()];
 
   // Drag properties
+  private startTranslateX = 0;
   private stateTranslateX = 0;
   private isDragging = false;
   private startX = 0;
   private currentDragOffset = 0;
 
+  private groupWidth?: number;
+
+  ngOnInit() {
+    const gap = 10;
+    const width = 120;
+    this.groupWidth = (gap + width) * this.values.length;
+    console.log(this.groupWidth);
+    this.startTranslateX = -1*this.groupWidth;
+  }
+
   get globalTranslateX(): number {
-    return this.stateTranslateX + this.currentDragOffset;
+    return this.startTranslateX + this.stateTranslateX + this.currentDragOffset;
+  }
+
+  get jumpTranslateGroupX(): number {
+    if (this.groupWidth === undefined) return 0;
+
+    return Math.floor(this.globalTranslateX / this.groupWidth) * this.groupWidth;
+  }
+
+  get totalGroupTranslationX(): number {
+    return this.globalTranslateX - this.jumpTranslateGroupX;
   }
 
   // Helper method to get clientX from either mouse or touch event
@@ -66,7 +87,7 @@ export class HscrollSelecter {
     const currentX = this.getClientX(event);
     this.currentDragOffset = currentX - this.startX;
 
-    console.log(this.globalTranslateX);
+    console.log(this.globalTranslateX, this.totalGroupTranslationX);
   }
 
   protected onScrollEnd(): void {
