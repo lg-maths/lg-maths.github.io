@@ -142,11 +142,12 @@
 }
 
 .lessons-title {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 300;
   color: var(--text-primary);
   margin-bottom: 2rem;
-  text-align: center;
+  margin-right: .5rem;
+  text-align: right;
 }
 
 .lessons-grid {
@@ -159,19 +160,17 @@
 .lesson-card {
   background: white;
   border-radius: 16px;
-  border: 2px solid #e0e0e0;
   padding: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 12px 6px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  min-height: 180px;
+  min-height: 150px;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    border-color: var(--primary);
+    box-shadow: 0 8px 8px 6px rgba(0, 0, 0, 0.12);
   }
 
   &:active {
@@ -195,19 +194,17 @@
 
 .lesson-content {
   flex: 1;
-  margin-bottom: 1rem;
 }
 
 .lesson-title {
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-primary);
   margin: 0;
   line-height: 1.4;
 }
 
 .lesson-footer {
-  margin-top: auto;
   text-align: right;
 }
 
@@ -221,11 +218,6 @@
 @media (max-width: 768px) {
   .lessons-section {
     margin-top: 2rem;
-  }
-
-  .lessons-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
   }
 
   .lessons-grid {
@@ -246,10 +238,6 @@
 @media (max-width: 480px) {
   .lessons-section {
     margin-top: 1.5rem;
-  }
-
-  .lessons-title {
-    font-size: 1.3rem;
   }
 
   .lesson-card {
