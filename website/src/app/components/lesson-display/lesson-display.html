@@ -1,28 +1,32 @@
 @if (lessonToDisplay) {
-  <div class="lesson-container">
-    <h1 class="big-title">{{ lessonToDisplay.title }}</h1>
+  <div class="lesson-body">
+    <div class="lesson-container">
+      <h1 class="big-title">{{ lessonToDisplay.title }}</h1>
 
-    <div id="cours" class="lesson-content">
-      <markdown
-        ngPreserveWhitespaces
-        emoji
-        katex
-        [data]="lessonToDisplay.content"
-      />
-    </div>
+      <div id="cours" class="lesson-content">
+        <markdown
+          ngPreserveWhitespaces
+          emoji
+          katex
+          [data]="lessonToDisplay.content"
+        />
+      </div>
 
-    @if (lessonToDisplay.exercices) {
-      <h1 id="exercices" class="big-title">Exercices</h1>
-    }
-
-    <div id="exo-container">
-      @for (exercice of lessonToDisplay.exercices; track exercice.id) {
-        <app-exo-display [exercice]="exercice" />
+      @if (lessonToDisplay.exercices) {
+        <h1 id="exercices" class="big-title">Exercices</h1>
       }
+
+      <div id="exo-container">
+        @for (exercice of lessonToDisplay.exercices; track exercice.id) {
+          <app-exo-display [exercice]="exercice" />
+        }
+      </div>
     </div>
   </div>
 } @else {
-  <div class="loading">
-    Loading lesson content...
+  <div class="lesson-body">
+    <div class="loading">
+      Loading lesson content...
+    </div>
   </div>
 }
