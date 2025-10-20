@@ -1,0 +1,373 @@
+:root {
+  --alerts-border-radius: 1rem;
+}
+
+.lesson-content {
+  margin: 2rem 0;
+  font-family: "Roboto Slab";
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+.level-badge {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* GitHub-style alert styling for marked-alert plugin */
+.markdown-alert {
+  margin: 2rem 0;
+  border-radius: var(--alerts-border-radius);
+  background-color: var(--surface-variant);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  p {
+    padding: 0 0 0 1rem;
+
+    &.markdown-alert-title {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 0;
+      color: var(--text-on-primary) !important;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      border-radius: var(--alerts-border-radius) var(--alerts-border-radius) 0 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.marked-alert-icon {
+  font-size: 2.5rem;
+  margin: 0.5rem;
+  margin-right: 1rem;
+}
+
+h1.big-title {
+  font-size: 3rem;
+  padding: 2rem 3rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: var(--text-on-primary);
+  line-height: 1.2;
+  font-weight: 300;
+  border-radius: 3rem;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  max-width: 800px;
+  width: fit-content;
+  min-width: 300px;
+}
+
+/* Markdown content styling */
+.lesson-content {
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--text-primary);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 0.75rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--divider);
+    padding-bottom: 0.5rem;
+    color: var(--text-primary);
+    margin-top: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    margin-top: 2rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+  }
+
+  p {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+  }
+
+  ul, ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+
+  blockquote {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    border-left: 4px solid var(--primary);
+    background-color: var(--surface-variant);
+    border-radius: 0 1rem 1rem 0;
+    color: var(--text-secondary);
+    font-style: italic;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  code {
+    background-color: var(--surface-variant);
+    color: var(--primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9em;
+    font-family: 'Courier New', monospace;
+    font-weight: 500;
+  }
+
+  pre {
+    background-color: var(--background-dark);
+    color: var(--text-on-dark);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background-color: var(--surface);
+    border-radius: 1rem;
+    overflow: hidden;
+    overflow-x: scroll;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  thead {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  }
+
+  th {
+    padding: .6rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-on-primary);
+    border: none;
+  }
+
+  td {
+    padding: .3rem;
+    border: none;
+    color: var(--text-primary);
+    background-color: var(--surface);
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: var(--surface-variant);
+  }
+
+  tbody tr:hover {
+    background-color: rgb(from var(--primary) r g b / 0.05);
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  em {
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  hr {
+    margin: 3rem 0;
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--divider) 20%, var(--divider) 80%, transparent 100%);
+  }
+
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: .5rem;
+    background-color: var(--surface-variant);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+  }
+}
+
+/* Exercise container */
+#exo-container {
+  margin: 3rem 1.5rem 0 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lesson-body {
+  background-color: var(--background-dark);
+  height: 100%;
+  padding-top: 8rem;
+}
+
+.lesson-container {
+  padding-top: 4rem;
+  background-color: var(--background);
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  height: 100%;
+  min-height: calc(100vh - 8rem);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .lesson-body {
+    padding-top: 6rem;
+  }
+
+  .lesson-container {
+    padding: 3rem 1rem;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+    min-height: calc(100vh - 6rem);
+  }
+
+  .lesson-content {
+    padding: 0 1rem;
+    margin: 1.5rem 0;
+  }
+
+  h1.big-title {
+    font-size: 2.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2.5rem;
+    max-width: 600px;
+    min-width: 250px;
+  }
+
+  .lesson-content h1 {
+    font-size: 2rem;
+  }
+
+  .lesson-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .lesson-content h3 {
+    font-size: 1.5rem;
+  }
+
+  #exo-container {
+    margin: 2rem 1rem 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lesson-body {
+    padding-top: 5rem;
+  }
+
+  .lesson-container {
+    padding: 2rem 0.75rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    min-height: calc(100vh - 5rem);
+  }
+
+  .lesson-content {
+    padding: 0 0.75rem;
+    margin: 1rem 0;
+  }
+
+  h1.big-title {
+    font-size: 2rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 2rem;
+    max-width: 90vw;
+    min-width: 200px;
+  }
+
+  .lesson-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .lesson-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .lesson-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .lesson-content p {
+    font-size: 1rem;
+  }
+
+  #exo-container {
+    margin: 1.5rem 0.75rem 0 0.75rem;
+  }
+}

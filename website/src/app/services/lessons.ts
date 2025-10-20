@@ -12,26 +12,13 @@ export class LessonsService {
   private http = inject(HttpClient);
   
   // Cache storage
-  private lessonsListCache$?: Observable<InputListLessonsEl[]>;
-  private lessonCache = new Map<number, Observable<InputLesson>>();
+  private lessonsListCache$?: Observable<InputListLessons>;
+  private lessonCache = new Map<string, Observable<InputLesson>>();
   private classesCache$?: Observable<string[]>;
 
   private jsonBase = "assets/json-data"
 
-  getAllClasses(): Observable<string[]> {
-    if (this.classesCache$) {
-      return this.classesCache$;
-    }
-
-    this.classesCache$ = this.http.get<InputListLessons>(`${this.jsonBase}/generic.json`).pipe(
-      map((input: InputListLessons) => input.classes_sorted),
-      shareReplay(1)
-    );
-
-    return this.classesCache$;
-  }
-
-  getLesson(lesson_id: number, classname: string | null): Observable<LessonToDisplay> {
+  getLesson(lesson_id: string, classname: string | null): Observable<LessonToDisplay> {
     // Get cached raw lesson data
     const rawLesson$ = this.getRawLesson(lesson_id);
     
@@ -70,7 +57,7 @@ export class LessonsService {
     return lessonToDisplay;
   }
 
-  private getRawLesson(lesson_id: number): Observable<InputLesson> {
+  private getRawLesson(lesson_id: string): Observable<InputLesson> {
     if (this.lessonCache.has(lesson_id)) {
       return this.lessonCache.get(lesson_id)!;
     }
@@ -83,28 +70,16 @@ export class LessonsService {
     return this.lessonCache.get(lesson_id)!;
   }
 
-  getLessonsList(): Observable<InputListLessonsEl[]> {
+  getLessonsList(): Observable<InputListLessons> {
     if (this.lessonsListCache$) {
       return this.lessonsListCache$;
     }
 
     this.lessonsListCache$ = this.http.get<InputListLessons>(`${this.jsonBase}/generic.json`).pipe(
-      map((input: InputListLessons) => input.lessons),
       shareReplay(1)
     );
 
     return this.lessonsListCache$;
-  }
-
-  getLessonsForClass(classname: string): Observable<InputListLessonsEl[]> {
-    return this.getLessonsList().pipe(
-      map(
-        (lessons: InputListLessonsEl[]) => 
-          lessons
-          .filter(el => el.classname === classname)
-          .sort((a, b) => a.chapter - b.chapter)
-      )
-    )
   }
 
   /**
@@ -119,7 +94,7 @@ export class LessonsService {
   /**
    * Clear cache for a specific lesson
    */
-  clearLessonCache(lesson_id: number): void {
+  clearLessonCache(lesson_id: string): void {
     this.lessonCache.delete(lesson_id);
   }
 }

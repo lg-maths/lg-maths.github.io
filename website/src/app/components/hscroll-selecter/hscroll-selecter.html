@@ -1,0 +1,23 @@
+<div id="scroll-container" 
+     (mousedown)="onScrollStart($event)"
+     (mousemove)="onScrollMove($event)"
+     (mouseup)="onScrollEnd()"
+     (mouseleave)="onScrollEnd()"
+     (touchstart)="onScrollStart($event)"
+     (touchmove)="onScrollMove($event)"
+     (touchend)="onScrollEnd()">
+	@for (i of copies; track i) {
+		<div class="scroll-group" [style.transform]="'translateX(' + totalGroupTranslationX + 'px)'">
+			@for (el of values; track el) {
+				<div
+					class="scroll-el"
+					[class.selected]="isSelected(el)"
+					(click)="selectElement(el)"
+				>
+					{{ el }}
+				</div>
+			}
+		</div>
+	}
+	
+</div>

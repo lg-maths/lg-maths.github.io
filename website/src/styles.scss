@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* ===== Custom Color Palette ===== */
+:root {
+  /* Primary Colors */
+  --primary: #e91e63;
+  --primary-dark: #c2185b;
+  --primary-light: #f06292;
+  
+  /* Secondary Colors */
+  --secondary: #2196f3;
+  --secondary-dark: #1976d2;
+  --secondary-light: #64b5f6;
+  
+  /* Accent Colors */
+  --accent: #ff4081;
+  --accent-dark: #f50057;
+  --accent-light: #ff80ab;
+  
+  /* Neutral Colors */
+  --background: #fafafa;
+  --background-dark: #121212;
+  --surface: #ffffff;
+  --surface-variant: #f5f5f5;
+  
+  /* Text Colors */
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --text-disabled: #bdbdbd;
+  --text-on-primary: #ffffff;
+  --text-on-dark: #ffffff;
+  
+  /* Border & Divider */
+  --border: #e0e0e0;
+  --divider: #eeeeee;
+  
+  /* State Colors */
+  --success: #4caf50;
+  --warning: #ff9800;
+  --error: #f44336;
+  --info: #2196f3;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.16);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19);
+}
+
+html, body { 
+	height: 100%; 
+}
+body { 
+	margin: 0; 
+	font-size: 16px;
+}

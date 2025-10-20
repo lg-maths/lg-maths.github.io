@@ -1,50 +1,44 @@
-<div class="homepage-container">
-  
-  <!-- Welcome Block -->
-  <mat-card class="welcome-card">
-    <mat-card-header>
-      <mat-card-title>Bienvenue sur LG Maths</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
+<div id="homepage-body">
+  <div id="homepage-container">
+    <!-- Welcome Block -->
+    <div class="welcome-section">
+      <h1 class="main-title">Bienvenue sur LG Maths</h1>
+      <p class="subtitle">
         Découvrez nos cours de mathématiques organisés par niveau scolaire.
         Chaque cours contient des explications détaillées, des exemples pratiques
         et des exercices pour vous accompagner dans votre apprentissage.
       </p>
-    </mat-card-content>
-  </mat-card>
+    </div>
 
-  <!-- Classes Expansion Panels Block -->
-  <mat-card class="classes-card">
-    <mat-card-header>
-      <mat-card-title>Cours par niveau</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      
-      <mat-accordion class="classes-accordion">
-        @for (classname of classes$ | async; track classname) {
-          <mat-expansion-panel class="class-panel">
-            <mat-expansion-panel-header>
-              <mat-panel-title>{{ classname }}</mat-panel-title>
-            </mat-expansion-panel-header>
-            
-            <div class="lessons-list">
-              @for (lesson of getLessonsForClass(classname) | async; track lesson.id) {
-                <button 
-                  matButton="tonal"
-                  color="primary"
-                  class="lesson-button"
-                  (click)="onLessonClick(lesson)">
-                  {{ lesson.chapter }} — {{ lesson.title }}
-                </button>
-              }
-            </div>
-            
-          </mat-expansion-panel>
-        }
-      </mat-accordion>
-      
-    </mat-card-content>
-  </mat-card>
+    @if (classes.length > 0) { <!-- do not remove the if or it breaks lol -->
+      <div id="class-selecter">
+        <app-hscroll-selecter
+          [values]="classes"
+          [(selection)]="selectedClass"
+        />
+      </div>
 
+      @if (selectedClass) {
+        <div class="lessons-section">
+          <h2 class="lessons-title">Cours de {{ selectedClass }}</h2>
+          <div class="lessons-grid">
+            @for (lesson of lessonsForClass(selectedClass); track lesson.id) {
+              <div class="lesson-card" (click)="onLessonClick(lesson)">
+                <div class="lesson-header">
+                  <span class="lesson-chapter">Chapitre {{ lesson.chapter }}</span>
+                </div>
+                <div class="lesson-content">
+                  <h3 class="lesson-title">{{ lesson.title }}</h3>
+                </div>
+                <div class="lesson-footer">
+                  <span class="lesson-action">Accéder au cours →</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    }
+  </div>
 </div>
+

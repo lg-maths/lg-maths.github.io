@@ -1,14 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonAppearance, MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  styleUrl: './navbar.scss'
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   @Input() pageTitle: string = '';
@@ -34,7 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     event.preventDefault();
     const element = document.getElementById(sectionId);
     if (element) {
-      const navbarHeight = 64; // Height of the navbar
+      const navbarHeight = 120; // Height of the full-width navbar with padding
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - navbarHeight - 16; // Extra 16px padding
 
@@ -54,7 +51,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private updateActiveSection(): void {
     const sections = ['cours', 'exercices'];
-    const navbarHeight = 64;
+    const navbarHeight = 120; // Height of the full-width navbar with padding
     const scrollPosition = window.scrollY + navbarHeight + 100; // Add offset for better UX
 
     for (let i = sections.length - 1; i >= 0; i--) {
@@ -64,9 +61,5 @@ export class NavbarComponent implements OnInit, OnDestroy {
         break;
       }
     }
-  }
-
-  protected matButtonActiveState(active: boolean): MatButtonAppearance {
-    return active ? 'elevated' : 'text';
   }
 }

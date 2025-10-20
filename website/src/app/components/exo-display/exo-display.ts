@@ -1,15 +1,13 @@
 import { Component, Input, signal, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MarkdownComponent } from 'ngx-markdown';
 import { InputExercice } from '../../models/lessons-inputs.model';
 
 @Component({
   selector: 'app-exo-display',
-  imports: [CommonModule, MatButtonModule, MatIconModule, MarkdownComponent],
+  imports: [CommonModule, MarkdownComponent],
   templateUrl: './exo-display.html',
-  styleUrl: './exo-display.css',
+  styleUrl: './exo-display.scss',
   encapsulation: ViewEncapsulation.None
 })
 export class ExoDisplay {

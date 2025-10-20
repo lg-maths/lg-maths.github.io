@@ -1,41 +1,39 @@
-<mat-toolbar color="primary" class="navbar">
-  
-  <!-- Home Button -->
-  <button 
-    mat-icon-button 
-    (click)="navigateToHome()" 
-    title="Go to homepage"
-    aria-label="Go to homepage"
-    class="home-button">
-    <mat-icon>home</mat-icon>
-  </button>
-  
-  <!-- Page Title -->
-  @if (pageTitle) {
-    <span class="page-title">{{ pageTitle }}</span>
-  }
-  
-  <!-- Spacer to push items to the right if needed -->
-  <span class="spacer"></span>
-  
-  <!-- Navigation Links : `pageTitle` has value if user is on a lesson -->
-  @if (pageTitle) { 
-    <nav class="nav-links">
-      <button 
-        mat-button
-        [matButton]="matButtonActiveState(activeSection === 'cours')"
-        (click)="scrollToSection($event, 'cours')"
-        class="nav-link">
-        Cours
-      </button>
-      <button 
-        mat-button
-        [matButton]="matButtonActiveState(activeSection === 'exercices')"
-        (click)="scrollToSection($event, 'exercices')"
-        class="nav-link">
-        Exercices
-      </button>
-    </nav>
-  }
-  
-</mat-toolbar>
+<div class="navbar-container">
+  <div class="navbar-pill">
+    <!-- Single Row Layout -->
+    <div class="navbar-row">
+      <!-- Left Side: Home + Title (50% width) -->
+      <div class="navbar-left">
+        <button
+          (click)="navigateToHome()"
+          title="Go to homepage"
+          aria-label="Go to homepage"
+          class="home-button">
+          <span class="home-icon">🏠</span>
+        </button>
+
+        @if (pageTitle) {
+          <span class="lesson-title">{{ pageTitle }}</span>
+        }
+      </div>
+
+      <!-- Right Side: Navigation buttons (50% width, only on lesson pages) -->
+      @if (pageTitle) {
+        <div class="navbar-right">
+          <button
+            (click)="scrollToSection($event, 'cours')"
+            [class.active]="activeSection === 'cours'"
+            class="nav-button">
+            Cours
+          </button>
+          <button
+            (click)="scrollToSection($event, 'exercices')"
+            [class.active]="activeSection === 'exercices'"
+            class="nav-button">
+            Exercices
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+#scroll-container {
+	width: 100%;
+	height: 120px;
+	background: var(--surface-variant);
+	overflow-x: hidden;
+	overflow-y: hidden;
+	padding: 10px 0 10px 0;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 10px; // NOTE: related to `spacement` in computation TS
+
+	// Hide scrollbar for all browsers
+	scrollbar-width: none; // Firefox
+	-ms-overflow-style: none; // IE/Edge
+
+	&::-webkit-scrollbar {
+		display: none; // Chrome, Safari, Opera
+	}
+}
+
+.scroll-group {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 10px; // NOTE: related to `spacement` in computation TS
+	flex-shrink: 0;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.scroll-el {
+	flex-shrink: 0;
+	width: 120px; // NOTE: related to `width` in computation TSs
+	margin: 0;
+	padding: 0;
+	height: 80px;
+	background: var(--surface);
+	border-radius: 12px;
+	// border: 2px solid #ddd;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 200;
+	font-size: 1.7rem;
+	color: var(--text-primary);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: all 0.2s ease;
+	cursor: pointer;
+	user-select: none; /* Prevent text selection */
+
+	&:hover {
+		border-color: var(--primary);
+		box-shadow: 0 4px 8px rgb(from var(--primary-dark) r g b / 0.2);
+		transform: translateY(-5px);
+	}
+
+	&.selected {
+		background: var(--primary);
+		color: var(--text-on-primary);
+		box-shadow: -8px 25px 18px 0px rgb(from var(--primary-dark) r g b / 0.33);
+		transform: translateY(-25px);
+	}
+}

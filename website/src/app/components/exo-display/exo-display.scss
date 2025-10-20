@@ -1,0 +1,120 @@
+.exo-card {
+  border-radius: 1rem;
+  background-color: var(--surface);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.exo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: none;
+}
+
+.exo-title {
+  margin: 0;
+  font-size: 1.1rem !important;
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: var(--text-on-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  display: inline-block;
+}
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-variant);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--primary);
+    color: var(--text-on-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgb(from var(--primary) r g b / 0.3);
+  }
+
+  .toggle-icon {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  &.expanded .toggle-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.exo-content {
+  padding: 2rem;
+  animation: fadeIn 0.3s ease-in;
+  background-color: var(--surface);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .exo-header {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .exo-title {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .toggle-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .exo-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .exo-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .exo-title {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .toggle-button {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .exo-content {
+    padding: 1.25rem;
+  }
+}

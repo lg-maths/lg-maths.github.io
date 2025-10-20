@@ -5,7 +5,7 @@ import { HomepageComponent } from './components/homepage/homepage';
 import { NavbarComponent } from "./components/navbar/navbar";
 
 export interface LessonSelection {
-  lessonId: number;
+  lessonId: string;
   classname: string;
   lessonTitle: string;
 }
@@ -19,7 +19,7 @@ export interface LessonSelection {
     HomepageComponent
 ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('website');

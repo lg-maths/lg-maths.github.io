@@ -1,0 +1,261 @@
+#homepage-body {
+  background-color: var(--background-dark);
+  height: 100%;
+  padding-top: 8rem;
+}
+
+#homepage-container {
+  padding: 4rem 1.5rem;
+  background-color: var(--background);
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  height: 100%;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  
+  // Optional: Add a subtle gradient effect
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+.classes-card {
+  flex: 1;
+}
+
+.classes-accordion {
+  width: 100%;
+}
+
+.class-panel {
+  margin-bottom: 0.5rem;
+
+  mat-panel-title {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+}
+
+.lessons-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+}
+
+.lesson-button {
+  justify-content: flex-start !important;
+  text-align: left !important;
+  padding: 0.75rem 1rem !important;
+  min-height: 48px !important;
+  font-size: 0.95rem !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #homepage-container {
+    padding: 3rem 1rem;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .lesson-button {
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.9rem !important;
+    min-height: 44px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #homepage-container {
+    padding: 2rem 0.75rem;
+  }
+
+  .welcome-section {
+    margin-bottom: 2rem;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .lesson-button {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    min-height: 40px !important;
+  }
+  
+  .class-panel mat-panel-title {
+    font-size: 1rem;
+  }
+}
+
+.lessons-section {
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lessons-title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  margin-right: .5rem;
+  text-align: right;
+}
+
+.lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.lesson-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 12px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 8px 6px rgba(0, 0, 0, 0.12);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+.lesson-header {
+  margin-bottom: 1rem;
+}
+
+.lesson-chapter {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.lesson-content {
+  flex: 1;
+}
+
+.lesson-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.lesson-footer {
+  text-align: right;
+}
+
+.lesson-action {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .lessons-section {
+    margin-top: 2rem;
+  }
+
+  .lessons-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .lesson-card {
+    padding: 1.25rem;
+    min-height: 160px;
+  }
+
+  .lesson-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lessons-section {
+    margin-top: 1.5rem;
+  }
+
+  .lesson-card {
+    padding: 1rem;
+    min-height: 140px;
+  }
+
+  .lesson-title {
+    font-size: 1.1rem;
+  }
+
+  .lesson-chapter {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+#class-selecter {
+  transform: rotateX(30deg) rotateZ(-10deg);
+  margin-bottom: 150px;
+}
