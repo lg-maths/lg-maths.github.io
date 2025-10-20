@@ -2,18 +2,13 @@ import { Component, OnInit, inject, ViewEncapsulation, Input } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MarkdownComponent } from 'ngx-markdown';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTabsModule } from '@angular/material/tabs';
 import { LessonsService } from '../../services/lessons';
 import { LessonToDisplay } from '../../models/lessons-outputs.model';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { ExoDisplay } from '../exo-display/exo-display';
 
 @Component({
   selector: 'app-lesson-display',
-  imports: [CommonModule, MarkdownComponent, MatIconModule, MatTabsModule, MatExpansionModule, MatCardModule, MatButtonModule, ExoDisplay],
+  imports: [CommonModule, MarkdownComponent, ExoDisplay],
   templateUrl: './lesson-display.html',
   styleUrl: './lesson-display.scss',
   encapsulation: ViewEncapsulation.None
