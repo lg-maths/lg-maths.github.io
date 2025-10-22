@@ -13,6 +13,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   siteTitle: string = 'LG Maths';
   activeSection: string = 'cours';
+  isCollapsed: boolean = false;
+  hasCollapsedOnce: boolean = false;
+  private collapseThreshold: number = 300; // Scroll threshold for collapse
 
   ngOnInit(): void {
     // Check initial scroll position
@@ -44,9 +47,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
+  toggleCollapse(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
   @HostListener('window:scroll')
   onScroll(): void {
     this.updateActiveSection();
+    
+    // Auto-collapse logic (only once per lesson)
+    if (!this.hasCollapsedOnce && !this.isCollapsed && window.scrollY > this.collapseThreshold) {
+      this.isCollapsed = true;
+      this.hasCollapsedOnce = true;
+    }
   }
 
   private updateActiveSection(): void {
