@@ -268,31 +268,14 @@ h1.big-title {
   margin-right: auto;
 }
 
-.lesson-body {
-  background-color: var(--background-dark);
-  height: 100%;
-  padding-top: 8rem;
-}
-
-.lesson-container {
-  padding-top: 4rem;
-  background-color: var(--background);
-  border-top-left-radius: 4rem;
-  border-top-right-radius: 4rem;
-  height: 100%;
-  min-height: calc(100vh - 8rem);
+#lesson-body {
+  padding-top: 1rem;
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .lesson-body {
-    padding-top: 6rem;
-  }
-
   .lesson-container {
     padding: 3rem 1rem;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
     min-height: calc(100vh - 6rem);
   }
 
@@ -327,14 +310,8 @@ h1.big-title {
 }
 
 @media (max-width: 480px) {
-  .lesson-body {
-    padding-top: 5rem;
-  }
-
   .lesson-container {
     padding: 2rem 0.75rem;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
     min-height: calc(100vh - 5rem);
   }
 

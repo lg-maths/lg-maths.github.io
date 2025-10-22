@@ -1,12 +1,21 @@
-.main-content {
-  min-height: calc(100vh - 64px); /* Subtract navbar height */
-  display: flex;
-  flex-direction: column;
+#bg-content {
+  background-color: var(--background-dark);
+  padding-top: 8rem;
 }
+
+#card-content {
+  margin: 0;
+  padding: 0;
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  width: 100%;
+  background: var(--background);
+}
+
 
 /* Ensure smooth transitions */
 app-homepage,
 app-lesson-display {
-  flex: 1;
-  width: 100%;
+  // flex: 1;
+  // width: 100%;
 }

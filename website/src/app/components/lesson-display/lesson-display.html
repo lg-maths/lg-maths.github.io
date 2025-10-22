@@ -1,6 +1,5 @@
 @if (lessonToDisplay) {
-  <div class="lesson-body">
-    <div class="lesson-container">
+  <div id="lesson-body">
       <h1 class="big-title">{{ lessonToDisplay.title }}</h1>
 
       <div id="cours" class="lesson-content">
@@ -22,7 +21,6 @@
         }
       </div>
     </div>
-  </div>
 } @else {
   <div class="lesson-body">
     <div class="loading">
