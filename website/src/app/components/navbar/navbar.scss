@@ -11,12 +11,14 @@
 }
 
 .navbar-pill {
-  background: rgba(#ccc, 0.5);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(#eee, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5pxs);
+  border: 1px solid rgba(#eee, 0.4);
+  border-top: 1px solid rgba(#eee, 0.7);
+  border-bottom: 2px solid rgba(#ccc, 0.7);
   border-radius: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(#111, 0.3);
   padding: 1rem 1.5rem;
   align-items: center;
   gap: 1rem;
@@ -107,7 +109,7 @@
 }
 
 .nav-button {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 1);
   border: 1px solid rgba(0, 0, 0, 0.1);
   color: var(--text-primary);
   padding: 0.6rem 1rem;
