@@ -278,43 +278,6 @@ h1.big-title {
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  .lesson-container {
-    padding: 3rem 1rem;
-    min-height: calc(100vh - 6rem);
-  }
-
-  .lesson-content {
-    padding: 0 1rem 1.5rem 1rem;
-    margin: 1.5rem 0;
-  }
-
-  h1.big-title {
-    font-size: 3.5rem;
-    font-weight: 200;
-    padding: 1.5rem 2rem;
-    border-radius: 2.5rem;
-    max-width: 600px;
-    min-width: 250px;
-  }
-
-  .lesson-content h1 {
-    font-size: 2rem;
-  }
-
-  .lesson-content h2 {
-    font-size: 1.75rem;
-  }
-
-  .lesson-content h3 {
-    font-size: 1.5rem;
-  }
-
-  #exo-container {
-    margin: 2rem 1rem 0 1rem;
-  }
-}
-
 @media (max-width: 480px) {
   .lesson-container {
     padding: 2rem 0.75rem;

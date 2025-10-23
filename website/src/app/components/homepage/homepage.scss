@@ -76,27 +76,6 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  #homepage-container {
-    padding: 3rem 1rem;
-  }
-
-  .main-title {
-    font-size: 4rem;
-    font-weight: 200;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .lesson-button {
-    padding: 0.6rem 0.8rem !important;
-    font-size: 0.9rem !important;
-    min-height: 44px !important;
-  }
-}
-
 @media (max-width: 480px) {
   #homepage-container {
     padding: 2rem 0.75rem;
@@ -125,111 +104,7 @@
   .class-panel mat-panel-title {
     font-size: 1rem;
   }
-}
 
-.lessons-section {
-  margin-top: 3rem;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.lessons-title {
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  margin-right: .5rem;
-  text-align: right;
-}
-
-.lessons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.lesson-card {
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 12px 12px 6px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  min-height: 150px;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 8px 6px rgba(0, 0, 0, 0.12);
-  }
-
-  &:active {
-    transform: translateY(-2px);
-  }
-}
-
-.lesson-header {
-  margin-bottom: 1rem;
-}
-
-.lesson-chapter {
-  background: var(--primary);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  display: inline-block;
-}
-
-.lesson-content {
-  flex: 1;
-}
-
-.lesson-title {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin: 0;
-  line-height: 1.4;
-}
-
-.lesson-footer {
-  text-align: right;
-}
-
-.lesson-action {
-  color: var(--primary);
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .lessons-section {
-    margin-top: 2rem;
-  }
-
-  .lessons-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .lesson-card {
-    padding: 1.25rem;
-    min-height: 160px;
-  }
-
-  .lesson-title {
-    font-size: 1.2rem;
-    
-  }
-}
-
-@media (max-width: 480px) {
   .lessons-section {
     margin-top: 1.5rem;
   }

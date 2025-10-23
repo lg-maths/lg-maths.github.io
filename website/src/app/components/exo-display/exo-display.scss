@@ -79,26 +79,6 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  .exo-header {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .exo-title {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .toggle-button {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  .exo-content {
-    padding: 1.5rem;
-  }
-}
-
 @media (max-width: 480px) {
   .exo-header {
     padding: 1rem 1.25rem;
