@@ -1,14 +1,13 @@
 <div class="exo-card">
   <div class="exo-header">
     <h3 class="exo-title">Exercice {{ exercice.id }}</h3>
-    <button
+    <div
+      id="toggle-btn"
       (click)="toggleView()"
-      class="toggle-button"
-      [class.expanded]="showSolution()"
-      [class.collapsed]="!showSolution()">
-      <span class="toggle-icon">{{ showSolution() ? '📝' : '💡' }}</span>
-      {{ buttonLabel }}
-    </button>
+      [class.toggled]="showSolution()">
+      <span class="front">💡 Solution</span> 
+      <span class="enonce">📖 Exercice</span>
+    </div>
   </div>
 
   <div class="exo-content lesson-content">
