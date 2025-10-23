@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { LessonsService } from '../../services/lessons';
 import { InputListLessons, InputListLessonsEl } from '../../models/lessons-inputs.model';
-import { LessonSelection } from '../../app';
 import { HscrollSelecter } from '../hscroll-selecter/hscroll-selecter';
 import { Router } from '@angular/router';
 
@@ -17,7 +16,6 @@ import { Router } from '@angular/router';
   styleUrl: './homepage.scss'
 })
 export class HomepageComponent implements OnInit {
-  @Output() lessonSelected = new EventEmitter<LessonSelection>();
   protected selectedClass?: string;
   
   listLessons?: InputListLessons;
