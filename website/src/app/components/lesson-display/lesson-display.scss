@@ -77,8 +77,8 @@ h1.big-title {
   width: fit-content;
   min-width: 300px;
 
-  // transform: rotateX(-45deg) rotateZ(-15deg);
-  // // box-shadow: 0 10px 16px rgba(0, 0, 0, 0.5);
+  // transform: rotateX(45deg) rotateZ(-45deg);
+  // box-shadow: 0 10px 16px rgba(0, 0, 0, 0.5);
 }
 
 /* Markdown content styling */
@@ -290,8 +290,8 @@ h1.big-title {
   }
 
   h1.big-title {
-    font-size: 2.5rem;
-    font-weight: 300;
+    font-size: 3.5rem;
+    font-weight: 200;
     padding: 1.25rem 1.5rem;
     border-radius: 2rem;
     max-width: 90vw;
