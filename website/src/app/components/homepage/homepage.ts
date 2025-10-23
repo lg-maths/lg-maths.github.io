@@ -5,6 +5,7 @@ import { LessonsService } from '../../services/lessons';
 import { InputListLessons, InputListLessonsEl } from '../../models/lessons-inputs.model';
 import { LessonSelection } from '../../app';
 import { HscrollSelecter } from '../hscroll-selecter/hscroll-selecter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -21,7 +22,10 @@ export class HomepageComponent implements OnInit {
   
   listLessons?: InputListLessons;
   
-  constructor(private lessonsService: LessonsService) {
+  constructor(
+    private lessonsService: LessonsService,
+    private router: Router
+  ) {
     this.lessonsService.getLessonsList().subscribe(response => this.listLessons = response);
   }
 
@@ -50,11 +54,6 @@ export class HomepageComponent implements OnInit {
   }
   
   onLessonClick(lesson: InputListLessonsEl): void {
-    const lessonSelection: LessonSelection = {
-      lessonId: lesson.id,
-      classname: lesson.classname,
-      lessonTitle: lesson.title
-    };
-    this.lessonSelected.emit(lessonSelection);
+    this.router.navigate(['/lesson', lesson.classname, lesson.id]);
   }
 }
