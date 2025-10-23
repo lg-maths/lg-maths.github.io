@@ -1,10 +1,9 @@
 .exo-card {
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   background-color: var(--surface);
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  margin: 0 1rem 2rem 1rem;
 
   &:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -36,13 +35,19 @@
   align-items: center;
   gap: 0.5rem;
   background: var(--surface-variant);
-  border: 2px solid var(--primary);
+  border: none;
   color: var(--primary);
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 500;
-  transition: all 0.2s ease;
+
+  border-bottom: 5px solid #888;
+  border-top: none;
+  border-right: none;
+
+  // transform: rotateZ(-0deg) rotateX(45deg); // rotateZ(-15deg);
+  transition: all .5s;
 
   &:hover {
     background: var(--primary);
@@ -56,8 +61,8 @@
     transition: transform 0.3s ease;
   }
 
-  &.expanded .toggle-icon {
-    transform: rotate(180deg);
+  &.collapsed {
+    transform: rotateY(180deg); // rotateZ(-15deg);
   }
 }
 
