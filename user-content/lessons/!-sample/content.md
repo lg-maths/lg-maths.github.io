@@ -61,8 +61,11 @@ $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
 # Alerts and Call-out Boxes
 
-> [!REMARK]  
+> [!INFO]  
 > Ceci est une remarque ! C'est probablement important, tout dépend...
+
+> [!WARNING]  
+> Ah, attention ! Certaines choses peuvent porter à confusion. Merci d'y faire attention !
 
 > [!THEOREM]
 > Ceci est un théorème...
@@ -78,9 +81,6 @@ $$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
 
 > [!EXAMPLE]
 > Ceci est un exemple parmi tant d'autres.
-
-> [!EXO]
-> Et c'est à vous de bosser maintenant !
 
 # Code Blocks
 
