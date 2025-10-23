@@ -5,123 +5,72 @@
   right: 0;
   z-index: 1000;
   padding: 1rem 2rem;
-  width: 100%;
+  max-width: 600px;
+  margin: 0 auto; /* Center the navbar container */
   box-sizing: border-box;
-  transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden; /* Prevent content overflow during animation */
-
-  &.collapsed {
-    padding: 1rem;
-    right: 1rem;
-    left: calc(100vw - 5rem); /* Position from right: 1rem padding + 4rem width */
-    width: 4rem; /* Fixed width for smooth transition */
-  }
 }
 
 .navbar-pill {
-  background: rgba(240, 240, 240, 0.9);
+  background: rgba(#ccc, 0.5);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  padding: 1rem 1.5rem; /* Increased padding for taller navbar */
+  padding: 1rem 1.5rem;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+.navbar-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-left-column {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  margin: 0 auto;
-  overflow: hidden; /* Prevent content overflow during animation */
-  // max-width: 1200px;
+  flex: 1;
+}
 
-  &.collapsed {
-    padding: 0.5rem;
-    margin: 0;
-    width: 3rem;
-    min-width: 3rem;
-    border-radius: 50%;
-  }
+.navbar-right-column {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  margin-left: 1rem;
 }
 
 .navbar-container.collapsed .lesson-title,
-.navbar-container.collapsed .nav-buttons,
-.navbar-container.collapsed .home-button {
+.navbar-container.collapsed .nav-buttons-row,
+.navbar-container.collapsed .home-button-large {
   opacity: 0;
   visibility: hidden;
 }
 
 .title-row {
   padding: 0.25rem 0;
-  justify-content: center;
-
-  .lesson-title {
-    font-size: 0.9rem;
-    text-align: center;
-  }
+  justify-content: flex-start;
+  width: 100%;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
-.nav-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-buttons {
+.nav-buttons-row {
   display: flex;
   gap: 0.5rem;
-  flex: 1;
-  justify-content: flex-end;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  justify-content: flex-start;
 }
 
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex: 1;
-  min-width: 0; /* Allow flex item to shrink below content size */
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-  justify-content: flex-end;
-}
-
-.home-button {
+.home-button-large {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.25rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease, opacity 0.3s ease, visibility 0.3s ease;
-  color: var(--text-primary);
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.05);
-    transform: scale(1.1);
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-}
-
-.home-icon {
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.menu-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.5rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -139,23 +88,22 @@
   }
 }
 
-.menu-icon {
-  font-size: 1.5rem;
+.home-icon-large {
+  font-size: 2rem; /* Larger icon for the big home button */
   line-height: 1;
 }
 
 .lesson-title {
+  margin: 0;
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-primary);
-  text-align: left;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: unset;
   // hyphens: auto;
   flex: 1;
   min-width: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .nav-button {
@@ -196,121 +144,29 @@
   }
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .navbar-pill {
-    background: rgba(40, 40, 40, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-
-  .home-button {
-    color: white;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-
-  .menu-button {
-    color: white;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-
-  .lesson-title {
-    color: white;
-  }
-
-  .nav-button {
-    background: rgba(60, 60, 60, 0.8);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: white;
-
-    &:hover {
-      background: rgba(80, 80, 80, 0.9);
-    }
-  }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .navbar-container {
-    padding: 0.75rem 1rem;
-    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &.collapsed {
-      padding: 0.75rem;
-      right: 0.75rem;
-      left: calc(100vw - 4.25rem); /* 3.5rem width + 0.75rem right padding */
-      width: 3.5rem;
-    }
-  }
-
-  .navbar-pill {
-    padding: 0.8rem 1.2rem;
-
-    &.collapsed {
-      width: 2.5rem;
-      min-width: 2.5rem;
-    }
-  }
-
-  .title-row {
-    padding: 0.2rem 0;
-
-    .lesson-title {
-      font-size: 0.8rem;
-    }
-  }
-
-  .nav-buttons {
-    gap: 0.4rem;
-  }
-
-  .lesson-title {
-    font-size: 0.95rem;
-  }
-
-  .nav-button {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.9rem;
-  }
-}
-
 @media (max-width: 480px) {
   .navbar-container {
     padding: 0.5rem 0.75rem;
-    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1), left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &.collapsed {
-      padding: 0.5rem;
-      right: 0.5rem;
-      left: calc(100vw - 3.5rem); /* 3rem width + 0.5rem right padding */
-      width: 3rem;
-    }
   }
 
   .navbar-pill {
     padding: 0.6rem 1rem;
+    gap: 0.5rem;
+  }
 
-    &.collapsed {
-      width: 2rem;
-      min-width: 2rem;
-    }
+  .navbar-content {
+    gap: 0.5rem;
   }
 
   .title-row {
     padding: 0.15rem 0;
 
     .lesson-title {
-      font-size: 0.7rem;
+      font-size: .9rem;
     }
   }
 
-  .nav-buttons {
+  .nav-buttons-row {
     gap: 0.3rem;
   }
 
@@ -323,11 +179,7 @@
     font-size: 0.85rem;
   }
 
-  .home-icon {
-    font-size: 1rem;
-  }
-
-  .menu-icon {
-    font-size: 1rem;
+  .home-icon-large {
+    font-size: 1.5rem;
   }
 }

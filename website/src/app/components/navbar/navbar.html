@@ -1,61 +1,43 @@
-<div class="navbar-container" [class.collapsed]="isCollapsed">
-  @if (isCollapsed) {
-    <!-- Collapsed state: just the menu button -->
-    <div class="navbar-pill collapsed">
-      <button
-        (click)="toggleCollapse()"
-        title="Expand menu"
-        aria-label="Expand menu"
-        class="menu-button">
-        <span class="menu-icon">🍽️</span>
-      </button>
-    </div>
-  } @else {
-    <!-- Expanded state: full navbar -->
-    <div class="navbar-pill">
-      <!-- First row: Title (small) -->
-      <div class="navbar-row title-row">
-        @if (pageTitle) {
-          <span class="lesson-title">{{ pageTitle }}</span>
-        }
+<div class="navbar-container">
+  <div class="navbar-pill">
+    <div class="navbar-content">
+      <!-- Column 1: Title and navigation buttons -->
+      <div class="navbar-left-column">
+        <!-- Row 1: Title -->
+        <div class="title-row">
+          @if (pageTitle) {
+            <p class="lesson-title">{{ pageTitle }}</p>
+          }
+        </div>
+
+        <!-- Row 2: Navigation buttons -->
+        <div class="nav-buttons-row">
+          <button
+            (click)="scrollToSection($event, 'cours')"
+            [class.active]="activeSection === 'cours'"
+            class="nav-button">
+            Cours
+          </button>
+          <button
+            (click)="scrollToSection($event, 'exercices')"
+            [class.active]="activeSection === 'exercices'"
+            class="nav-button">
+            Exercices
+          </button>
+        </div>
       </div>
 
-      <!-- Second row: Home button, navigation buttons, and menu button -->
-      <div class="navbar-row nav-row">
+      <!-- Column 2: Big homepage logo -->
+      <div class="navbar-right-column">
         <button
           (click)="navigateToHome()"
           title="Go to homepage"
           aria-label="Go to homepage"
-          class="home-button">
-          <span class="home-icon">🏠</span>
-        </button>
-
-        @if (pageTitle) {
-          <div class="nav-buttons">
-            <button
-              (click)="scrollToSection($event, 'cours')"
-              [class.active]="activeSection === 'cours'"
-              class="nav-button">
-              Cours
-            </button>
-            <button
-              (click)="scrollToSection($event, 'exercices')"
-              [class.active]="activeSection === 'exercices'"
-              class="nav-button">
-              Exercices
-            </button>
-          </div>
-        }
-
-        <!-- Menu button for manual collapse -->
-        <button
-          (click)="toggleCollapse()"
-          title="Collapse menu"
-          aria-label="Collapse menu"
-          class="menu-button">
-          <span class="menu-icon">🍽️</span>
+          class="home-button-large"
+        >
+          <span class="home-icon-large">🏠</span>
         </button>
       </div>
     </div>
-  }
+  </div>
 </div>
