@@ -5,12 +5,15 @@ import { LessonsService } from '../../services/lessons';
 import { InputListLessons, InputListLessonsEl } from '../../models/lessons-inputs.model';
 import { HscrollSelecter } from '../hscroll-selecter/hscroll-selecter';
 import { Router } from '@angular/router';
+import { Obj3dCss, Vec3 } from '../../obj3d-css/obj3d-css';
+
 
 @Component({
   selector: 'app-homepage',
   imports: [
     CommonModule,
-    HscrollSelecter
+    HscrollSelecter,
+    Obj3dCss
   ],
   templateUrl: './homepage.html',
   styleUrl: './homepage.scss'
@@ -19,6 +22,21 @@ export class HomepageComponent implements OnInit {
   protected selectedClass?: string;
   
   listLessons?: InputListLessons;
+
+  protected tris = [
+    {
+      p: new Vec3(0, -1, 3),
+      q: new Vec3(2, 2, -1),
+      r: new Vec3(-1, 5, 4),
+      color: 'yellow'
+    },
+    {
+      p: new Vec3(0, 0, 0),
+      q: new Vec3(1, 0, 0),
+      r: new Vec3(0, 1, 0),
+      color: 'red'
+    },
+  ]
   
   constructor(
     private lessonsService: LessonsService,

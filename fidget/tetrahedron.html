@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Rotating Cube - SVG Proof of Concept</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cube-container {
+            perspective: 1000px;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .cube {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotate 4s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 87px; /* Height of equilateral triangle: side * √3/2 */
+            top: 50%;
+            left: 50%;
+            margin-top: -43.5px; /* Half height */
+            margin-left: -50px; /* Half width */
+            backface-visibility: hidden;
+        }
+
+        /* Position each face in 3D space to form a tetrahedron */
+        .bottom {
+            transform: translateZ(-50px);
+        }
+
+        .front {
+            transform: rotateX(35.26deg) translateZ(50px);
+        }
+
+        .left {
+            transform: rotateY(120deg) rotateX(35.26deg) translateZ(50px);
+        }
+
+        .right {
+            transform: rotateY(-120deg) rotateX(35.26deg) translateZ(50px);
+        }
+
+        @keyframes rotate {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        .controls {
+            margin-top: 2rem;
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .info {
+            color: white;
+            margin-top: 2rem;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>3D Rotating Tetrahedron - SVG Proof of Concept</h1>
+
+        <div class="cube-container">
+            <div class="cube">
+                <!-- Bottom face -->
+                <svg class="face bottom" width="100" height="87" viewBox="0 0 100 87">
+                    <polygon points="50,0 0,86.6 100,86.6" fill="#ffeb3b"/>
+                </svg>
+
+                <!-- Front face -->
+                <svg class="face front" width="100" height="87" viewBox="0 0 100 87">
+                    <polygon points="50,0 0,86.6 100,86.6" fill="#fdd835"/>
+                </svg>
+
+                <!-- Left face -->
+                <svg class="face left" width="100" height="87" viewBox="0 0 100 87">
+                    <polygon points="50,0 0,86.6 100,86.6" fill="#f9a825"/>
+                </svg>
+
+                <!-- Right face -->
+                <svg class="face right" width="100" height="87" viewBox="0 0 100 87">
+                    <polygon points="50,0 0,86.6 100,86.6" fill="#f57f17"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="toggleAnimation()">Toggle Animation</button>
+            <button onclick="changeSpeed(1.25)">Slower</button>
+            <button onclick="changeSpeed(.75)">Faster</button>
+        </div>
+
+        <div class="info">
+            <p>This 3D tetrahedron uses SVG polygon elements with CSS 3D transforms and lighting simulation.</p>
+            <p>Each face is an equilateral triangle manually defined with explicit points.</p>
+            <p>Each face has a different shade of yellow to simulate realistic lighting effects.</p>
+        </div>
+    </div>
+
+    <script>
+        let isAnimating = true;
+        let currentSpeed = 4; // seconds
+
+        function toggleAnimation() {
+            const cube = document.querySelector('.cube');
+            if (isAnimating) {
+                cube.style.animationPlayState = 'paused';
+            } else {
+                cube.style.animationPlayState = 'running';
+            }
+            isAnimating = !isAnimating;
+        }
+
+        function changeSpeed(multiplier) {
+            currentSpeed *= multiplier;
+            const cube = document.querySelector('.cube');
+            cube.style.animationDuration = currentSpeed + 's';
+        }
+    </script>
+</body>
+</html>
