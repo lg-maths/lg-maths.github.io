@@ -1,5 +1,7 @@
 from enum import Enum
-from json import JSONEncoder, loads
+from json import JSONEncoder
+from json import loads as json_loads
+from tomllib import loads as toml_loads
 from pathlib import Path
 from typing import Any, Self, TypedDict
 from types import GenericAlias, UnionType
@@ -65,7 +67,11 @@ class Codable:
 	
 	@classmethod
 	def decode_from_json_string(cls, json_str: str) -> Self:
-		return cls.parse(loads(json_str))
+		return cls.parse(json_loads(json_str))
+	
+	@classmethod
+	def decode_from_toml_string(cls, toml_str: str) -> Self:
+		return cls.parse(toml_loads(toml_str))
 	
 	@classmethod
 	def decode_from_path(cls, txt_file: Path) -> Self:
@@ -73,6 +79,8 @@ class Codable:
 
 		if txt_file.suffix == ".json":
 			return cls.decode_from_json_string(txt)
+		elif txt_file.suffix == ".toml":
+			return cls.decode_from_toml_string(txt)
 		
 		raise ValueError(f"`{txt_file.suffix}` not supported")
 	
