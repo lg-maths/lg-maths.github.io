@@ -43,14 +43,16 @@ export class LessonsService {
         throw new Error(`Class "${classname}" not found for lesson`);
       }
     }
+    
+    console.debug(inputLesson);
 
     // Transform to LessonToDisplay
     const lessonToDisplay: LessonToDisplay = {
       id: inputLesson.id,
       title: inputLesson.title,
       classname: targetClass.classname,
-      content: inputLesson.content,
-      exercices: inputLesson.exercices.sort((a, b) => a.id - b.id),
+      content: (targetClass as any).content || inputLesson.content,
+      exercices: inputLesson.exercises.sort((a, b) => a.id - b.id),
       disclaimer: targetClass.disclaimer ?? undefined
     };
 

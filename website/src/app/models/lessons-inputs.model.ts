@@ -8,6 +8,7 @@ export interface InputClassEl {
   classname: string;
   chapter: number;
   disclaimer: string | null;
+  content?: string;
 }
 
 export interface InputLesson {
@@ -15,7 +16,7 @@ export interface InputLesson {
   classes: InputClassEl[];
   content: string;
   id: string;
-  exercices: InputExercice[];
+  exercises: InputExercice[];
 }
 
 export interface InputListLessonsEl {
