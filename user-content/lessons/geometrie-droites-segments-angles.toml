@@ -1,0 +1,91 @@
+id = "geometrie-droites-segments-angles"
+title = "Géométrie : droites, segments et angles"
+
+[[classes]]
+classname = "6e"
+chapter = 2
+disclaimer = ""
+
+content = '''
+# Géométrie : droites, segments et angles
+
+## Les droites
+Une droite est une ligne infinie qui passe par deux points. Elle se note avec une lettre minuscule ou par deux points.
+
+**Notation :** droite (d) ou droite (AB)
+
+## Les segments
+Un segment est la portion de droite comprise entre deux points appelés extrémités.
+
+**Notation :** segment [AB]
+**Longueur :** AB (sans crochets)
+
+## Les demi-droites
+Une demi-droite a une origine et se prolonge indéfiniment dans une direction.
+
+**Notation :** [AB) avec A comme origine
+
+## Les angles
+Un angle est formé par deux demi-droites de même origine appelée sommet.
+
+### Types d'angles
+- **Angle droit :** $90°$
+- **Angle aigu :** $< 90°$
+- **Angle obtus :** $> 90°$
+- **Angle plat :** $180°$
+
+## Mesure des angles
+L'unité de mesure des angles est le degré (°).
+On utilise un rapporteur pour mesurer les angles.
+
+## Propriétés
+- Deux droites perpendiculaires forment un angle droit
+- Les angles opposés par le sommet sont égaux
+- La somme des angles d'un triangle est $180°$
+
+## Exercices
+1. Nommer l'angle formé par les demi-droites [OA) et [OB)
+2. Mesurer un angle de 45° avec un rapporteur
+3. Calculer l'angle manquant dans un triangle ayant des angles de $60°$ et $70°$
+'''
+
+[[exercises]]
+id = 1
+statement = '''
+Nommer l'angle formé par les demi-droites [OA) et [OB)
+'''
+solution = '''
+L'angle formé par les demi-droites [OA) et [OB) est l'angle AOB.
+
+**Réponse : angle AOB**
+'''
+
+[[exercises]]
+id = 2
+statement = '''
+Mesurer un angle de 45° avec un rapporteur
+'''
+solution = '''
+Pour mesurer un angle de 45° avec un rapporteur :
+
+1. Placer le centre du rapporteur sur le sommet de l'angle
+2. Aligner le zéro du rapporteur avec une des côtés de l'angle
+3. Lire la graduation où passe l'autre côté de l'angle
+
+Si la mesure indique 45°, l'angle est effectivement de 45°.
+'''
+
+[[exercises]]
+id = 3
+statement = '''
+Calculer l'angle manquant dans un triangle ayant des angles de $60°$ et $70°$
+'''
+solution = '''
+Dans un triangle, la somme des angles est 180°.
+
+Angles donnés : 60° + 70° = 130°
+
+Angle manquant : 180° - 130° = 50°
+
+**Réponse : L'angle manquant mesure 50°**
+'''

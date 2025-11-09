@@ -3,25 +3,63 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { LessonsService } from '../../services/lessons';
 import { InputListLessons, InputListLessonsEl } from '../../models/lessons-inputs.model';
-import { LessonSelection } from '../../app';
 import { HscrollSelecter } from '../hscroll-selecter/hscroll-selecter';
+import { Router } from '@angular/router';
+import { Obj3dCss, Vec3 } from '../../obj3d-css/obj3d-css';
+
+const a = new Vec3(0, 0, 0);
+const b = new Vec3(1, 0, 0);
+const c = new Vec3(.5, 3**.5 / 2, 0);
+const d = new Vec3(.5, 3**.5 / 6, -1*(2/3)**.5);
+
+const e = new Vec3(.5, 3**.5 / 6, 0);
 
 @Component({
   selector: 'app-homepage',
   imports: [
     CommonModule,
-    HscrollSelecter
+    HscrollSelecter,
+    Obj3dCss
   ],
   templateUrl: './homepage.html',
   styleUrl: './homepage.scss'
 })
 export class HomepageComponent implements OnInit {
-  @Output() lessonSelected = new EventEmitter<LessonSelection>();
   protected selectedClass?: string;
   
   listLessons?: InputListLessons;
+
+  protected tetrahedron = [
+    {
+      p: a.sub(e),
+      q: b.sub(e),
+      r: c.sub(e),
+      color: 'red'
+    },
+    {
+      p: a.sub(e),
+      q: b.sub(e),
+      r: d.sub(e),
+      color: 'green'
+    },
+    {
+      p: b.sub(e),
+      q: c.sub(e),
+      r: d.sub(e),
+      color: 'blue'
+    },
+    {
+      p: a.sub(e),
+      q: c.sub(e),
+      r: d.sub(e),
+      color: 'yellow'
+    },
+  ]
   
-  constructor(private lessonsService: LessonsService) {
+  constructor(
+    private lessonsService: LessonsService,
+    private router: Router
+  ) {
     this.lessonsService.getLessonsList().subscribe(response => this.listLessons = response);
   }
 
@@ -50,11 +88,6 @@ export class HomepageComponent implements OnInit {
   }
   
   onLessonClick(lesson: InputListLessonsEl): void {
-    const lessonSelection: LessonSelection = {
-      lessonId: lesson.id,
-      classname: lesson.classname,
-      lessonTitle: lesson.title
-    };
-    this.lessonSelected.emit(lessonSelection);
+    this.router.navigate(['/lesson', lesson.classname, lesson.id]);
   }
 }

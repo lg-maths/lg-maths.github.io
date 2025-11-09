@@ -1,10 +1,9 @@
 .exo-card {
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   background-color: var(--surface);
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  margin-bottom: 2rem;
 
   &:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
@@ -16,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem 0 2rem;
   border-bottom: none;
 }
 
@@ -26,82 +25,80 @@
   font-weight: 500;
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
   color: var(--text-on-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
+  padding: .5rem 1rem;
+  border-radius: 2rem;
   display: inline-block;
+  box-shadow: 0 2px 8px rgb(from var(--primary) r g b / 0.15);
+  border: none;
+  perspective: 600px;
+  transform-style: preserve-3d;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.6s cubic-bezier(.4,2,.3,1);
 }
 
-.toggle-button {
+/* 3D Flip Toggle Button */
+#toggle-btn {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  perspective: 1000px; /* Enable 3D perspective */
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+#toggle-btn span {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: var(--surface-variant);
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  cursor: pointer;
-  padding: 0.5rem 1rem;
+  justify-content: center;
   border-radius: 20px;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  backface-visibility: hidden; /* Hide back face during rotation */
+  box-shadow: 0px 5px 10px rgba(#aaa, .7);
+  transition: transform 0.33s ease;
+  background: var(--surface-variant);
+  color: var(--primary);
+  border: 0px solid var(--primary);
+}
 
-  &:hover {
-    background: var(--primary);
-    color: var(--text-on-primary);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgb(from var(--primary) r g b / 0.3);
-  }
+#toggle-btn .front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
 
-  .toggle-icon {
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-  }
+#toggle-btn .enonce {
+  transform: rotateY(180deg) translateZ(1px);
+  z-index: 1;
+}
 
-  &.expanded .toggle-icon {
-    transform: rotate(180deg);
-  }
+#toggle-btn.toggled .front {
+  transform: rotateY(180deg);
+}
+
+#toggle-btn.toggled .enonce {
+  transform: rotateY(360deg) translateZ(.1px); /* 180 + 180 = 360 = 0deg */
+}
+
+#toggle-btn:hover span {
+  background: var(--primary);
+  color: var(--text-on-primary);
 }
 
 .exo-content {
-  padding: 2rem;
-  animation: fadeIn 0.3s ease-in;
   background-color: var(--surface);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Responsive design */
-@media (max-width: 768px) {
-  .exo-header {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .exo-title {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .toggle-button {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
-  }
-
-  .exo-content {
-    padding: 1.5rem;
-  }
-}
-
 @media (max-width: 480px) {
   .exo-header {
-    padding: 1rem 1.25rem;
+    padding: 1rem 1.25rem 0 1.25rem;
   }
 
   .exo-title {
@@ -109,12 +106,7 @@
     padding: 0.35rem 0.7rem;
   }
 
-  .toggle-button {
-    padding: 0.35rem 0.7rem;
-    font-size: 0.85rem;
-  }
-
   .exo-content {
-    padding: 1.25rem;
+    padding: .5rem 1.25rem;
   }
 }

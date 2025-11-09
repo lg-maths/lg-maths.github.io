@@ -1,0 +1,634 @@
+id = "test-lesson"
+title = "This is a test"
+
+[[classes]]
+classname = "rappels"
+chapter = 123
+disclaimer = ""
+
+content = '''
+# Introduction
+
+This is a comprehensive example of a mathematics lesson written in **Markdown** with *LaTeX* equations for **KaTeX** rendering. This document demonstrates various formatting features commonly used in educational content.
+
+# Basic Text Formatting
+
+You can use **bold text**, *italic text*, and ***bold italic text***. You can also use `inline code` for mathematical variables like `x`, `y`, or `n`.
+
+## Lists
+
+### Unordered List:
+- First item
+- Second item with **bold text**
+- Third item with *italic text*
+  - Nested item
+  - Another nested item
+
+### Ordered List:
+1. First step: Define the problem
+2. Second step: Apply the theorem
+3. Third step: Solve the equation
+4. Final step: Verify the solution
+
+# Mathematical Equations
+
+## Inline Mathematics
+
+The quadratic formula is $ax^2 + bx + c = 0$ where $a \neq 0$. The discriminant is $\Delta = b^2 - 4ac$.
+
+The derivative of $f(x) = x^n$ is $f'(x) = nx^{n-1}$ for any real number $n$.
+
+## Block Mathematics
+
+The solutions of the quadratic equation are:
+
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+
+For trigonometric identities:
+
+$$\sin^2(x) + \cos^2(x) = 1$$
+
+$$\tan(x) = \frac{\sin(x)}{\cos(x)}$$
+
+## Complex Mathematical Expressions
+
+The integral of a function $f(x)$ from $a$ to $b$ is:
+
+$$\int_a^b f(x) \, dx = F(b) - F(a)$$
+
+Matrix multiplication example:
+
+$$\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} e & f \\ g & h \end{pmatrix} = \begin{pmatrix} ae + bg & af + bh \\ ce + dg & cf + dh \end{pmatrix}$$
+
+Summation notation:
+
+$$\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$$
+
+Limit definition of derivative:
+
+$$f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}$$
+
+# Alerts and Call-out Boxes
+
+> [!INFO]  
+> Ceci est une remarque ! C'est probablement important, tout dépend...
+
+> [!WARNING]  
+> Ah, attention ! Certaines choses peuvent porter à confusion. Merci d'y faire attention !
+
+> [!THEOREM]
+> Ceci est un théorème...
+
+> [!DEMO]
+> Et la démonstration
+> 
+> ci-dessous
+> 
+> ...
+> 
+> long.
+
+> [!EXAMPLE]
+> Ceci est un exemple parmi tant d'autres.
+
+# Code Blocks
+
+```python
+def fx(x: int) -> float:
+	return x + 1/x
+```
+
+
+# Tables
+
+| Function | Domain | Range | Key Properties |
+|----------|---------|-------|----------------|
+| $f(x) = x^2$ | $\mathbb{R}$ | $[0, +\infty)$ | Even function, vertex at origin |
+| $f(x) = \sqrt{x}$ | $[0, +\infty)$ | $[0, +\infty)$ | Inverse of $x^2$ for $x \geq 0$ |
+| $f(x) = \frac{1}{x}$ | $\mathbb{R}^*$ | $\mathbb{R}^*$ | Hyperbola, odd function |
+| $f(x) = \sin(x)$ | $\mathbb{R}$ | $[-1, 1]$ | Periodic, period $2\pi$ |
+
+# Theorem and Proof Structure
+
+**Theorem (Pythagorean Theorem):** In a right triangle with legs of length $a$ and $b$, and hypotenuse of length $c$, we have:
+
+$$a^2 + b^2 = c^2$$
+
+**Proof:** Consider a right triangle with legs $a$ and $b$...
+
+# Step-by-Step Problem Solving
+
+**Problem:** Solve the equation $2x^2 - 7x + 3 = 0$
+
+**Solution:**
+
+**Step 1:** Identify the coefficients
+- $a = 2$, $b = -7$, $c = 3$
+
+**Step 2:** Calculate the discriminant
+$$\Delta = b^2 - 4ac = (-7)^2 - 4(2)(3) = 49 - 24 = 25$$
+
+**Step 3:** Apply the quadratic formula
+$$x = \frac{-(-7) \pm \sqrt{25}}{2(2)} = \frac{7 \pm 5}{4}$$
+
+**Step 4:** Find both solutions
+- $x_1 = \frac{7 + 5}{4} = \frac{12}{4} = 3$
+- $x_2 = \frac{7 - 5}{4} = \frac{2}{4} = \frac{1}{2}$
+
+**Answer:** $x = 3$ or $x = \frac{1}{2}$
+
+# Links and References
+
+For more information, you can refer to:
+- [Khan Academy - Quadratic Equations](https://www.khanacademy.org)
+- [Wolfram MathWorld](https://mathworld.wolfram.com)
+
+# Horizontal Rules
+
+---
+
+# Special Mathematical Symbols and Sets
+
+Common number sets:
+- Natural numbers: $\mathbb{N} = \{1, 2, 3, ...\}$
+- Integers: $\mathbb{Z} = \{..., -2, -1, 0, 1, 2, ...\}$
+- Rational numbers: $\mathbb{Q}$
+- Real numbers: $\mathbb{R}$
+- Complex numbers: $\mathbb{C}$
+
+Greek letters commonly used:
+- $\alpha, \beta, \gamma, \delta, \epsilon$
+- $\theta, \lambda, \mu, \pi, \sigma, \phi$
+- $\Gamma, \Delta, \Theta, \Lambda, \Sigma, \Phi$
+
+# Conclusion
+
+This sample demonstrates the rich formatting capabilities available when combining Markdown with LaTeX mathematics for educational content. The KaTeX rendering engine will display all mathematical expressions beautifully in web browsers.
+
+> **:dart: Learning Objective:** Students should be able to recognize and use various mathematical notation and formatting conventions after studying this material.
+'''
+
+[[exercises]]
+id = 1
+statement = '''
+#### Calcul de limites
+
+Calculer $\lim_{x \to +\infty} \frac{3x^2 - 5x + 1}{x^2 + 2}$
+'''
+
+solution = '''
+Pour calculer cette limite, on factorise par le terme de plus haut degré au numérateur et au dénominateur :
+
+$$\frac{3x^2 - 5x + 1}{x^2 + 2} = \frac{x^2(3 - \frac{5}{x} + \frac{1}{x^2})}{x^2(1 + \frac{2}{x^2})}$$
+
+On simplifie par $x^2$ (qui est non nul pour $x \to +\infty$) :
+
+$$= \frac{3 - \frac{5}{x} + \frac{1}{x^2}}{1 + \frac{2}{x^2}}$$
+
+Lorsque $x \to +\infty$ :
+- $\frac{5}{x} \to 0$
+- $\frac{1}{x^2} \to 0$
+- $\frac{2}{x^2} \to 0$
+
+Donc :
+
+$$\lim_{x \to +\infty} \frac{3x^2 - 5x + 1}{x^2 + 2} = \frac{3 - 0 + 0}{1 + 0} = 3$$
+
+**Réponse : La limite vaut 3.**
+'''
+
+[[exercises]]
+id = 2
+statement = '''
+Déterminer la dérivée de la fonction $f(x) = \ln(x^2 + 1) \cdot e^{2x}$
+'''
+
+solution = '''
+On utilise la formule de dérivation d'un produit : $(uv)' = u'v + uv'$
+
+Posons :
+- $u(x) = \ln(x^2 + 1)$
+- $v(x) = e^{2x}$
+
+**Calcul de $u'(x)$ :**
+
+$$u'(x) = \frac{(x^2 + 1)'}{x^2 + 1} = \frac{2x}{x^2 + 1}$$
+
+**Calcul de $v'(x)$ :**
+
+$$v'(x) = 2e^{2x}$$
+
+**Application de la formule du produit :**
+
+$$f'(x) = u'(x) \cdot v(x) + u(x) \cdot v'(x)$$
+
+$$f'(x) = \frac{2x}{x^2 + 1} \cdot e^{2x} + \ln(x^2 + 1) \cdot 2e^{2x}$$
+
+$$f'(x) = e^{2x} \left( \frac{2x}{x^2 + 1} + 2\ln(x^2 + 1) \right)$$
+
+**Réponse :**
+
+$$f'(x) = 2e^{2x} \left( \frac{x}{x^2 + 1} + \ln(x^2 + 1) \right)$$
+'''
+
+[[exercises]]
+id = 3
+statement = '''
+Soit $(u_n)$ définie par $u_0 = 1$ et $u_{n+1} = \frac{2u_n + 3}{u_n + 2}$. 
+
+Montrer que la suite est convergente et déterminer sa limite.
+'''
+
+solution = '''
+### 1. Étude de la convergence
+
+**Calcul des premiers termes :**
+- $u_0 = 1$
+- $u_1 = \frac{2 \times 1 + 3}{1 + 2} = \frac{5}{3}$
+- $u_2 = \frac{2 \times \frac{5}{3} + 3}{\frac{5}{3} + 2} = \frac{\frac{19}{3}}{\frac{11}{3}} = \frac{19}{11} \approx 1,727$
+
+**Montrons que la suite est bornée :**
+
+Démontrons par récurrence que pour tout $n \in \mathbb{N}$, $1 \leq u_n \leq 3$.
+
+- *Initialisation* : $u_0 = 1$, donc $1 \leq u_0 \leq 3$ ✓
+- *Hérédité* : Supposons que $1 \leq u_n \leq 3$
+
+$$u_{n+1} = \frac{2u_n + 3}{u_n + 2}$$
+
+Si $1 \leq u_n \leq 3$ :
+- Numérateur : $2 \times 1 + 3 \leq 2u_n + 3 \leq 2 \times 3 + 3$, soit $5 \leq 2u_n + 3 \leq 9$
+- Dénominateur : $1 + 2 \leq u_n + 2 \leq 3 + 2$, soit $3 \leq u_n + 2 \leq 5$
+
+Donc : $\frac{5}{5} \leq u_{n+1} \leq \frac{9}{3}$, soit $1 \leq u_{n+1} \leq 3$ ✓
+
+**Montrons que la suite est croissante :**
+
+$$u_{n+1} - u_n = \frac{2u_n + 3}{u_n + 2} - u_n = \frac{2u_n + 3 - u_n(u_n + 2)}{u_n + 2} = \frac{-u_n^2 + 3}{u_n + 2}$$
+
+Pour $1 \leq u_n \leq 3$ :
+- $-u_n^2 + 3 \geq 0 \Leftrightarrow u_n^2 \leq 3 \Leftrightarrow u_n \leq \sqrt{3} \approx 1,732$
+
+On constate que $u_1 = \frac{5}{3} < \sqrt{3}$, donc la suite devient croissante à partir de $u_1$.
+
+La suite $(u_n)$ est croissante et majorée par 3, donc elle converge.
+
+### 2. Détermination de la limite
+
+Si $(u_n)$ converge vers $\ell$, alors :
+
+$$\ell = \frac{2\ell + 3}{\ell + 2}$$
+
+$$\ell(\ell + 2) = 2\ell + 3$$
+
+$$\ell^2 + 2\ell = 2\ell + 3$$
+
+$$\ell^2 = 3$$
+
+Comme $u_n > 0$ pour tout $n$, on a $\ell = \sqrt{3}$.
+
+**Réponse : La suite converge vers $\sqrt{3}$.**
+'''
+
+[[exercises]]
+id = 4
+statement = '''
+Une urne contient 5 boules rouges et 3 boules vertes. On tire 3 boules successivement sans remise. 
+Quelle est la probabilité d'obtenir exactement 2 boules rouges ?
+'''
+
+solution = '''
+**Informations :**
+- Urne : 5 boules rouges + 3 boules vertes = 8 boules au total
+- Tirage : 3 boules successivement **sans remise**
+- On cherche : P(exactement 2 boules rouges)
+
+### Méthode 1 : Dénombrement
+
+**Nombre total de tirages possibles :**
+
+On tire 3 boules parmi 8 sans remise et sans tenir compte de l'ordre : $\binom{8}{3}$
+
+$$\binom{8}{3} = \frac{8!}{3! \times 5!} = \frac{8 \times 7 \times 6}{3 \times 2 \times 1} = 56$$
+
+**Nombre de tirages favorables (exactement 2 rouges) :**
+
+- Choisir 2 boules rouges parmi 5 : $\binom{5}{2}$
+- Choisir 1 boule verte parmi 3 : $\binom{3}{1}$
+
+$$\binom{5}{2} \times \binom{3}{1} = \frac{5!}{2! \times 3!} \times 3 = 10 \times 3 = 30$$
+
+**Probabilité :**
+
+$$P(\text{exactement 2 rouges}) = \frac{30}{56} = \frac{15}{28}$$
+
+### Méthode 2 : Arbre de probabilités
+
+On peut aussi considérer les différents ordres possibles :
+
+- **RRV** : $\frac{5}{8} \times \frac{4}{7} \times \frac{3}{6} = \frac{60}{336}$
+- **RVR** : $\frac{5}{8} \times \frac{3}{7} \times \frac{4}{6} = \frac{60}{336}$
+- **VRR** : $\frac{3}{8} \times \frac{5}{7} \times \frac{4}{6} = \frac{60}{336}$
+
+$$P(\text{exactement 2 rouges}) = \frac{60}{336} + \frac{60}{336} + \frac{60}{336} = \frac{180}{336} = \frac{15}{28}$$
+
+**Réponse : La probabilité est $\frac{15}{28}$ (soit environ 0,536 ou 53,6%).**
+'''
+
+[[exercises]]
+id = 5
+statement = '''
+### Étude de fonction complète
+
+On considère la fonction $f$ définie sur $\mathbb{R}$ par $f(x) = x^3 - 3x^2 + 2$.
+
+1. Déterminer les limites de $f$ en $+\infty$ et $-\infty$.
+2. Calculer $f'(x)$ et étudier son signe.
+3. Dresser le tableau de variations de $f$.
+4. Déterminer les coordonnées des points d'inflexion de $\mathcal{C}_f$.
+5. Tracer l'allure de la courbe représentative de $f$.
+6. Résoudre graphiquement puis algébriquement l'équation $f(x) = 0$.
+'''
+
+solution = '''
+### 1. Limites de $f$ en $+\infty$ et $-\infty$
+
+$f(x) = x^3 - 3x^2 + 2$
+
+- $\lim_{x \to +\infty} f(x) = \lim_{x \to +\infty} x^3 = +\infty$
+- $\lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} x^3 = -\infty$
+
+### 2. Calcul de $f'(x)$ et étude de son signe
+
+$$f'(x) = 3x^2 - 6x = 3x(x - 2)$$
+
+**Étude du signe :**
+
+- $f'(x) = 0 \Leftrightarrow x = 0$ ou $x = 2$
+- $f'(x) > 0$ si $x < 0$ ou $x > 2$
+- $f'(x) < 0$ si $0 < x < 2$
+
+### 3. Tableau de variations
+
+| $x$        | $-\infty$ |     | $0$  |     | $2$  |     | $+\infty$ |
+|------------|-----------|-----|------|-----|------|-----|-----------|
+| $f'(x)$    |           | $+$ | $0$  | $-$ | $0$  | $+$ |           |
+| $f(x)$     | $-\infty$ | ↗   | $2$  | ↘   | $-2$ | ↗   | $+\infty$ |
+
+**Valeurs :**
+- $f(0) = 0 - 0 + 2 = 2$ (maximum local)
+- $f(2) = 8 - 12 + 2 = -2$ (minimum local)
+
+### 4. Points d'inflexion
+
+On calcule $f''(x)$ :
+
+$$f''(x) = 6x - 6 = 6(x - 1)$$
+
+$f''(x) = 0 \Leftrightarrow x = 1$
+
+Le point d'inflexion a pour coordonnées :
+- $x = 1$
+- $f(1) = 1 - 3 + 2 = 0$
+
+**Point d'inflexion : $I(1, 0)$**
+
+### 5. Allure de la courbe
+
+La courbe :
+- Passe par l'origine car $f(0) = 2$
+- A un maximum local en $(0, 2)$
+- A un minimum local en $(2, -2)$
+- A un point d'inflexion en $(1, 0)$
+- Croît de $-\infty$ vers le maximum, décroît vers le minimum, puis croît vers $+\infty$
+
+### 6. Résolution de $f(x) = 0$
+
+**Graphiquement :** D'après le tableau de variations, la courbe coupe l'axe des abscisses 3 fois (une fois pour $x < 0$, une fois entre 0 et 2, et une fois pour $x > 2$).
+
+**Algébriquement :**
+
+$$x^3 - 3x^2 + 2 = 0$$
+
+On cherche une racine évidente. Essayons $x = 1$ :
+
+$$f(1) = 1 - 3 + 2 = 0$$ ✓
+
+Donc $x = 1$ est une solution. On factorise par $(x - 1)$ :
+
+$$x^3 - 3x^2 + 2 = (x - 1)(x^2 - 2x - 2)$$
+
+Pour résoudre $x^2 - 2x - 2 = 0$ :
+
+$$\Delta = 4 + 8 = 12 = 4 \times 3$$
+
+$$x = \frac{2 \pm 2\sqrt{3}}{2} = 1 \pm \sqrt{3}$$
+
+**Solutions : $x_1 = 1 - \sqrt{3} \approx -0,732$, $x_2 = 1$, $x_3 = 1 + \sqrt{3} \approx 2,732$**
+'''
+
+[[exercises]]
+id = 6
+statement = '''
+### Suite et algorithme
+
+On définit la suite $(u_n)$ par $u_0 = 2$ et pour tout $n \in \mathbb{N}$, $u_{n+1} = \sqrt{2 + u_n}$.
+
+1. Calculer $u_1$, $u_2$ et $u_3$ (arrondir à $10^{-3}$ près).
+2. Démontrer par récurrence que pour tout $n \in \mathbb{N}$, $1 \leq u_n \leq 2$.
+3. Montrer que la suite $(u_n)$ est croissante.
+4. En déduire que $(u_n)$ est convergente. On note $\ell$ sa limite.
+5. Déterminer la valeur de $\ell$.
+6. Écrire un algorithme en Python qui calcule le plus petit entier $n$ tel que $|u_n - \ell| < 10^{-6}$.
+'''
+
+solution = '''
+### 1. Calcul des premiers termes
+
+$$u_0 = 2$$
+
+$$u_1 = \sqrt{2 + u_0} = \sqrt{2 + 2} = \sqrt{4} = 2$$
+
+$$u_2 = \sqrt{2 + u_1} = \sqrt{2 + 2} = 2$$
+
+$$u_3 = \sqrt{2 + u_2} = 2$$
+
+**Observation :** La suite semble constante égale à 2.
+
+### 2. Démonstration par récurrence : $1 \leq u_n \leq 2$
+
+**Initialisation :** $u_0 = 2$, donc $1 \leq u_0 \leq 2$ ✓
+
+**Hérédité :** Supposons que $1 \leq u_n \leq 2$
+
+Alors : $1 + 2 \leq 2 + u_n \leq 2 + 2$, soit $3 \leq 2 + u_n \leq 4$
+
+En prenant la racine carrée : $\sqrt{3} \leq u_{n+1} \leq 2$
+
+Or $\sqrt{3} \approx 1,732 > 1$, donc $1 \leq u_{n+1} \leq 2$ ✓
+
+Par récurrence, pour tout $n \in \mathbb{N}$, $1 \leq u_n \leq 2$.
+
+### 3. Monotonie de la suite
+
+Étudions le signe de $u_{n+1} - u_n$ :
+
+$$u_{n+1} - u_n = \sqrt{2 + u_n} - u_n$$
+
+Posons $f(x) = \sqrt{2 + x} - x$ pour $x \in [1, 2]$
+
+$$f'(x) = \frac{1}{2\sqrt{2 + x}} - 1 = \frac{1 - 2\sqrt{2 + x}}{2\sqrt{2 + x}}$$
+
+$f'(x) = 0 \Leftrightarrow 1 = 2\sqrt{2 + x} \Leftrightarrow \sqrt{2 + x} = \frac{1}{2}$
+
+Cette équation n'a pas de solution pour $x \geq 1$ (car $\sqrt{2 + 1} = \sqrt{3} > \frac{1}{2}$).
+
+Pour $x \in [1, 2]$ : $\sqrt{2 + x} \geq \sqrt{3} > 1,5$, donc $2\sqrt{2 + x} > 3 > 1$
+
+Ainsi $f'(x) < 0$ sur $[1, 2]$ : $f$ est décroissante.
+
+- $f(1) = \sqrt{3} - 1 \approx 0,732 > 0$
+- $f(2) = 2 - 2 = 0$
+
+La suite n'est ni strictement croissante ni strictement décroissante en général, mais elle converge vers 2.
+
+### 4. Convergence
+
+La suite est bornée (par la question 2). De plus, pour $u_n < 2$ :
+
+$$u_{n+1}^2 = 2 + u_n > u_n \text{ si } u_n < 2$$
+
+Donc si $u_n < 2$, alors $u_{n+1} > u_n$. La suite est croissante tant qu'elle est strictement inférieure à 2.
+
+Une suite croissante et majorée converge.
+
+### 5. Valeur de la limite $\ell$
+
+Si $u_n \to \ell$, alors $u_{n+1} \to \ell$ aussi.
+
+$$\ell = \sqrt{2 + \ell}$$
+
+$$\ell^2 = 2 + \ell$$
+
+$$\ell^2 - \ell - 2 = 0$$
+
+$$(\ell - 2)(\ell + 1) = 0$$
+
+Comme $u_n \geq 1 > 0$, on a $\ell = 2$.
+
+**La suite converge vers $\ell = 2$.**
+
+### 6. Algorithme Python
+
+```python
+import math
+
+def find_n():
+    u = 2  # u_0
+    ell = 2  # limite
+    n = 0
+    epsilon = 1e-6
+    
+    while abs(u - ell) >= epsilon:
+        u = math.sqrt(2 + u)
+        n += 1
+        
+        # Sécurité pour éviter une boucle infinie
+        if n > 1000000:
+            return "Convergence trop lente"
+    
+    return n
+
+# Test
+n_min = find_n()
+print(f"Le plus petit n tel que |u_n - ℓ| < 10^-6 est : {n_min}")
+```
+
+**Note :** Comme $u_0 = 2 = \ell$, le résultat sera $n = 0$ dans ce cas particulier.
+
+'''
+
+[[exercises]]
+id = 7
+statement = '''
+### Géométrie et produit scalaire
+
+Dans l'espace muni d'un repère orthonormé $(O; \vec{i}, \vec{j}, \vec{k})$, on considère les points :
+- $A(1, 0, 2)$
+- $B(3, 1, -1)$
+- $C(2, 3, 0)$
+- $D(0, 2, 3)$
+
+1. Calculer les coordonnées des vecteurs $\overrightarrow{AB}$, $\overrightarrow{AC}$ et $\overrightarrow{AD}$.
+2. Montrer que les points $A$, $B$ et $C$ ne sont pas alignés.
+3. Déterminer une équation cartésienne du plan $(ABC)$.
+4. Le point $D$ appartient-il au plan $(ABC)$ ?
+5. Calculer la distance du point $D$ au plan $(ABC)$.
+6. Calculer le volume du tétraèdre $ABCD$.
+'''
+
+solution = '''
+### 1. Coordonnées des vecteurs
+
+$$\overrightarrow{AB} = \begin{pmatrix} 3-1 \\ 1-0 \\ -1-2 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \\ -3 \end{pmatrix}$$
+
+$$\overrightarrow{AC} = \begin{pmatrix} 2-1 \\ 3-0 \\ 0-2 \end{pmatrix} = \begin{pmatrix} 1 \\ 3 \\ -2 \end{pmatrix}$$
+
+$$\overrightarrow{AD} = \begin{pmatrix} 0-1 \\ 2-0 \\ 3-2 \end{pmatrix} = \begin{pmatrix} -1 \\ 2 \\ 1 \end{pmatrix}$$
+
+### 2. Non-alignement de $A$, $B$ et $C$
+
+Deux vecteurs sont colinéaires s'il existe $k \in \mathbb{R}$ tel que l'un est égal à $k$ fois l'autre.
+
+Si $\overrightarrow{AB}$ et $\overrightarrow{AC}$ étaient colinéaires :
+
+$$\begin{pmatrix} 2 \\ 1 \\ -3 \end{pmatrix} = k \begin{pmatrix} 1 \\ 3 \\ -2 \end{pmatrix}$$
+
+Cela donnerait :
+- $2 = k \times 1 \Rightarrow k = 2$
+- $1 = k \times 3 \Rightarrow k = \frac{1}{3}$
+
+Contradiction ! Les vecteurs ne sont pas colinéaires, donc **les points $A$, $B$ et $C$ ne sont pas alignés**.
+
+### 3. Équation cartésienne du plan $(ABC)$
+
+Un vecteur normal au plan $(ABC)$ est $\vec{n} = \overrightarrow{AB} \wedge \overrightarrow{AC}$ :
+
+$$\vec{n} = \begin{pmatrix} 2 \\ 1 \\ -3 \end{pmatrix} \wedge \begin{pmatrix} 1 \\ 3 \\ -2 \end{pmatrix}$$
+
+$$= \begin{pmatrix} 1 \times (-2) - (-3) \times 3 \\ (-3) \times 1 - 2 \times (-2) \\ 2 \times 3 - 1 \times 1 \end{pmatrix}$$
+
+$$= \begin{pmatrix} -2 + 9 \\ -3 + 4 \\ 6 - 1 \end{pmatrix} = \begin{pmatrix} 7 \\ 1 \\ 5 \end{pmatrix}$$
+
+L'équation du plan est de la forme : $7x + y + 5z + d = 0$
+
+Le point $A(1, 0, 2)$ appartient au plan :
+
+$$7 \times 1 + 0 + 5 \times 2 + d = 0$$
+$$7 + 10 + d = 0$$
+$$d = -17$$
+
+**Équation du plan $(ABC)$ : $7x + y + 5z - 17 = 0$**
+
+### 4. Le point $D$ appartient-il au plan $(ABC)$ ?
+
+On teste si $D(0, 2, 3)$ vérifie l'équation :
+
+$$7 \times 0 + 2 + 5 \times 3 - 17 = 0 + 2 + 15 - 17 = 0$$
+
+**Oui, le point $D$ appartient au plan $(ABC)$.**
+
+### 5. Distance de $D$ au plan $(ABC)$
+
+Comme $D \in (ABC)$, la distance est **0**.
+
+### 6. Volume du tétraèdre $ABCD$
+
+Comme les quatre points $A$, $B$, $C$, $D$ sont coplanaires (ils appartiennent tous au plan $(ABC)$), le tétraèdre est **aplati**.
+
+**Le volume du tétraèdre $ABCD$ est 0.**
+
+**Remarque :** Si $D$ n'appartenait pas au plan, on utiliserait la formule :
+
+$$V = \frac{1}{6} |\overrightarrow{AB} \cdot (\overrightarrow{AC} \wedge \overrightarrow{AD})|$$
+'''

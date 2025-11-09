@@ -1,5 +1,7 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, OnDestroy, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +10,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.scss'
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  @Input() pageTitle: string = '';
   @Output() homeClicked = new EventEmitter<void>();
+
+  constructor (
+    private navbarService: NavbarService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  get pageTitle(): string {
+    return this.navbarService.title;
+  }
   
   siteTitle: string = 'LG Maths';
   activeSection: string = 'cours';
@@ -24,7 +35,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   navigateToHome(): void {
-    this.homeClicked.emit();
+    this.router.navigate(['/home']);
   }
 
   scrollToSection(event: Event, sectionId: string): void {
@@ -39,8 +50,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         top: offsetPosition,
         behavior: 'smooth'
       });
-
-      this.activeSection = sectionId;
     }
   }
 

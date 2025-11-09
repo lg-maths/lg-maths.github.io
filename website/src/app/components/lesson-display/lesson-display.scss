@@ -3,12 +3,12 @@
 }
 
 .lesson-content {
-  margin: 2rem 0;
+  margin: 0;
   font-family: "Roboto Slab";
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 2rem 1.5rem;
 }
 
 .level-badge {
@@ -33,22 +33,26 @@
 /* GitHub-style alert styling for marked-alert plugin */
 .markdown-alert {
   margin: 2rem 0;
-  border-radius: var(--alerts-border-radius);
+  border-radius: 1rem;
   background-color: var(--surface-variant);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
   p {
-    padding: 0 0 0 1rem;
+    padding: 1rem 1.5rem;
+    margin: 0;
 
     &.markdown-alert-title {
       display: flex;
       align-items: center;
-      font-size: 1.5rem;
-      font-weight: 500;
-      margin: 0;
-      color: var(--text-on-primary) !important;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-      border-radius: var(--alerts-border-radius) var(--alerts-border-radius) 0 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: .5rem;
+      margin-left: 1rem;
+      color: var(--text-primary);
+      padding: 0;
+      background: none;
+      border-radius: 0;
     }
 
     &:last-child {
@@ -58,24 +62,28 @@
 }
 
 .marked-alert-icon {
-  font-size: 2.5rem;
-  margin: 0.5rem;
-  margin-right: 1rem;
+  font-size: 1.4rem;
+  margin: 0 0.5rem 0 0;
 }
 
+
+
 h1.big-title {
-  font-size: 3rem;
+  font-size: 6rem;
   padding: 2rem 3rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-  color: var(--text-on-primary);
+  // background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: var(--primary);
   line-height: 1.2;
-  font-weight: 300;
-  border-radius: 3rem;
+  font-weight: 100;
+  border-radius: 2rem;
   margin: 0 auto 2rem auto;
   text-align: center;
   max-width: 800px;
   width: fit-content;
   min-width: 300px;
+
+  // transform: rotateX(45deg) rotateZ(-45deg);
+  // box-shadow: 0 10px 16px rgba(0, 0, 0, 0.5);
 }
 
 /* Markdown content styling */
@@ -89,6 +97,7 @@ h1.big-title {
 
   h1 {
     font-size: 2.5rem;
+    font-weight: 400;
     border-bottom: 3px solid var(--primary);
     padding-bottom: 0.75rem;
     color: var(--primary);
@@ -97,6 +106,7 @@ h1.big-title {
 
   h2 {
     font-size: 2rem;
+    font-weight: 400;
     border-bottom: 2px solid var(--divider);
     padding-bottom: 0.5rem;
     color: var(--text-primary);
@@ -264,87 +274,26 @@ h1.big-title {
 #exo-container {
   margin: 3rem 1.5rem 0 1.5rem;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.lesson-body {
-  background-color: var(--background-dark);
-  height: 100%;
-  padding-top: 8rem;
-}
-
-.lesson-container {
-  padding-top: 4rem;
-  background-color: var(--background);
-  border-top-left-radius: 4rem;
-  border-top-right-radius: 4rem;
-  height: 100%;
-  min-height: calc(100vh - 8rem);
+#lesson-body {
+  padding-top: 1rem;
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  .lesson-body {
-    padding-top: 6rem;
-  }
-
-  .lesson-container {
-    padding: 3rem 1rem;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
-    min-height: calc(100vh - 6rem);
-  }
-
-  .lesson-content {
-    padding: 0 1rem;
-    margin: 1.5rem 0;
-  }
-
-  h1.big-title {
-    font-size: 2.5rem;
-    padding: 1.5rem 2rem;
-    border-radius: 2.5rem;
-    max-width: 600px;
-    min-width: 250px;
-  }
-
-  .lesson-content h1 {
-    font-size: 2rem;
-  }
-
-  .lesson-content h2 {
-    font-size: 1.75rem;
-  }
-
-  .lesson-content h3 {
-    font-size: 1.5rem;
-  }
-
-  #exo-container {
-    margin: 2rem 1rem 0 1rem;
-  }
-}
-
 @media (max-width: 480px) {
-  .lesson-body {
-    padding-top: 5rem;
-  }
-
-  .lesson-container {
-    padding: 2rem 0.75rem;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    min-height: calc(100vh - 5rem);
-  }
-
   .lesson-content {
-    padding: 0 0.75rem;
-    margin: 1rem 0;
+    padding: 0 .5rem 1.5rem .5rem;
+    margin: 0;
   }
 
   h1.big-title {
-    font-size: 2rem;
+    font-size: 3.5rem;
+    font-weight: 200;
     padding: 1.25rem 1.5rem;
     border-radius: 2rem;
     max-width: 90vw;
@@ -368,6 +317,6 @@ h1.big-title {
   }
 
   #exo-container {
-    margin: 1.5rem 0.75rem 0 0.75rem;
+    margin: 0 0.75rem 0 0.75rem;
   }
 }

@@ -1,25 +1,17 @@
 <div class="navbar-container">
   <div class="navbar-pill">
-    <!-- Single Row Layout -->
-    <div class="navbar-row">
-      <!-- Left Side: Home + Title (50% width) -->
-      <div class="navbar-left">
-        <button
-          (click)="navigateToHome()"
-          title="Go to homepage"
-          aria-label="Go to homepage"
-          class="home-button">
-          <span class="home-icon">🏠</span>
-        </button>
+    <div class="navbar-content">
+      <!-- Column 1: Title and navigation buttons -->
+      <div class="navbar-left-column">
+        <!-- Row 1: Title -->
+        <div class="title-row">
+          @if (pageTitle) {
+            <p class="lesson-title">{{ pageTitle }}</p>
+          }
+        </div>
 
-        @if (pageTitle) {
-          <span class="lesson-title">{{ pageTitle }}</span>
-        }
-      </div>
-
-      <!-- Right Side: Navigation buttons (50% width, only on lesson pages) -->
-      @if (pageTitle) {
-        <div class="navbar-right">
+        <!-- Row 2: Navigation buttons -->
+        <div class="nav-buttons-row">
           <button
             (click)="scrollToSection($event, 'cours')"
             [class.active]="activeSection === 'cours'"
@@ -33,7 +25,19 @@
             Exercices
           </button>
         </div>
-      }
+      </div>
+
+      <!-- Column 2: Big homepage logo -->
+      <div class="navbar-right-column">
+        <button
+          (click)="navigateToHome()"
+          title="Go to homepage"
+          aria-label="Go to homepage"
+          class="home-button-large"
+        >
+          <span class="home-icon-large">🏠</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

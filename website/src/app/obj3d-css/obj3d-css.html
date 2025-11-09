@@ -1,0 +1,7 @@
+<div id="obj-container">
+	@for (el of elements; track el.mat) {
+		<svg class="yellow-triangle" viewBox="0 0 1 1" [style.transform]="transformValue(el.mat)">
+			<polygon points="0,0 1,0 0,1" [attr.fill]="el.color" />
+		</svg>
+	}
+</div>

@@ -1,6 +1,5 @@
 @if (lessonToDisplay) {
-  <div class="lesson-body">
-    <div class="lesson-container">
+  <div id="lesson-body">
       <h1 class="big-title">{{ lessonToDisplay.title }}</h1>
 
       <div id="cours" class="lesson-content">
@@ -12,17 +11,16 @@
         />
       </div>
 
-      @if (lessonToDisplay.exercices) {
+      @if (lessonToDisplay.exercices && lessonToDisplay.exercices.length > 0) {
         <h1 id="exercices" class="big-title">Exercices</h1>
       }
 
       <div id="exo-container">
         @for (exercice of lessonToDisplay.exercices; track exercice.id) {
-          <app-exo-display [exercice]="exercice" />
+          <app-exo-display [exercice]="exercice"></app-exo-display>
         }
       </div>
     </div>
-  </div>
 } @else {
   <div class="lesson-body">
     <div class="loading">

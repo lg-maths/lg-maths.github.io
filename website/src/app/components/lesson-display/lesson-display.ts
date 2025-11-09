@@ -1,10 +1,11 @@
-import { Component, OnInit, inject, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 import { MarkdownComponent } from 'ngx-markdown';
 import { LessonsService } from '../../services/lessons';
 import { LessonToDisplay } from '../../models/lessons-outputs.model';
 import { ExoDisplay } from '../exo-display/exo-display';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-lesson-display',
@@ -14,23 +15,33 @@ import { ExoDisplay } from '../exo-display/exo-display';
   encapsulation: ViewEncapsulation.None
 })
 export class LessonDisplayComponent implements OnInit {
-  @Input({ required: true }) lessonId!: string;
-  @Input({ required: true }) class!: string;
-
+  lessonId!: string;
+  class!: string;
   lessonToDisplay: LessonToDisplay | null = null;
 
+  constructor (
+    private navbarService: NavbarService,
+    private route: ActivatedRoute,
+    private lessonsService: LessonsService
+  ) { }
+
   ngOnInit(): void {
-    this.lessonsService.getLesson(this.lessonId, this.class).subscribe({
-      next: (lesson) => {
-        this.lessonToDisplay = lesson
-      },
-      error: (error) => {
-        console.error('Error loading lesson content:', error);
-      }
+    // Get route parameters
+    this.route.params.subscribe(params => {
+      this.lessonId = params['lessonId'];
+      this.class = params['classname'];
+
+      // Load lesson content
+      this.lessonsService.getLesson(this.lessonId, this.class).subscribe(
+        lesson => this.loadLesson(lesson)
+      );
+
+      
     });
   }
 
-  constructor(
-    private lessonsService: LessonsService
-  ) { }
+  private loadLesson(lesson: LessonToDisplay) {
+    this.lessonToDisplay = lesson;
+    this.navbarService.title = lesson.title;
+  }
 }

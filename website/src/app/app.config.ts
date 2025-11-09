@@ -9,13 +9,18 @@ import { routes } from './app.routes';
 const markedAlertOptions = {
   variants: [
     {
-      type: 'remark',
-      icon: 'school',
+      type: 'info',
+      icon: 'lightbulb_2',
       title: 'Remarque'
     },
     {
+      type: 'warning',
+      icon: 'feedback',
+      title: 'Attention'
+    },
+    {
       type: 'theorem',
-      icon: 'square_foot',
+      icon: 'school',
       title: 'Théorème'
     },
     {
@@ -27,11 +32,6 @@ const markedAlertOptions = {
       type: 'example',
       icon: 'biotech',
       title: 'Exemple'
-    },
-    {
-      type: 'exo',
-      icon: 'stylus_note',
-      title: 'Exercice'
     }
   ].map(
     el => (
