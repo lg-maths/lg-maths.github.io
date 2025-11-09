@@ -1,0 +1,142 @@
+id = "fonction-logarithme-exponentielle"
+title = "Fonction logarithme et exponentielle"
+
+[[classes]]
+classname = "Te"
+chapter = 1
+disclaimer = ""
+
+content = '''
+# Fonction logarithme et exponentielle
+
+## La fonction exponentielle
+
+### Définition
+La fonction exponentielle, notée $\exp$ ou $x \mapsto e^x$, est l'unique fonction $f$ telle que :
+- $f'(x) = f(x)$ pour tout $x \in \mathbb{R}$
+- $f(0) = 1$
+
+### Propriétés
+- **Domaine :** $\mathbb{R}$
+- **Ensemble image :** $]0, +\infty[$
+- **Strictement croissante** sur $\mathbb{R}$
+- **Dérivée :** $(e^x)' = e^x$
+- **Limites :** $\lim_{x \to -\infty} e^x = 0$ et $\lim_{x \to +\infty} e^x = +\infty$
+
+### Propriétés algébriques
+- $e^a \times e^b = e^{a+b}$
+- $\frac{e^a}{e^b} = e^{a-b}$
+- $(e^a)^n = e^{na}$
+- $e^0 = 1$
+
+## La fonction logarithme népérien
+
+### Définition
+La fonction logarithme népérien, notée $\ln$, est la fonction réciproque de la fonction exponentielle.
+
+### Propriétés
+- **Domaine :** $]0, +\infty[$
+- **Ensemble image :** $\mathbb{R}$
+- **Strictement croissante** sur $]0, +\infty[$
+- **Dérivée :** $(\ln x)' = \frac{1}{x}$ pour $x > 0$
+- **Limites :** $\lim_{x \to 0^+} \ln x = -\infty$ et $\lim_{x \to +\infty} \ln x = +\infty$
+
+### Propriétés algébriques
+- $\ln(a \times b) = \ln a + \ln b$
+- $\ln\left(\frac{a}{b}\right) = \ln a - \ln b$
+- $\ln(a^n) = n \ln a$
+- $\ln 1 = 0$
+- $\ln e = 1$
+
+## Relations fondamentales
+- $\ln(e^x) = x$ pour tout $x \in \mathbb{R}$
+- $e^{\ln x} = x$ pour tout $x > 0$
+
+## Équations et inéquations
+
+### Équations exponentielles
+- $e^x = a \Leftrightarrow x = \ln a$ (si $a > 0$)
+- $e^u = e^v \Leftrightarrow u = v$
+
+### Équations logarithmiques
+- $\ln x = a \Leftrightarrow x = e^a$
+- $\ln u = \ln v \Leftrightarrow u = v$ (si $u, v > 0$)
+
+## Applications
+
+### Croissance exponentielle
+Modélise des phénomènes de croissance : $N(t) = N_0 e^{kt}$
+- Population de bactéries
+- Désintégration radioactive
+- Intérêts composés
+
+### Échelle logarithmique
+- Décibels : $L = 10 \log_{10}\left(\frac{I}{I_0}\right)$
+- Magnitude des séismes
+- pH en chimie
+
+## Exercices
+1. Résoudre l'équation $e^{2x-1} = 5$
+2. Simplifier $\ln(e^3) + \ln\left(\frac{1}{e^2}\right)$
+3. Étudier les variations de $f(x) = x - \ln x$ sur $]0, +\infty[$
+'''
+
+[[exercises]]
+id = 1
+statement = '''
+Résoudre l'équation $e^{2x-1} = 5$
+'''
+solution = '''
+On a $e^{2x-1} = 5$.
+
+On applique le logarithme népérien des deux côtés :
+$\ln(e^{2x-1}) = \ln 5$
+$2x - 1 = \ln 5$
+
+Donc : $2x = 1 + \ln 5$
+$x = \frac{1 + \ln 5}{2}$
+
+**Réponse : $x = \frac{1 + \ln 5}{2}$**
+'''
+
+[[exercises]]
+id = 2
+statement = '''
+Simplifier $\ln(e^3) + \ln\left(\frac{1}{e^2}\right)$
+'''
+solution = '''
+On utilise les propriétés des logarithmes :
+
+$\ln(e^3) = 3$ (car $\ln(e^a) = a$)
+
+$\ln\left(\frac{1}{e^2}\right) = \ln(1) - \ln(e^2) = 0 - 2 = -2$
+
+Donc : $3 + (-2) = 1$
+
+**Réponse : $1$**
+'''
+
+[[exercises]]
+id = 3
+statement = '''
+Étudier les variations de $f(x) = x - \ln x$ sur $]0, +\infty[$
+'''
+solution = '''
+**Domaine :** $]0, +\infty[$
+
+**Dérivée :** $f'(x) = 1 - \frac{1}{x} = \frac{x - 1}{x}$
+
+**Signe de $f'(x)$ :**
+- Pour $x > 0$ : $f'(x) > 0$ si $x > 1$
+- Pour $x > 0$ : $f'(x) < 0$ si $0 < x < 1$
+
+**Variations :**
+- $f$ est décroissante sur $]0, 1]$
+- $f$ est croissante sur $[1, +\infty[$
+
+**Minimum :** $f(1) = 1 - \ln 1 = 1 - 0 = 1$
+
+**Limites :**
+- $\lim_{x \to 0^+} f(x) = +\infty$
+- $\lim_{x \to +\infty} f(x) = +\infty$
+'''

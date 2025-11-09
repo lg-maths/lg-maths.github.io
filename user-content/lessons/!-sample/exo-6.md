@@ -1,1 +1,0 @@
-Résoudre dans $\mathbb{C}$ l'équation $z^3 - 8i = 0$

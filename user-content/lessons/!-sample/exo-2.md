@@ -1,1 +1,0 @@
-Déterminer la dérivée de la fonction $f(x) = \ln(x^2 + 1) \cdot e^{2x}$

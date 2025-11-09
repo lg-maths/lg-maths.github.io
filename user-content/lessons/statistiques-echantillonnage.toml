@@ -1,0 +1,141 @@
+id = "statistiques-echantillonnage"
+title = "Statistiques et échantillonnage"
+
+[[classes]]
+classname = "2d"
+chapter = 3
+disclaimer = ""
+
+content = '''
+# Statistiques et échantillonnage
+
+## Statistiques descriptives
+
+### Paramètres de tendance centrale
+- **Moyenne :** $\bar{x} = \frac{n_1x_1 + n_2x_2 + \ldots + n_kx_k}{N}$
+- **Médiane :** valeur qui partage l'effectif en deux parties égales
+- **Quartiles :** $Q_1$ (25%), $Q_2 = \text{médiane}$ (50%), $Q_3$ (75%)
+
+### Paramètres de dispersion
+- **Étendue :** différence entre les valeurs extrêmes
+- **Écart interquartile :** $Q_3 - Q_1$
+- **Variance :** $V = \frac{\sum n_i(x_i - \bar{x})^2}{N}$
+- **Écart-type :** $\sigma = \sqrt{V}$
+
+## Représentations graphiques
+
+### Diagramme en boîte
+Représente les quartiles et permet de visualiser la dispersion :
+- Minimum, $Q_1$, médiane, $Q_3$, maximum
+- Identification des valeurs aberrantes
+
+### Histogramme
+Pour les variables quantitatives continues regroupées en classes.
+
+## Échantillonnage
+
+### Définitions
+- **Population :** ensemble total étudié
+- **Échantillon :** sous-ensemble de la population
+- **Taille d'échantillon :** nombre d'individus dans l'échantillon
+
+### Fluctuation d'échantillonnage
+La fréquence d'un caractère varie d'un échantillon à l'autre.
+
+Pour un échantillon de taille $n$ et une proportion $p$ dans la population :
+**Intervalle de fluctuation :** $\left[p - \frac{1}{\sqrt{n}} ; p + \frac{1}{\sqrt{n}}\right]$
+
+### Estimation
+À partir d'un échantillon, on estime les paramètres de la population :
+- Fréquence observée ≈ probabilité théorique
+- Moyenne d'échantillon ≈ moyenne de population
+
+## Applications
+- Sondages d'opinion
+- Contrôle qualité en industrie
+- Études médicales
+- Recherche scientifique
+
+## Biais d'échantillonnage
+Un échantillon peut ne pas être représentatif si :
+- Il y a un biais de sélection
+- La taille est insuffisante
+- Il y a des non-réponses
+
+## Exercices
+1. Calculer la moyenne et l'écart-type de la série : 12, 15, 13, 18, 11, 16, 14
+2. Dans un échantillon de 100 personnes, 60% préfèrent le produit A. Donner l'intervalle de fluctuation
+3. Interpréter un diagramme en boîte donné
+'''
+
+[[exercises]]
+id = 1
+statement = '''
+Calculer la moyenne et l'écart-type de la série : 12, 15, 13, 18, 11, 16, 14
+'''
+solution = '''
+Série : 12, 15, 13, 18, 11, 16, 14
+
+Nombre de valeurs : 7
+
+**Moyenne :**
+Somme = 12 + 15 + 13 + 18 + 11 + 16 + 14 = 99
+$\bar{x} = \frac{99}{7} \approx 14,14$
+
+**Écart-type :**
+Calculons les écarts au carré :
+(12-14,14)² ≈ (-2,14)² ≈ 4,58
+(15-14,14)² ≈ 0,86² ≈ 0,74
+(13-14,14)² ≈ (-1,14)² ≈ 1,30
+(18-14,14)² ≈ 3,86² ≈ 14,90
+(11-14,14)² ≈ (-3,14)² ≈ 9,86
+(16-14,14)² ≈ 1,86² ≈ 3,46
+(14-14,14)² ≈ (-0,14)² ≈ 0,02
+
+Variance = moyenne des écarts au carré ≈ (4,58 + 0,74 + 1,30 + 14,90 + 9,86 + 3,46 + 0,02) / 7 ≈ 34,86 / 7 ≈ 4,98
+
+Écart-type = √4,98 ≈ 2,23
+
+**Réponse : Moyenne ≈ 14,1 ; écart-type ≈ 2,2**
+'''
+
+[[exercises]]
+id = 2
+statement = '''
+Dans un échantillon de 100 personnes, 60% préfèrent le produit A. Donner l'intervalle de fluctuation
+'''
+solution = '''
+Fréquence observée : 60% = 0,6
+
+Taille d'échantillon : n = 100
+
+Intervalle de fluctuation : $\left[p - \frac{1}{\sqrt{n}} ; p + \frac{1}{\sqrt{n}}\right]$
+
+$\frac{1}{\sqrt{100}} = \frac{1}{10} = 0,1$
+
+Intervalle : $[0,6 - 0,1 ; 0,6 + 0,1] = [0,5 ; 0,7]$
+
+**Réponse : [0,5 ; 0,7] ou [50% ; 70%]**
+'''
+
+[[exercises]]
+id = 3
+statement = '''
+Interpréter un diagramme en boîte donné
+'''
+solution = '''
+Un diagramme en boîte représente :
+- La boîte : entre Q1 et Q3 (50% des valeurs)
+- La médiane : trait au milieu de la boîte
+- Les moustaches : minimum et maximum (ou jusqu'aux valeurs aberrantes)
+- Les points : valeurs aberrantes
+
+**Interprétation :**
+- Position centrale : médiane
+- Dispersion : longueur de la boîte (écart interquartile)
+- Symétrie : médiane au centre de la boîte
+- Valeurs extrêmes : moustaches
+- Valeurs atypiques : points isolés
+
+**Réponse : Voir l'explication ci-dessus**
+'''

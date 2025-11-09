@@ -1,0 +1,136 @@
+id = "derivation-applications"
+title = "Dérivation et applications"
+
+[[classes]]
+classname = "1e"
+chapter = 1
+disclaimer = ""
+
+content = '''
+# Dérivation et applications
+
+## Nombre dérivé et fonction dérivée
+
+### Définition du nombre dérivé
+Le nombre dérivé de $f$ en $a$ est :
+$$f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}$$
+
+Il représente le coefficient directeur de la tangente à la courbe au point d'abscisse $a$.
+
+### Fonction dérivée
+La fonction dérivée f' associe à chaque nombre x de son domaine le nombre dérivé f'(x).
+
+## Dérivées des fonctions usuelles
+- $(k)' = 0$ (constante)
+- $(x)' = 1$
+- $(x^n)' = nx^{n-1}$
+- $(\sqrt{x})' = \frac{1}{2\sqrt{x}}$
+- $\left(\frac{1}{x}\right)' = -\frac{1}{x^2}$
+
+## Opérations sur les dérivées
+- $(u + v)' = u' + v'$
+- $(ku)' = ku'$ ($k$ constante)
+- $(uv)' = u'v + uv'$
+- $\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}$
+
+## Applications
+
+### Équation de la tangente
+La tangente à la courbe de $f$ au point $A(a, f(a))$ a pour équation :
+$$y = f'(a)(x - a) + f(a)$$
+
+### Sens de variation
+- Si $f'(x) > 0$ sur un intervalle, $f$ est croissante sur cet intervalle
+- Si $f'(x) < 0$ sur un intervalle, $f$ est décroissante sur cet intervalle
+- Si $f'(x) = 0$, on a un extremum local (maximum ou minimum)
+
+### Extremums
+Un fonction f admet :
+- Un maximum local en a si f'(a) = 0 et f' change de signe de + vers -
+- Un minimum local en a si f'(a) = 0 et f' change de signe de - vers +
+
+## Méthode d'étude de fonction
+1. Déterminer le domaine de définition
+2. Calculer la dérivée f'(x)
+3. Étudier le signe de f'(x)
+4. Dresser le tableau de variations
+5. Tracer la courbe représentative
+
+## Exemples
+$f(x) = x^2 - 4x + 3$
+- $f'(x) = 2x - 4$
+- $f'(x) = 0 \Leftrightarrow x = 2$
+- $f$ décroissante sur $]-\infty, 2[$ et croissante sur $]2, +\infty[$
+- Minimum en $x = 2$ : $f(2) = -1$
+
+## Exercices
+1. Calculer la dérivée de $f(x) = 3x^2 - 2x + 1$
+2. Déterminer l'équation de la tangente à la courbe $y = x^3$ au point d'abscisse $1$
+3. Étudier les variations de $g(x) = x^3 - 3x + 2$
+'''
+
+[[exercises]]
+id = 1
+statement = '''
+Calculer la dérivée de $f(x) = 3x^2 - 2x + 1$
+'''
+solution = '''
+Pour dériver $f(x) = 3x^2 - 2x + 1$, on applique la règle de dérivation des polynômes :
+
+- Dérivée de $3x^2$ : $3 \times 2x = 6x$
+- Dérivée de $-2x$ : $-2$
+- Dérivée de $1$ : $0$
+
+Donc : $f'(x) = 6x - 2$
+
+**Réponse : $f'(x) = 6x - 2$**
+'''
+
+[[exercises]]
+id = 2
+statement = '''
+Déterminer l'équation de la tangente à la courbe $y = x^3$ au point d'abscisse $1$
+'''
+solution = '''
+La fonction est $f(x) = x^3$.
+
+Calculons d'abord $f(1) = 1^3 = 1$, donc le point de contact est $A(1, 1)$.
+
+Calculons la dérivée : $f'(x) = 3x^2$, donc $f'(1) = 3 \times 1^2 = 3$.
+
+L'équation de la tangente au point $A(a, f(a))$ est :
+$y = f'(a)(x - a) + f(a)$
+
+Donc : $y = 3(x - 1) + 1 = 3x - 3 + 1 = 3x - 2$
+
+**Réponse : L'équation de la tangente est $y = 3x - 2$**
+'''
+
+[[exercises]]
+id = 3
+statement = '''
+Étudier les variations de $g(x) = x^3 - 3x + 2$
+'''
+solution = '''
+Calculons la dérivée : $g'(x) = 3x^2 - 3$
+
+Étudions le signe de $g'(x)$ :
+- $g'(x) = 3(x^2 - 1) = 3(x - 1)(x + 1)$
+- $g'(x) = 0 \Leftrightarrow x = -1$ ou $x = 1$
+
+**Signe de $g'(x)$ :**
+- Pour $x < -1$ : $g'(x) > 0$ (croissante)
+- Pour $-1 < x < 1$ : $g'(x) < 0$ (décroissante)  
+- Pour $x > 1$ : $g'(x) > 0$ (croissante)
+
+**Tableau de variations :**
+
+| $x$        | $-\infty$ |     | $-1$  |     | $1$  |     | $+\infty$ |
+|------------|-----------|-----|------|-----|------|-----|-----------|
+| $g'(x)$    |           | $+$ | $0$  | $-$ | $0$  | $+$ |           |
+| $g(x)$     | $-\infty$ | ↗   | $0$  | ↘   | $-2$ | ↗   | $+\infty$ |
+
+**Conclusion :**
+- Maximum local en $x = -1$ : $g(-1) = 0$
+- Minimum local en $x = 1$ : $g(1) = -2$
+'''

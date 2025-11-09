@@ -1,0 +1,82 @@
+id = "nombres-decimaux-fractions"
+title = "Les nombres décimaux et les fractions"
+
+[[classes]]
+classname = "6e"
+chapter = 3
+disclaimer = ""
+
+content = '''
+# Les nombres décimaux et les fractions
+
+## Introduction
+Les nombres décimaux et les fractions sont deux façons différentes d'écrire des nombres qui ne sont pas entiers.
+
+## Les nombres décimaux
+Un nombre décimal s'écrit avec une virgule qui sépare la partie entière de la partie décimale.
+
+**Exemple :** 12,35
+- Partie entière : 12
+- Partie décimale : 35
+
+## Les fractions
+Une fraction représente une division. Elle s'écrit sous la forme a/b où :
+- a est le numérateur
+- b est le dénominateur (≠ 0)
+
+**Exemple :** 3/4 se lit "trois quarts"
+
+## Conversion
+- Pour convertir une fraction en nombre décimal : on divise le numérateur par le dénominateur
+- $\frac{3}{4} = 3 \div 4 = 0,75$
+
+## Comparaison
+Pour comparer des nombres décimaux, on compare d'abord les parties entières, puis les parties décimales rang par rang.
+
+**Exemple :** 12,34 < 12,37 car 4 < 7 au rang des centièmes.
+
+## Exercices
+1. Convertir 7/10 en nombre décimal
+2. Comparer 2,45 et 2,5
+3. Écrire 0,125 sous forme de fraction
+'''
+
+[[exercises]]
+id = 1
+statement = '''
+Convertir 7/10 en nombre décimal
+'''
+solution = '''
+$\frac{7}{10} = 7 \div 10 = 0,7$
+
+**Réponse : 0,7**
+'''
+
+[[exercises]]
+id = 2
+statement = '''
+Comparer 2,45 et 2,5
+'''
+solution = '''
+Pour comparer 2,45 et 2,5 :
+- Parties entières identiques : 2
+- Au rang des dixièmes : 4 = 4
+- Au rang des centièmes : 5 < 0 (car 2,5 = 2,50)
+
+Donc 2,45 > 2,5
+
+**Réponse : 2,45 > 2,5**
+'''
+
+[[exercises]]
+id = 3
+statement = '''
+Écrire 0,125 sous forme de fraction
+'''
+solution = '''
+0,125 = 125/1000
+
+En simplifiant par 125 : 125/1000 = 1/8
+
+**Réponse : $\frac{1}{8}$**
+'''
