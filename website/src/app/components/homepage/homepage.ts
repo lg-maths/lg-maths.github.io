@@ -7,6 +7,12 @@ import { HscrollSelecter } from '../hscroll-selecter/hscroll-selecter';
 import { Router } from '@angular/router';
 import { Obj3dCss, Vec3 } from '../../obj3d-css/obj3d-css';
 
+const a = new Vec3(0, 0, 0);
+const b = new Vec3(1, 0, 0);
+const c = new Vec3(.5, 3**.5 / 2, 0);
+const d = new Vec3(.5, 3**.5 / 6, -1*(2/3)**.5);
+
+const e = new Vec3(.5, 3**.5 / 6, 0);
 
 @Component({
   selector: 'app-homepage',
@@ -23,18 +29,30 @@ export class HomepageComponent implements OnInit {
   
   listLessons?: InputListLessons;
 
-  protected tris = [
+  protected tetrahedron = [
     {
-      p: new Vec3(0, -1, 3),
-      q: new Vec3(2, 2, -1),
-      r: new Vec3(-1, 5, 4),
-      color: 'yellow'
+      p: a.sub(e),
+      q: b.sub(e),
+      r: c.sub(e),
+      color: 'red'
     },
     {
-      p: new Vec3(0, 0, 0),
-      q: new Vec3(1, 0, 0),
-      r: new Vec3(0, 1, 0),
-      color: 'red'
+      p: a.sub(e),
+      q: b.sub(e),
+      r: d.sub(e),
+      color: 'green'
+    },
+    {
+      p: b.sub(e),
+      q: c.sub(e),
+      r: d.sub(e),
+      color: 'blue'
+    },
+    {
+      p: a.sub(e),
+      q: c.sub(e),
+      r: d.sub(e),
+      color: 'yellow'
     },
   ]
   
