@@ -38,6 +38,10 @@ jobs:
         run: python python/bake_lessons.py
         working-directory: ./
 
+      - name: Bake user graphs into SVG files
+        run: python python/bake_graphs.py
+        working-directory: ./
+
       - name: Verify JSON files generated
         run: |
           echo "Checking for generated JSON files..."
